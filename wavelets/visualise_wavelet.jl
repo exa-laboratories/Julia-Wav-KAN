@@ -11,6 +11,7 @@ using .DoG: DoGWavelet
 using .Shannon: ShannonWavelet
 using .Meyer: MeyerWavelet
 using Printf    
+using LinearAlgebra
 
 wavelet = "Meyer"
 wavelet_transform = Dict(
@@ -42,7 +43,7 @@ symbol = Dict(
     "Meyer" => "σ"
 )[wavelet]
 
-weights = randn(1, 100)
+weights = Matrix{Float32}(I, 100, 100)
 
 wavelet_gif = @animate for arg in args
     y = wavelet_transform(arg..., weights)(x)

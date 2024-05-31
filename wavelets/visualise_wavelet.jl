@@ -1,15 +1,18 @@
 include("./mexican_hat.jl")
 include("./morlet.jl")
+include("./derivative_of_gaussian.jl")
 
 using Plots; pythonplot()
 using .MexicanHat: MexicanHatWavelet
 using .Morlet: MorletWavelet
+using .DoG: DoGWavelet
 using Printf    
 
-wavelet = "Morlet"
+wavelet = "DerivativeOfGaussian"
 wavelet_transform = Dict(
     "MexicanHat" => MexicanHatWavelet,
-    "Morlet" => MorletWavelet
+    "Morlet" => MorletWavelet,
+    "DerivativeOfGaussian" => DoGWavelet
 )[wavelet]
 
 σ_list = range(0.1, 5, length=100)
@@ -18,12 +21,14 @@ x = range(-15, 15, length=100)
 
 args = Dict(
     "MexicanHat" => σ_list,
-    "Morlet" => γ_list
+    "Morlet" => γ_list,
+    "DerivativeOfGaussian" => σ_list
 )[wavelet]
 
 symbol = Dict(
     "MexicanHat" => "σ",
-    "Morlet" => "γ"
+    "Morlet" => "γ",
+    "DerivativeOfGaussian" => "σ"
 )[wavelet]
 
 weights = [1.0 for _ in length(args)]

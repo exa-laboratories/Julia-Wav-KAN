@@ -16,10 +16,12 @@ function MexicanHatWavelet(σ, weights)
 end
 
 function (w::MexicanHatWavelet)(x)
-    function scalar_eval(z)
-        return (1 - (z^2 / w.σ^2)) * exp(-z ^ 2 / (2 * w.σ^2)) * w.norm
+    function MH_fcn(z)
+        term1 = 1.0 .- (z.^2 ./ w.σ^2)
+        term2 = exp.(-z.^2 ./ (2 * w.σ^2))
+        return term1 .* term2 .* w.norm
     end
-    return w.weights * scalar_eval.(x)
+    return w.weights * MH_fcn(x)
 end
 
 Flux.@functor MexicanHatWavelet

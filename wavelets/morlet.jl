@@ -14,12 +14,12 @@ function MorletWavelet(γ, weights)
 end
 
 function (w::MW)(x)
-    function scalar_eval(z)
-        real = cos(w.γ * z)
-        envelope = exp(-z ^ 2 / 2)
-        return real * envelope * weight
+    function mor_fcn(z)
+        real = cos.(w.γ .* z)
+        envelope = exp.(-z .^ 2 ./ 2)
+        return real .* envelope
     end
-    return w.weights * scalar_eval.(x)
+    return w.weights * mor_fcn(x)
 end
 
 Flux.@functor MW

@@ -16,10 +16,10 @@ function DoGWavelet(σ, weights)
 end
 
 function (w::DoGWavelet)(x)
-    function scalar_eval(z)
-        return - z * exp(-z^2 / (2 * w.σ^2)) * w.norm
+    function DoG_fcn(z)
+        return - z .* exp.(-z.^2 / (2 * w.σ^2)) .* w.norm
     end
-    return w.weights * scalar_eval.(x)
+    return w.weights * DoG_fcn(x)
 end
 
 Flux.@functor DoGWavelet

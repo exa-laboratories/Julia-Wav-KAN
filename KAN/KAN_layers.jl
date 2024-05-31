@@ -43,6 +43,7 @@ end
 
 function KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm, args)
     wavelet_weights = Flux.kaiming_uniform(output_size, input_size)
+    wavelet_weights = Float32.(wavelet_weights)
     wavelet = wavelet_mapping[wavelet_name](args..., wavelet_weights)
     activation = act_mapping[base_activation]
     output_layer = Flux.Dense(input_size, output_size, activation)
@@ -64,16 +65,18 @@ end
 
 # Test the module
 using .layers
+using CUDA
+using Flux
 
 input_size = 10
 output_size = 5
-wavelet_name = "MexicanHat"
+wavelet_name = "Shannon"
 base_activation = "relu"
 batch_norm = false
-args = 0.5
+args = (0.5, 0.5)
 
-layer = KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm, args)
-x = rand(input_size)
+layer = KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm, args) |> gpu
+x = rand(Float32, input_size, 5) |> gpu
 y = layer(x)
-println("Output size: ", length(y))
+println("Output size: ", size(y))
 println("Output: ", y)

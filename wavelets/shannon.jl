@@ -24,11 +24,11 @@ end
 function (w::ShannonWavelet)(x)
     ω = (x .- w.b) ./ w.σ
     
-    function scalar_eval(z)
-        return 2 * w.normalisation * sinc(2 * π * z) * cos(π * z / 3) * weight
+    function Shann_fcn(z)
+        return 2 .* w.normalisation .* sinc.(2 .* π .* z) * cos.(π .* z ./ 3)
     end
 
-    return  w.weights * scalar_eval.(ω)
+    return  w.weights * Shann_fcn(ω)
 end
 
 Flux.@functor ShannonWavelet

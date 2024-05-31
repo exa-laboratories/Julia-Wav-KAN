@@ -3,8 +3,8 @@ module Meyer
 export MeyerWavelet
 
 struct MeyerWavelet
-    σ::Float32 # Scale
-    y::Float32 # Translation
+    σ::Float32
+    y::Float32
     normalisation::Float32
     weights
 end
@@ -14,16 +14,25 @@ function MeyerWavelet(σ, y, weights)
     return MeyerWavelet(σ, y, normalisation, weights)
 end
 
-function sinc(x, eps=1e-6)
-    return sin(π * x) / ((π * x) + eps)
+function nu(x)
+    return x^4 * (35 - 84 * x + 70 * x^2 - 20 * x^3)
 end
 
+function meyer_aux(x)
+    if x <= 0.5
+        return 1
+    elseif x <= 1
+        return cos(π * nu(2 * x - 1) / 2)
+    else
+        return 0
+    end
+end
 
 function (w::MeyerWavelet)(x)
-    ω = (x .- w.y) ./ w.σ
+    ω = abs.((x .- w.y) ./ w.σ)
     
     function scalar_eval(z, weight)
-        return 2 * w.normalisation * sinc(2 * π * z) * cos(π * z / 3) * weight
+        return sin(π * z) * meyer_aux(z) * weight * w.normalisation
     end
 
     return scalar_eval.(ω, w.weights)

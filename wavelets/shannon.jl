@@ -25,7 +25,7 @@ function (w::ShannonWavelet)(x)
     ω = (x .- w.b) ./ w.σ
     
     function Shann_fcn(z)
-        return 2 .* w.normalisation .* sinc.(2 .* π .* z) * cos.(π .* z ./ 3)
+        return 2 .* w.normalisation .* sinc.(2 .* π .* z) .* cos.(π .* z ./ 3)
     end
 
     return  w.weights * Shann_fcn(ω)

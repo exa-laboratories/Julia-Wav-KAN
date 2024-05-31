@@ -2,9 +2,11 @@ module Shannon
 
 export ShannonWavelet
 
+using Flux
+
 struct ShannonWavelet
     σ::Float32 # Scale
-    y::Float32 # Translation
+    b::Float32 # Translation
     normalisation::Float32
     weights
 end
@@ -20,13 +22,15 @@ end
 
 
 function (w::ShannonWavelet)(x)
-    ω = (x .- w.y) ./ w.σ
+    ω = (x .- w.b) ./ w.σ
     
-    function scalar_eval(z, weight)
+    function scalar_eval(z)
         return 2 * w.normalisation * sinc(2 * π * z) * cos(π * z / 3) * weight
     end
 
-    return scalar_eval.(ω, w.weights)
+    return  w.weights * scalar_eval.(ω)
 end
+
+Flux.@functor ShannonWavelet
 
 end

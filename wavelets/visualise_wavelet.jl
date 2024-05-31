@@ -23,7 +23,7 @@ wavelet_transform = Dict(
 
 σ_list = range(0.1, 5, length=100)
 γ_list = range(1, 50, length=100)
-y = 0
+b = 0
 x = range(-15, 15, length=100)
 
 args = Dict(
@@ -42,10 +42,10 @@ symbol = Dict(
     "Meyer" => "σ"
 )[wavelet]
 
-weights = [1.0 for _ in length(args)]
+weights = Flux.kaiming_uniform(100, 1)
 
 wavelet_gif = @animate for arg in args
-    y = wavelet_transform(arg..., weights)(x)
+    b = wavelet_transform(arg..., weights)(x)
     if wavelet == "Shannon" || wavelet == "Meyer"
         arg = arg[1]
     end

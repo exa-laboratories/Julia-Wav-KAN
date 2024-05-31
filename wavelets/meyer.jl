@@ -2,9 +2,11 @@ module Meyer
 
 export MeyerWavelet
 
+using Flux
+
 struct MeyerWavelet
     σ::Float32
-    y::Float32
+    b::Float32
     normalisation::Float32
     weights
 end
@@ -29,13 +31,15 @@ function meyer_aux(x)
 end
 
 function (w::MeyerWavelet)(x)
-    ω = abs.((x .- w.y) ./ w.σ)
+    ω = abs.((x .- w.b) ./ w.σ)
     
-    function scalar_eval(z, weight)
-        return sin(π * z) * meyer_aux(z) * weight * w.normalisation
+    function scalar_eval(z)
+        return sin(π * z) * meyer_aux(z) * w.normalisation
     end
 
-    return scalar_eval.(ω, w.weights)
+    return w.weights * scalar_eval.(ω) 
 end
+
+Flux.@functor MeyerWavelet
 
 end

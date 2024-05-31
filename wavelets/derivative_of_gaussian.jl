@@ -2,6 +2,8 @@ module DoG
 
 export DoGWavelet
 
+using Flux
+
 struct DoGWavelet
     σ::Float32
     norm::Float32
@@ -14,10 +16,12 @@ function DoGWavelet(σ, weights)
 end
 
 function (w::DoGWavelet)(x)
-    function scalar_eval(z, weight)
-        return - z * exp(-z^2 / (2 * w.σ^2)) * weight * w.norm
+    function scalar_eval(z)
+        return - z * exp(-z^2 / (2 * w.σ^2)) * w.norm
     end
-    return scalar_eval.(x, w.weights)
+    return w.weights * scalar_eval.(x)
 end
+
+Flux.@functor DoGWavelet
 
 end

@@ -2,6 +2,8 @@ module Morlet
 
 export MorletWavelet
 
+using Flux
+
 struct MW
     γ::Float32
     weights
@@ -12,12 +14,14 @@ function MorletWavelet(γ, weights)
 end
 
 function (w::MW)(x)
-    function scalar_eval(z, weight)
+    function scalar_eval(z)
         real = cos(w.γ * z)
         envelope = exp(-z ^ 2 / 2)
         return real * envelope * weight
     end
-    return scalar_eval.(x, w.weights)
+    return w.weights * scalar_eval.(x)
 end
+
+Flux.@functor MW
 
 end

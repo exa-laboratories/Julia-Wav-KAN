@@ -2,6 +2,8 @@ module MexicanHat
 
 export MexicanHatWavelet
 
+using Flux
+
 struct MexicanHatWavelet
     σ::Float32
     norm::Float32
@@ -14,10 +16,12 @@ function MexicanHatWavelet(σ, weights)
 end
 
 function (w::MexicanHatWavelet)(x)
-    function scalar_eval(z, weight)
-        return (1 - (z^2 / w.σ^2)) * exp(-z ^ 2 / (2 * w.σ^2)) * weight * w.norm
+    function scalar_eval(z)
+        return (1 - (z^2 / w.σ^2)) * exp(-z ^ 2 / (2 * w.σ^2)) * w.norm
     end
-    return scalar_eval.(x, w.weights)
+    return w.weights * scalar_eval.(x)
 end
+
+Flux.@functor MexicanHatWavelet
 
 end 

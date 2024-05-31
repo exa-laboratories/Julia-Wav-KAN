@@ -1,40 +1,49 @@
 include("./mexican_hat.jl")
 include("./morlet.jl")
 include("./derivative_of_gaussian.jl")
+include("./meyer.jl")
 
 using Plots; pythonplot()
 using .MexicanHat: MexicanHatWavelet
 using .Morlet: MorletWavelet
 using .DoG: DoGWavelet
+using .Meyer: MeyerWavelet
 using Printf    
 
-wavelet = "DerivativeOfGaussian"
+wavelet = "Meyer"
 wavelet_transform = Dict(
     "MexicanHat" => MexicanHatWavelet,
     "Morlet" => MorletWavelet,
-    "DerivativeOfGaussian" => DoGWavelet
+    "DerivativeOfGaussian" => DoGWavelet,
+    "Meyer" => MeyerWavelet
 )[wavelet]
 
 σ_list = range(0.1, 5, length=100)
 γ_list = range(1, 50, length=100)
+y = 0
 x = range(-15, 15, length=100)
 
 args = Dict(
     "MexicanHat" => σ_list,
     "Morlet" => γ_list,
-    "DerivativeOfGaussian" => σ_list
+    "DerivativeOfGaussian" => σ_list,
+    "Meyer" => [(σ, y) for σ in σ_list, y in range(-5, 5, length=10)]
 )[wavelet]
 
 symbol = Dict(
     "MexicanHat" => "σ",
     "Morlet" => "γ",
-    "DerivativeOfGaussian" => "σ"
+    "DerivativeOfGaussian" => "σ",
+    "Meyer" => "σ"
 )[wavelet]
 
 weights = [1.0 for _ in length(args)]
 
 wavelet_gif = @animate for arg in args
     y = wavelet_transform(arg..., weights)(x)
+    if wavelet == "Meyer"
+        arg = arg[1]
+    end
     label = @sprintf("%s = %.2f", symbol, arg)
     plot(x, y, label=label, xlabel="x", ylabel="ψ(x)", title=wavelet *" Wavelet", color=:yellow, background_color=:black, grid=true, color_palette=:grays, gridalpha=0.5, legendfontsize=12)
     xlims!(x[1], x[end])

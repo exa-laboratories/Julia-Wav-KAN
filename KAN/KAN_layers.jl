@@ -62,20 +62,3 @@ end
 Flux.@functor KANdense
 
 end
-
-# Test the module
-using .layers
-using CUDA, KernelAbstractions
-using Flux
-
-input_size = 10
-output_size = 5
-wavelet_name = "Meyer"
-base_activation = "relu"
-batch_norm = true
-args = (0.1, 0.1)
-
-layer = KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm, args) |> gpu
-x = rand(Float32, input_size, 5) |> gpu
-loss, grad = Flux.withgradient(layer -> sum(layer(x)), layer)
-println(grad)

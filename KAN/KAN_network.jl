@@ -4,7 +4,7 @@ export KAN
 
 include("./KAN_layers.jl")
 
-using Flux: Chain
+using Flux
 using .layers: KANdense
 using ConfParser
 using CUDA, KernelAbstractions
@@ -45,22 +45,6 @@ function (m::KAN)(x)
     return x
 end
 
+Flux.@functor KAN
+
 end
-
-# Test the KAN model
-using .KAN_models
-using Flux, CUDA, KernelAbstractions
-
-input_size = 10
-output_size = 5
-hidden_dims = [20]
-wavelet_names = ["Shannon", "Shannon"]
-base_activations = ["relu", "leakyrelu"]
-batch_norms = [false, false]
-
-model = KAN(input_size, output_size, hidden_dims, wavelet_names, base_activations, batch_norms) |> gpu
-
-x = rand(Float32, input_size, 5) |> gpu
-y = model(x)
-println(size(y))
-

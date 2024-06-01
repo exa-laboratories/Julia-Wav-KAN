@@ -18,7 +18,7 @@ function ShannonWavelet(σ, b, weights)
     sinc_norm = Float32.([2.0 * π])
     cos_norm = Float32.([π / 3.0])
     base_norm = Float32.([2.0 / sqrt(σ)])
-    return SW(σ, bias, sinc_norm, cos_norm, base_norm, weights)
+    return SW(Float32.([σ]), bias, sinc_norm, cos_norm, base_norm, weights)
 end
 
 

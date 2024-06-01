@@ -8,7 +8,7 @@ include("../wavelets/meyer.jl")
 
 export KANdense
 
-using Flux
+using Flux, CUDA, KernelAbstractions
 using Flux: Dense, BatchNorm
 using NNlib
 using .MexicanHat: MexicanHatWavelet
@@ -47,7 +47,7 @@ function KANdense(input_size, output_size, wavelet_name, base_activation, batch_
     wavelet = wavelet_mapping[wavelet_name](args..., wavelet_weights)
     activation = act_mapping[base_activation]
     output_layer = Flux.Dense(input_size, output_size, activation)
-    batch_norm_layer = batch_norm ? Flux.BatchNorm(output_size) : identity
+    batch_norm_layer = batch_norm ? Flux.BatchNorm(output_size, NNlib.relu) : identity
     return KANdense(wavelet, output_layer, batch_norm_layer)
 end
 
@@ -72,7 +72,7 @@ input_size = 10
 output_size = 5
 wavelet_name = "Meyer"
 base_activation = "relu"
-batch_norm = false
+batch_norm = true
 args = (0.1, 0.1)
 
 layer = KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm, args) |> gpu

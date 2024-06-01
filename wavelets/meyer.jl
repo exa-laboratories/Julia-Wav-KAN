@@ -11,9 +11,9 @@ struct MeyerWavelet
     weights
 end
 
-function MeyerWavelet(σ, y, weights)
+function MeyerWavelet(σ, b, weights)
     normalisation = 1 / sqrt(σ)
-    return MeyerWavelet(σ, y, normalisation, weights)
+    return MeyerWavelet(σ, b, normalisation, weights)
 end
 
 function nu(x)

@@ -7,19 +7,18 @@ using Flux, CUDA, KernelAbstractions, Tullio
 struct SW
     σ
     b
-    weights
     sinc_norm
     cos_norm
     norm
+    weights
 end
 
 function ShannonWavelet(σ, b, weights)
-    
     bias = Float32.([b])
     sinc_norm = Float32.([2.0 * π])
     cos_norm = Float32.([π / 3.0])
     base_norm = Float32.([2.0 / sqrt(σ)])
-    return SW(σ, bias, weights, sinc_norm, cos_norm, base_norm)
+    return SW(σ, bias, sinc_norm, cos_norm, base_norm, weights)
 end
 
 

@@ -73,7 +73,7 @@ output_size = 5
 wavelet_name = "Morlet"
 base_activation = "relu"
 batch_norm = false
-args = 0.5
+args = 1.0
 
 layer = KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm, args) |> gpu
 x = rand(Float32, input_size, 5) |> gpu

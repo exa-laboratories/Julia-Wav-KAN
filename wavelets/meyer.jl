@@ -2,18 +2,21 @@ module Meyer
 
 export MeyerWavelet
 
-using Flux
+using Flux, CUDA, KernelAbstractions, Tullio
 
 struct MeyerWavelet
-    σ::Float32
-    b::Float32
-    normalisation::Float32
+    σ
+    b
+    pi
+    norm
     weights
 end
 
 function MeyerWavelet(σ, b, weights)
-    normalisation = 1 / sqrt(σ)
-    return MeyerWavelet(σ, b, normalisation, weights)
+    normalisation = Float32.([1 / sqrt(σ)])
+    bias = Float32.([b])
+    pi = Float32.([π])
+    return MeyerWavelet(σ, bias, pi, normalisation, weights)
 end
 
 function nu(x)
@@ -21,8 +24,8 @@ function nu(x)
 end
 
 function meyer_aux(x, eps=1e-6)
-    function smooth_step(x, a, b)
-        return 0.5 * (1 + tanh((x - a) / (b - a)))
+    function smooth_step(z, a, b)
+        return 0.5 * (1 + tanh((z - a) / (b - a)))
     end
 
     transition_0_5 = smooth_step(x, 0.5, 0.5 + eps)
@@ -37,12 +40,12 @@ end
 
 function (w::MeyerWavelet)(x)
     ω = abs.((x .- w.b) ./ w.σ)
-    
-    function scalar_eval(z)
-        return sin.(π .* z) .* meyer_aux.(z) .* w.normalisation
-    end
+    sin_term = sin.(ω .* w.pi)
+    meyer_term = meyer_aux.(ω)
+    y = @tullio out[i,b] := sin_term[i,b] * meyer_term[i,b]
+    y = y .* w.norm
 
-    return w.weights * scalar_eval(ω) 
+    return @tullio out[o,b] := w.weights[i,o,1] * y[i,b]
 end
 
 Flux.@functor MeyerWavelet

@@ -70,10 +70,10 @@ using Flux
 
 input_size = 10
 output_size = 5
-wavelet_name = "MexicanHat"
+wavelet_name = "Meyer"
 base_activation = "relu"
 batch_norm = false
-args = 0.1
+args = (0.1, 0.1)
 
 layer = KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm, args) |> gpu
 x = rand(Float32, input_size, 5) |> gpu

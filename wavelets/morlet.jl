@@ -2,10 +2,10 @@ module Morlet
 
 export MorletWavelet
 
-using Flux
+using Flux, CUDA, KernelAbstractions, Tullio
 
 struct MW
-    γ::Float32
+    γ
     weights
 end
 
@@ -14,12 +14,10 @@ function MorletWavelet(γ, weights)
 end
 
 function (w::MW)(x)
-    function mor_fcn(z)
-        real = cos.(w.γ .* z)
-        envelope = exp.(-z .^ 2 ./ 2)
-        return real .* envelope
-    end
-    return w.weights * mor_fcn(x)
+    real = cos.(w.γ .* x)
+    envelope = exp.(-x.^2 ./ 2.0)
+    y = @tullio out[i,b] := real[i,b] * envelope[i,b]
+    return @tullio out[o,b] := w.weights[i,o,1] * y[i,b]
 end
 
 Flux.@functor MW

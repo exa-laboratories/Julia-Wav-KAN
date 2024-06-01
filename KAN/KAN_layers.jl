@@ -42,7 +42,7 @@ struct KANdense
 end
 
 function KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm, args)
-    wavelet_weights = Flux.kaiming_uniform(output_size, input_size)
+    wavelet_weights = Flux.kaiming_uniform(input_size, output_size, 1)
     wavelet_weights = Float32.(wavelet_weights)
     wavelet = wavelet_mapping[wavelet_name](args..., wavelet_weights)
     activation = act_mapping[base_activation]
@@ -65,7 +65,7 @@ end
 
 # Test the module
 using .layers
-using CUDA
+using CUDA, KernelAbstractions
 using Flux
 
 input_size = 10
@@ -77,6 +77,5 @@ args = 0.5
 
 layer = KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm, args) |> gpu
 x = rand(Float32, input_size, 5) |> gpu
-y = layer(x)
-println("Output size: ", size(y))
-println("Output: ", y)
+loss, grad = Flux.withgradient(layer -> sum(layer(x)), layer)
+println(grad)

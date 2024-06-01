@@ -70,7 +70,7 @@ using Flux
 
 input_size = 10
 output_size = 5
-wavelet_name = "DerivativeOfGaussian"
+wavelet_name = "MexicanHat"
 base_activation = "relu"
 batch_norm = false
 args = 0.1

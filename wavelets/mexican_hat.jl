@@ -2,26 +2,27 @@ module MexicanHat
 
 export MexicanHatWavelet
 
-using Flux
+using Flux, CUDA, KernelAbstractions, Tullio
 
 struct MexicanHatWavelet
-    σ::Float32
-    norm::Float32
+    σ
+    exp_norm
+    norm
     weights
 end
 
 function MexicanHatWavelet(σ, weights)
-    normalisation = 2 / sqrt((3 * σ * sqrt(π)))
-    return MexicanHatWavelet(σ, normalisation, weights)
+    exp_norm = Float32.([-1 / (2 * σ^2)])
+    normalisation = Float32.([2 / sqrt((3 * σ * sqrt(π)))])
+    return MexicanHatWavelet(σ, exp_norm, normalisation, weights)
 end
 
 function (w::MexicanHatWavelet)(x)
-    function MH_fcn(z)
-        term1 = 1.0 .- (z.^2 ./ w.σ^2)
-        term2 = exp.(-z.^2 ./ (2 * w.σ^2))
-        return term1 .* term2 .* w.norm
-    end
-    return w.weights * MH_fcn(x)
+    term_1 = 1 .- (x.^2 ./ w.σ^2)
+    term_2 = exp.(x.^2 .* w.exp_norm)
+    y = @tullio out[i,b] := term_1[i,b] * term_2[i,b]
+    y = y .* w.norm
+    return @tullio out[o,b] := w.weights[i,o,1] * y[i,b]
 end
 
 Flux.@functor MexicanHatWavelet

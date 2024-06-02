@@ -11,7 +11,7 @@ using NNlib: hardtanh
 using CUDA, KernelAbstractions, Tullio
 using .Transform_Layers: encoder_layers, decoder_layers
 
-conf = ConfParse("Transformer_config.ini")
+conf = ConfParse("./Transformer_config.ini")
 parse_conf!(conf)
 
 d_model = parse(Int, retrieve(conf, "Architecture", "d_model"))

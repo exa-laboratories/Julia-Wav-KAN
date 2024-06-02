@@ -8,7 +8,7 @@ using Flux: Chain, BatchNorm, LayerNorm, Dense, Dropout
 using ConfParser
 using CUDA, KernelAbstractions, Tullio
 
-conf = ConfParse("Transformer_config.ini")
+conf = ConfParse("./Transformer_config.ini")
 parse_conf!(conf)
 
 d_model = parse(Int, retrieve(conf, "Architecture", "d_model"))

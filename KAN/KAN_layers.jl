@@ -1,10 +1,10 @@
 module layers
 
-include("../wavelets/mexican_hat.jl")
-include("../wavelets/morlet.jl")
-include("../wavelets/derivative_of_gaussian.jl")
-include("../wavelets/shannon.jl")
-include("../wavelets/meyer.jl")
+include("./wavelets/mexican_hat.jl")
+include("./wavelets/morlet.jl")
+include("./wavelets/derivative_of_gaussian.jl")
+include("./wavelets/shannon.jl")
+include("./wavelets/meyer.jl")
 
 export KANdense
 

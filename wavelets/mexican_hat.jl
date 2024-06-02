@@ -21,9 +21,9 @@ end
 function (w::MexicanHatWavelet)(x)
     term_1 = w.one .- (x.^2 ./ (w.σ.^2))
     term_2 = exp.(x.^2 .* w.exp_norm)
-    y = @tullio out[i,b] := term_1[i,b] * term_2[i,b]
+    y = @tullio out[i, o, b] := term_1[i, o, b] * term_2[i, o, b]
     y = y .* w.norm
-    return @tullio out[o,b] := w.weights[i,o,1] * y[i,b]
+    return @tullio out[o, b] := w.weights[i, o] * y[i, o, b]
 end
 
 Flux.@functor MexicanHatWavelet

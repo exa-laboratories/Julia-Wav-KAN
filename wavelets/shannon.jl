@@ -26,10 +26,10 @@ function (w::SW)(x)
     ω = (x .- w.b) ./ w.σ
     first_term = sinc.(ω .* w.sinc_norm)
     second_term = cos.(ω .* w.cos_norm)
-    y = @tullio out[i,b] := (first_term[i,b] * second_term[i,b]) 
+    y = @tullio out[i, o, b] := first_term[i, o, b] * second_term[i, o, b] 
     y = y .* w.norm
 
-    return @tullio out[o,b] := w.weights[i,o,1] * y[i,b]  
+    return @tullio out[o, b] := w.weights[i, o] * y[i, o, b]
 end
 
 Flux.@functor SW

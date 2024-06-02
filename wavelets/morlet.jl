@@ -18,8 +18,8 @@ end
 function (w::MW)(x)
     real = cos.(w.γ .* x)
     envelope = exp.(-x.^2 .* w.norm)
-    y = @tullio out[i,b] := real[i,b] * envelope[i,b]
-    return @tullio out[o,b] := w.weights[i,o,1] * y[i,b]
+    y = @tullio out[i, o, b] := real[i, o, b] * envelope[i, o, b]
+    return @tullio out[o, b] := w.weights[i, o] * y[i, o, b]
 end
 
 Flux.@functor MW

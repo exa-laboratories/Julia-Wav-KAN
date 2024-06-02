@@ -26,10 +26,10 @@ function (w::MeyerWavelet)(x)
     ω = abs.((x .- w.b) ./ w.σ)
     sin_term = sin.(ω .* w.pi)
     meyer_term = w.aux(ω)
-    y = @tullio out[i,b] := sin_term[i,b] * meyer_term[i,b]
+    y = @tullio out[i, o, b] := sin_term[i, o, b] * meyer_term[i, o, b]
     y = y .* w.norm
 
-    return @tullio out[o,b] := w.weights[i,o,1] * y[i,b]
+    return @tullio out[o, b] := w.weights[i, o] * y[i, o, b]
 end
 
 Flux.@functor MeyerWavelet

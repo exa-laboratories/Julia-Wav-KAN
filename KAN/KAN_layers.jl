@@ -66,19 +66,10 @@ function KANdense(input_size, output_size, wavelet_name, base_activation, batch_
 end
 
 function (l::KANdense_layer)(x) 
-    println("x: ", size(x))
 
     x_expanded = l.reshape_fcn(x)
     translation_expanded = repeat(l.translation, 1, 1, size(x_expanded)[3:end]...)
     scale_expanded = repeat(l.scale, 1, 1, size(x_expanded)[3:end]...)
-
-    println("x_expanded: ", size(x_expanded))
-    println("translation_expanded: ", size(translation_expanded))
-    println("scale_expanded: ", size(scale_expanded))
-
-    println("translation_expanded: ", typeof(translation_expanded))
-    println("scale_expanded: ", typeof(scale_expanded))
-    println("x_expanded: ", typeof(x_expanded))
 
     x_expanded = (x_expanded - translation_expanded) ./ scale_expanded 
 

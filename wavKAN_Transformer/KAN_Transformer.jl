@@ -85,7 +85,6 @@ function (m::KAN_Transformer)(src, tgt)
     for layer in m.decoder
         tgt = layer(tgt, src)
     end
-    println("end",size(tgt))
     prediction = m.output_layer(tgt)
     prediction = reshape(prediction, size(prediction, 2), size(prediction, 3))
 
@@ -96,23 +95,3 @@ end
 Flux.@functor KAN_Transformer
 
 end
-
-# Test
-using .KANTransformerModel
-using CUDA, Flux
-
-# 8 encoder, 1 decoder layers
-encoder_wavlet_names = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon", "MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon"]
-decoder_wavlet_names = ["DerivativeOfGaussian"]
-encoder_batch_norm = [true, true, true, true, true, true, true, true]
-decoder_batch_norm = [true]
-output_wavelet_name = "MexicanHat"
-output_batch_norm = true
-
-model = create_KAN_Transformer(encoder_wavlet_names, decoder_wavlet_names, encoder_batch_norm, decoder_batch_norm, output_wavelet_name, output_batch_norm) |> gpu
-src = rand(Float32, 2, 4) |> gpu
-tgt = rand(Float32, 2, 4) |> gpu
-
-loss, grad = Flux.withgradient(m -> sum(m(src, tgt)), model)
-
-println("Loss: ", loss)

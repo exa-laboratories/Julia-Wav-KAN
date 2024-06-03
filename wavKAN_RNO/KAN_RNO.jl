@@ -43,8 +43,8 @@ function create_KAN_RNO(input_dim::Int64, output_dim::Int64, input_size::Int64, 
     layer_output = [input_dim + output_dim + n_hidden, hidden_units..., output_dim]
     layer_hidden = [n_hidden + output_dim, hidden_units..., n_hidden]
 
-    out_layers_list = [KANdense(layer_output[i], layer_output[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]], true) for i in 1:length(layer_output)-1]
-    hid_layers_list = [KANdense(layer_hidden[i], layer_hidden[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]], true) for i in 1:length(layer_hidden)-1]
+    out_layers_list = [KANdense(layer_output[i], layer_output[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]]) for i in 1:length(layer_output)-1]
+    hid_layers_list = [KANdense(layer_hidden[i], layer_hidden[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]]) for i in 1:length(layer_hidden)-1]
 
     dt = Float32.([1/(input_size-1)])
 
@@ -92,18 +92,3 @@ end
 Flux.@functor KAN_RNO
 
 end
-
-# Test
-using .KAN_RecurrentNO
-using Flux, CUDA, KernelAbstractions
-
-wavelet_names = ["MexicanHat", "Morlet"]
-batch_norm = true
-input_dim = 2
-
-m = create_KAN_RNO(1, 1, 2, wavelet_names, batch_norm) |> gpu
-
-x = rand(Float32, 2, 2) |> gpu
-y = rand(Float32, 1, 2) |> gpu
-
-m(x, y)

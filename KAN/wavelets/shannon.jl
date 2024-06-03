@@ -2,7 +2,23 @@ module Shannon
 
 export ShannonWavelet
 
+include("../../utils.jl")
+
 using Flux, CUDA, KernelAbstractions, Tullio
+using .UTILS: node_mul_1D, node_mul_2D
+
+bool_2D = parse(Bool, get(ENV, "2D", "false"))
+node = bool_2D ? node_mul_2D : node_mul_1D
+
+function batch_mul_1D(x, y)
+    return @tullio out[i, o, b] := x[i, o, b] * y[i, o, b]
+end
+
+function batch_mul_2D(x, y)
+    return @tullio out[i, o, l, b] := x[i, o, l, b] * y[i, o, l, b]
+end
+
+batch_mul = bool_2D ? batch_mul_2D : batch_mul_1D
 
 struct SW
     σ
@@ -26,10 +42,10 @@ function (w::SW)(x)
     ω = (x .- w.b) ./ w.σ
     first_term = sinc.(ω .* w.sinc_norm)
     second_term = cos.(ω .* w.cos_norm)
-    y = @tullio out[i, o, b] := first_term[i, o, b] * second_term[i, o, b] 
+    y = batch_mul(first_term, second_term)
     y = y .* w.norm
 
-    return @tullio out[o, b] := w.weights[i, o] * y[i, o, b]
+    return node(y, w.weights)
 end
 
 Flux.@functor SW

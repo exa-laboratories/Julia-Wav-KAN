@@ -4,7 +4,7 @@ using Flux
 using Optimisers
 using ConfParser
 
-include("./utils.jl")
+include("../utils.jl")
 
 using .UTILS: log_loss
 

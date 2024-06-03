@@ -2,7 +2,23 @@ module DoG
 
 export DoGWavelet
 
+include("../../utils.jl")
+
 using Flux, CUDA, KernelAbstractions, Tullio
+using .UTILS: node_mul_1D, node_mul_2D
+
+bool_2D = parse(Bool, get(ENV, "2D", "false"))
+node = bool_2D ? node_mul_2D : node_mul_1D
+
+function batch_mul_1D(x, y)
+    return @tullio out[i, o, b] := x[i, o, b] * y[i, o, b]
+end
+
+function batch_mul_2D(x, y)
+    return @tullio out[i, o, l, b] := x[i, o, l, b] * y[i, o, l, b]
+end
+
+batch_mul = bool_2D ? batch_mul_2D : batch_mul_1D
 
 struct DoGWavelet
     σ
@@ -19,9 +35,9 @@ end
 
 function (w::DoGWavelet)(x)
     exp_term = exp.(x .* w.exp_norm)
-    y = @tullio out[i,b] := x[i,b] * exp_term[i,b]
+    y = batch_mul(x, exp_term)
     y = y .* w.base_norm
-    return @tullio out[o,b] := w.weights[i,o,1] * y[i,b]  
+    return node(y, w.weights)
 end
 
 Flux.@functor DoGWavelet

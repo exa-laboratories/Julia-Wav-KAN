@@ -2,9 +2,25 @@ module MexicanHat
 
 export MexicanHatWavelet
 
-using Flux, CUDA, KernelAbstractions, Tullio
+include("../../utils.jl")
 
-struct MexicanHatWavelet
+using Flux, CUDA, KernelAbstractions, Tullio
+using .UTILS: node_mul_1D, node_mul_2D
+
+bool_2D = parse(Bool, get(ENV, "2D", "false"))
+node = bool_2D ? node_mul_2D : node_mul_1D
+
+function batch_mul_1D(x, y)
+    return @tullio out[i, o, b] := x[i, o, b] * y[i, o, b]
+end
+
+function batch_mul_2D(x, y)
+    return @tullio out[i, o, l, b] := x[i, o, l, b] * y[i, o, l, b]
+end
+
+batch_mul = bool_2D ? batch_mul_2D : batch_mul_1D
+
+struct MHWavelet
     σ
     one
     exp_norm
@@ -15,17 +31,17 @@ end
 function MexicanHatWavelet(σ, weights)
     exp_norm = Float32.([-1 / (2 * σ^2)])
     normalisation = Float32.([2 / sqrt((3 * σ * sqrt(π)))])
-    return MexicanHatWavelet(Float32.([σ]), Float32.([1]), exp_norm, normalisation, weights)
+    return MHWavelet(Float32.([σ]), Float32.([1]), exp_norm, normalisation, weights)
 end
 
-function (w::MexicanHatWavelet)(x)
+function (w::MHWavelet)(x)
     term_1 = w.one .- (x.^2 ./ (w.σ.^2))
     term_2 = exp.(x.^2 .* w.exp_norm)
-    y = @tullio out[i, o, b] := term_1[i, o, b] * term_2[i, o, b]
+    y = batch_mul(term_1, term_2)
     y = y .* w.norm
-    return @tullio out[o, b] := w.weights[i, o] * y[i, o, b]
+    return node(y, w.weights)
 end
 
-Flux.@functor MexicanHatWavelet
+Flux.@functor MHWavelet
 
 end 

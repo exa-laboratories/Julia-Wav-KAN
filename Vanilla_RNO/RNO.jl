@@ -9,7 +9,7 @@ using NNlib
 using ConfParser
 using Tullio
 
-conf = ConfParse("./RNO_config.ini")
+conf = ConfParse("Vanilla_RNO/RNO_config.ini")
 parse_conf!(conf)
 
 n_hidden = parse(Int, retrieve(conf, "Architecture", "n_hidden"))

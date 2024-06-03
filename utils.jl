@@ -1,21 +1,14 @@
 module UTILS
 
-export loss_fcn, sequence_loss_fcn, UnitGaussianNormaliser, unit_encode, unit_decode, MinMaxNormaliser, minmax_encode, minmax_decode, log_loss
+export loss_fcn, UnitGaussianNormaliser, unit_encode, unit_decode, MinMaxNormaliser, minmax_encode, minmax_decode, log_loss, node_mul_1D, node_mul_2D
 
 using Statistics
 using Flux
-using ConfParser
+using CUDA, KernelAbstractions, Tullio
 
-conf = ConfParse("experiment_config.ini")
-parse_conf!(conf)
-
-p = parse(Float32, retrieve(conf, "Loss", "p"))
+p = parse(Float32, get(ENV, "p", "2.0"))
 
 function loss_fcn(m, x, y)
-    return sum(abs.(m(x) .- y).^p)
-end
-
-function sequence_loss_fcn(m, x, y)
     return sum(abs.(m(x, y) .- y).^p)
 end
 
@@ -69,6 +62,14 @@ function log_loss(epoch, train_loss, test_loss, model_name)
     open("logs/$model_name.csv", "a") do file
         write(file, "$epoch,$train_loss,$test_loss\n")
     end
+end
+
+function node_mul_1D(y, w)
+    @tullio out[o, b] := w[i, o] * y[i, o, b]
+end
+
+function node_mul_2D(y, w)
+    @tullio out[o, l, b] := w[i, o] * y[i, o, l, b]
 end
 
 end

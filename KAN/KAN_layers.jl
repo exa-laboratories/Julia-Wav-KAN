@@ -17,6 +17,8 @@ using .DoG: DoGWavelet
 using .Shannon: ShannonWavelet
 using .Meyer: MeyerWavelet
 
+bool_2D = parse(Bool, get(ENV, "2D", "false"))
+
 act_mapping = Dict(
     "relu" => NNlib.relu,
     "leakyrelu" => NNlib.leakyrelu,
@@ -35,12 +37,14 @@ wavelet_mapping = Dict(
     "Meyer" => MeyerWavelet
 )
 
-struct KANdense
+struct KANdense_layer
     transform
     output_layer
     batch_norm
     scale
     translation
+    reshape_fcn
+    norm_permute
 end
 
 function KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm, args)
@@ -54,16 +58,19 @@ function KANdense(input_size, output_size, wavelet_name, base_activation, batch_
     translation = zeros(input_size, output_size)
     scale = ones(input_size, output_size)
 
-    return KANdense(wavelet, output_layer, batch_norm_layer, scale, translation)
+    # RNO takes 1D input, else transformer uses 2D input
+    reshape_fcn = bool_2D ? x -> repeat(reshape(x, size(x, 1), 1, size(x, 2), size(x, 3)), 1, size(translation, 2), 1, 1) : x -> repeat(reshape(x, size(x, 1), 1, size(x, 2)), 1, size(translation, 2), 1)
+    norm_permute = bool_2D ? x -> reshape(x, size(x, 2), size(x, 1), size(x, 3)) : x -> x
+
+    return KANdense_layer(wavelet, output_layer, batch_norm_layer, scale, translation, reshape_fcn, norm_permute)
 end
 
-function (l::KANdense)(x) 
+function (l::KANdense_layer)(x) 
     println("x: ", size(x))
 
-    x_expanded = reshape(x, size(x, 1), 1, size(x, 2))
-    x_expanded = repeat(x_expanded, 1, size(l.translation, 2), 1)
-    translation_expanded = repeat(l.translation, 1, 1, size(x, 2))
-    scale_expanded = repeat(l.scale, 1, 1, size(x, 2))
+    x_expanded = l.reshape_fcn(x)
+    translation_expanded = repeat(l.translation, 1, 1, size(x_expanded)[3:end]...)
+    scale_expanded = repeat(l.scale, 1, 1, size(x_expanded)[3:end]...)
 
     println("x_expanded: ", size(x_expanded))
     println("translation_expanded: ", size(translation_expanded))
@@ -78,10 +85,10 @@ function (l::KANdense)(x)
     y = l.transform(x_expanded)
     z = l.output_layer(x)
     out = y + z
-    out = l.batch_norm(out)
-    return out
+    out = l.batch_norm(l.norm_permute(out))
+    return l.norm_permute(out)
 end
 
-Flux.@functor KANdense
+Flux.@functor KANdense_layer
 
 end

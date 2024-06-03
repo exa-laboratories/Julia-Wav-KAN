@@ -13,12 +13,12 @@ using Tullio
 using .layers: KANdense
 
 # Use same baseline architecture
-RNOconf = ConfParse("Vanilla_RNO/RNO_config.ini") 
-parse_conf!(RNOconf)
+conf = ConfParse("wavKAN_RNO/KAN_RNO_config.ini") 
+parse_conf!(conf)
 
-n_hidden = parse(Int, retrieve(RNOconf, "Architecture", "n_hidden"))
-num_layers = parse(Int, retrieve(RNOconf, "Architecture", "num_layers")) 
-base_activation = retrieve(RNOconf, "Architecture", "activation")
+n_hidden = parse(Int, retrieve(conf, "Architecture", "n_hidden"))
+num_layers = parse(Int, retrieve(conf, "Architecture", "num_layers")) 
+base_activation = retrieve(conf, "Architecture", "activation")
 
 wavelet_conf = ConfParse("wavelet_config.ini")
 parse_conf!(wavelet_conf)
@@ -43,8 +43,8 @@ function create_KAN_RNO(input_dim::Int64, output_dim::Int64, input_size::Int64, 
     layer_output = [input_dim + output_dim + n_hidden, hidden_units..., output_dim]
     layer_hidden = [n_hidden + output_dim, hidden_units..., n_hidden]
 
-    out_layers_list = [KANdense(layer_output[i], layer_output[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]]) for i in 1:length(layer_output)-1]
-    hid_layers_list = [KANdense(layer_hidden[i], layer_hidden[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]]) for i in 1:length(layer_hidden)-1]
+    out_layers_list = [KANdense(layer_output[i], layer_output[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]], true) for i in 1:length(layer_output)-1]
+    hid_layers_list = [KANdense(layer_hidden[i], layer_hidden[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]], true) for i in 1:length(layer_hidden)-1]
 
     dt = Float32.([1/(input_size-1)])
 

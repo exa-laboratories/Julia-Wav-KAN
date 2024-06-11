@@ -8,17 +8,9 @@ using Flux
 using Flux: Chain, Dense
 using CUDA, KernelAbstractions
 using NNlib
-using ConfParser
 using Tullio
 using .layers: KANdense
-
-# Use same baseline architecture
-conf = ConfParse("wavKAN_RNO/KAN_RNO_config.ini") 
-parse_conf!(conf)
-
-n_hidden = parse(Int, retrieve(conf, "Architecture", "n_hidden"))
-num_layers = parse(Int, retrieve(conf, "Architecture", "num_layers")) 
-base_activation = retrieve(conf, "Architecture", "activation")
+using ConfParser
 
 wavelet_conf = ConfParse("wavelet_config.ini")
 parse_conf!(wavelet_conf)
@@ -36,9 +28,14 @@ struct KAN_RNO
     hidden_layers
     dt
     T::Int64
+    n_hidden::Int64
 end
 
 function create_KAN_RNO(input_dim::Int64, output_dim::Int64, input_size::Int64, wavelet_names, batch_norm)
+    n_hidden = parse(Int, get(ENV, "n_hidden", "10"))
+    num_layers = parse(Int, get(ENV, "num_layers", "2"))
+    base_activation = get(ENV, "activation", "relu")
+
     hidden_units = [n_hidden] * num_layers
     layer_output = [input_dim + output_dim + n_hidden, hidden_units..., output_dim]
     layer_hidden = [n_hidden + output_dim, hidden_units..., n_hidden]
@@ -46,13 +43,13 @@ function create_KAN_RNO(input_dim::Int64, output_dim::Int64, input_size::Int64, 
     out_layers_list = [KANdense(layer_output[i], layer_output[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]]) for i in 1:length(layer_output)-1]
     hid_layers_list = [KANdense(layer_hidden[i], layer_hidden[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]]) for i in 1:length(layer_hidden)-1]
 
-    dt = Float32.([1/(input_size-1)])
+    dt = [1/(input_size-1)]
 
-    return KAN_RNO(out_layers_list, hid_layers_list, dt, input_size)
+    return KAN_RNO(out_layers_list, hid_layers_list, dt, input_size, n_hidden)
 end
 
 function init_hidden(m::KAN_RNO, batch_size)
-    return zeros(Float32, n_hidden, batch_size) |> gpu
+    return zeros(Float32, m.n_hidden, batch_size) |> gpu
 end
 
 function fwd_pass(m::KAN_RNO, x, y, hidden)

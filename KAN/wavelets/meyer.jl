@@ -32,9 +32,9 @@ struct MWavelet
 end
 
 function MeyerWavelet(σ, b, weights, reshape_bool=false)
-    normalisation = Float32.([1 / sqrt(σ)])
-    bias = Float32.([b])
-    return MWavelet(Float32.([σ]), bias, Float32.([π]), normalisation, weights, MeyerAux())
+    normalisation = [1 / sqrt(σ)]
+    bias = [b]
+    return MWavelet([σ], bias, Float32.([π]), normalisation, weights, MeyerAux())
 end
 
 function (w::MWavelet)(x)

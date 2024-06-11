@@ -28,8 +28,8 @@ struct DoGWavelet
 end
 
 function DoGWavelet(σ, weights)
-    exp_norm = Float32.([-1 / (2 * σ^2)])
-    normalisation = Float32.([1 / (σ * sqrt(2 * π))])
+    exp_norm = [-1 / (2 * σ^2)]
+    normalisation = [1 / (σ * sqrt(2 * π))]
     return DoGWavelet(σ, exp_norm, normalisation, weights)
 end
 

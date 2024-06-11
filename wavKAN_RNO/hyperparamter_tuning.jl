@@ -1,15 +1,15 @@
 include("../pipeline/data_processing/data_loader.jl")
-include("RNO.jl")
+include("KAN_RNO.jl")
 include("../utils.jl")
 include("../pipeline/train.jl")
 
 using HyperTuning
-using ConfParser, CSV
+using ConfParser
 using Random
 using Flux, CUDA, KernelAbstractions
 using Optimisers
 using .training: train_step
-using .RecurrentNO: createRNO
+using .KAN_RecurrentNO: create_KAN_RNO
 using .loaders: get_visco_loader
 using .UTILS: loss_fcn, BIC
 
@@ -25,9 +25,16 @@ function objective(trial)
     @suggest learning_rate in trial
     @suggest gamma in trial
     @suggest step_rate in trial
+    @suggest wav_one in trial
+    @suggest wav_two in trial
+    @suggest wav_three in trial
+    @suggest wav_four in trial
+    @suggest wav_five in trial
+
+    wavelet_names = [wav_one, wav_two, wav_three, wav_four, wav_five][1:n_layers]
 
     # Parse config
-    conf = ConfParse("Vanilla_RNO/RNO_config.ini")
+    conf = ConfParse("wavKAN_RNO/KAN_RNO_config.ini")
     parse_conf!(conf)
 
     # Create model
@@ -42,7 +49,7 @@ function objective(trial)
 
     train_loader, test_loader = get_visco_loader(b_size)
 
-    model = createRNO(1, 1, size(first(train_loader)[2], 1)) |> gpu
+    model = create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), wavelet_names, true) |> gpu
 
     opt_state = Optimisers.setup(Optimisers.Adam(learning_rate), model)
 
@@ -60,10 +67,17 @@ function objective(trial)
 
 end
 
+wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon", "Meyer"]
+
 # Define the search space
 space = Scenario(
     n_hidden = 2:20,
     n_layers = 1:5,
+    wav_one = wavelet_list,
+    wav_two = wavelet_list,
+    wav_three = wavelet_list,
+    wav_four = wavelet_list,
+    wav_five = wavelet_list,
     activation = ["relu", "selu", "leakyrelu"],
     b_size = 1:20,
     learning_rate = (1e-4..1e-1),
@@ -78,20 +92,25 @@ HyperTuning.optimize(objective, space)
 display(top_parameters(space))
 
 # Save the best configuration
-@unpack n_hidden, n_layers, activation, b_size, learning_rate, gamma, step_rate = space
+@unpack n_hidden, n_layers, activation, b_size, learning_rate, gamma, step_rate, wav_one, wav_two, wav_three, wav_four, wav_five = space
 
-conf = ConfParse("Vanilla_RNO/RNO_config.ini")
+conf = ConfParse("wavKAN_RNO/KAN_RNO_config.ini")
 parse_conf!(conf)
 
 commit!(conf, "Architecture", "n_hidden", string(n_hidden))
 commit!(conf, "Architecture", "n_layers", string(n_layers))
 commit!(conf, "Architecture", "activation", string(activation))
+commit!(conf, "Architecture", "wav_one", string(wav_one))
+commit!(conf, "Architecture", "wav_two", string(wav_two))
+commit!(conf, "Architecture", "wav_three", string(wav_three))
+commit!(conf, "Architecture", "wav_four", string(wav_four))
+commit!(conf, "Architecture", "wav_five", string(wav_five))
 commit!(conf, "DataLoader", "batch_size", string(b_size))
 commit!(conf, "Optimizer", "learning_rate", string(learning_rate))
 commit!(conf, "Optimizer", "gamma", string(gamma))
 commit!(conf, "Optimizer", "step_rate", string(step_rate))
 
-save!(conf, "Vanilla_RNO/RNO_config.ini")
+save!(conf, "wavKAN_RNO/KAN_RNO_config.ini")
 
 
 

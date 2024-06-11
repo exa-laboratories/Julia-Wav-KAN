@@ -29,9 +29,9 @@ struct MHWavelet
 end
 
 function MexicanHatWavelet(σ, weights)
-    exp_norm = Float32.([-1 / (2 * σ^2)])
-    normalisation = Float32.([2 / sqrt((3 * σ * sqrt(π)))])
-    return MHWavelet(Float32.([σ]), Float32.([1]), exp_norm, normalisation, weights)
+    exp_norm = [-1 / (2 * σ^2)]
+    normalisation = [2 / sqrt((3 * σ * sqrt(π)))]
+    return MHWavelet([σ], [1], exp_norm, normalisation, weights)
 end
 
 function (w::MHWavelet)(x)

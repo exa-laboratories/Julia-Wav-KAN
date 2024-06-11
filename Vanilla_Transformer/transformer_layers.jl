@@ -5,21 +5,7 @@ export encoder_layers, decoder_layers
 using NNlib: softmax, batched_mul
 using Flux
 using Flux: Chain, BatchNorm, LayerNorm, Dense, Dropout
-using ConfParser
 using CUDA, KernelAbstractions, Tullio
-
-conf = ConfParse("Vanilla_Transformer/Transformer_config.ini")
-parse_conf!(conf)
-
-d_model = parse(Int, retrieve(conf, "Architecture", "d_model"))
-nhead = parse(Int, retrieve(conf, "Architecture", "nhead"))
-dim_feedforward = parse(Int, retrieve(conf, "Architecture", "dim_feedforward"))
-max_len = parse(Int, retrieve(conf, "Architecture", "max_len"))
-dropout = parse(Float32, retrieve(conf, "Architecture", "dropout"))
-activation = retrieve(conf, "Architecture", "activation")
-d_k = d_model ÷ nhead
-query_mul = Float32.([d_k ^ (-0.5)]) 
-sqrt_d_model = Float32.([sqrt(d_model)]) 
 
 # Activation mapping
 act_fcn = Dict(
@@ -30,7 +16,7 @@ act_fcn = Dict(
     "swish" => NNlib.hardswish,
     "gelu" => NNlib.gelu,
     "selu" => NNlib.selu,
-)[activation]
+)
 
 struct mh_attn
     Wq
@@ -41,9 +27,16 @@ struct mh_attn
 end
 
 function multi_head_attention()
-    Wq = Dense(d_model, d_model, act_fcn)
-    Wk = Dense(d_model, d_model, act_fcn)
-    Wv = Dense(d_model, d_model, act_fcn)
+    d_model = parse(Int, get(ENV, "d_model", "512"))
+    activation = get(ENV, "activation", "relu")
+    nhead = parse(Int, get(ENV, "nhead", "8"))
+    d_k = d_model ÷ nhead
+    query_mul = [d_k ^ (-0.5)]
+    sqrt_d_model = [sqrt(d_model)]
+    
+    Wq = Dense(d_model, d_model, act_fcn[activation])
+    Wk = Dense(d_model, d_model, act_fcn[activation])
+    Wv = Dense(d_model, d_model, act_fcn[activation])
     return mh_attn(Wq, Wk, Wv, sqrt_d_model, query_mul)
 end
 
@@ -74,10 +67,15 @@ struct encoder_layer
 end
 
 function encoder_layers()
+    d_model = parse(Int, get(ENV, "d_model", "512"))
+    dim_feedforward = parse(Int, get(ENV, "dim_feedforward", "2048"))
+    dropout = parse(Float32, get(ENV, "dropout", "0.1"))
+    activation = get(ENV, "activation", "relu")
+
     feed_forward = Chain(
-        Dense(d_model, dim_feedforward, act_fcn),
+        Dense(d_model, dim_feedforward, act_fcn[activation]),
         Dropout(dropout),
-        Dense(dim_feedforward, d_model, act_fcn),
+        Dense(dim_feedforward, d_model, act_fcn[activation]),
         Dropout(dropout)
     ) 
     norm1 = LayerNorm(d_model)
@@ -99,10 +97,15 @@ struct decoder_layer
 end
 
 function decoder_layers()
+    d_model = parse(Int, get(ENV, "d_model", "512"))
+    dim_feedforward = parse(Int, get(ENV, "dim_feedforward", "2048"))
+    dropout = parse(Float32, get(ENV, "dropout", "0.1"))
+    activation = get(ENV, "activation", "relu")
+
     feed_forward = Chain(
-        Dense(d_model, dim_feedforward, act_fcn),
+        Dense(d_model, dim_feedforward, act_fcn[activation]),
         Dropout(dropout),
-        Dense(dim_feedforward, d_model, act_fcn),
+        Dense(dim_feedforward, d_model, act_fcn[activation]),
         Dropout(dropout)
     ) 
     norm1 = LayerNorm(d_model)

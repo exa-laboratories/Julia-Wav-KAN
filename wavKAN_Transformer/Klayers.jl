@@ -7,24 +7,9 @@ include("../KAN/KAN_layers.jl")
 using NNlib: softmax, batched_mul
 using Flux
 using Flux: Chain, BatchNorm, LayerNorm, Dense, Dropout
-using ConfParser
 using CUDA, KernelAbstractions, Tullio
 using .layers: KANdense
-
-
-conf = ConfParse("wavKAN_Transformer/KAN_Transformer_config.ini")
-parse_conf!(conf)
-
-d_model = parse(Int, retrieve(conf, "Architecture", "d_model"))
-nhead = parse(Int, retrieve(conf, "Architecture", "nhead"))
-dim_feedforward = parse(Int, retrieve(conf, "Architecture", "dim_feedforward"))
-max_len = parse(Int, retrieve(conf, "Architecture", "max_len"))
-dropout = parse(Float32, retrieve(conf, "Architecture", "dropout"))
-base_activation = retrieve(conf, "Architecture", "activation")
-
-d_k = d_model ÷ nhead
-query_mul = Float32.([d_k ^ (-0.5)]) 
-sqrt_d_model = Float32.([sqrt(d_model)]) 
+using ConfParser
 
 # Activation mapping
 wavelet_conf = ConfParse("wavelet_config.ini")
@@ -47,6 +32,13 @@ struct mh_attn
 end
 
 function multi_head_attention(wavelet_name, batch_norm)
+    d_model = parse(Int, get(ENV, "d_model", "512"))
+    base_activation = get(ENV, "activation", "relu")
+    nhead = parse(Int, get(ENV, "nhead", "8"))
+    d_k = d_model ÷ nhead
+    query_mul = [d_k ^ (-0.5)]
+    sqrt_d_model = [sqrt(d_model)]
+
     Wq = KANdense(d_model, d_model, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name])
     Wk = KANdense(d_model, d_model, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name])
     Wv = KANdense(d_model, d_model, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name])   
@@ -80,6 +72,11 @@ struct encoder_layer
 end
 
 function encoder_layers(wavelet_name, batch_norm)
+    d_model = parse(Int, get(ENV, "d_model", "512"))
+    dim_feedforward = parse(Int, get(ENV, "dim_feedforward", "2048"))
+    dropout = parse(Float32, get(ENV, "dropout", "0.1"))
+    base_activation = get(ENV, "activation", "relu")
+
     feed_forward = [
         KANdense(d_model, dim_feedforward, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name]),
         Dropout(dropout),
@@ -109,6 +106,11 @@ struct decoder_layer
 end
 
 function decoder_layers(wavelet_name, batch_norm)
+    d_model = parse(Int, get(ENV, "d_model", "512"))
+    dim_feedforward = parse(Int, get(ENV, "dim_feedforward", "2048"))
+    dropout = parse(Float32, get(ENV, "dropout", "0.1"))
+    base_activation = get(ENV, "activation", "relu")
+
     feed_forward = [
         KANdense(d_model, dim_feedforward, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name]),
         Dropout(dropout),

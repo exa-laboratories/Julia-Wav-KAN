@@ -27,8 +27,8 @@ struct MW
 end
 
 function MorletWavelet(γ, weights)
-    half = Float32.([0.5])
-    return MW(Float32.([γ]), half, weights)
+    half = [0.5]
+    return MW([γ], half, weights)
 end
 
 function (w::MW)(x)

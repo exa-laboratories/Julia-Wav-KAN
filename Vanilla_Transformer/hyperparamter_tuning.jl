@@ -1,15 +1,15 @@
 include("../pipeline/data_processing/data_loader.jl")
-include("RNO.jl")
+include("Transformer.jl")
 include("../utils.jl")
 include("../pipeline/train.jl")
 
 using HyperTuning
-using ConfParser, CSV
+using ConfParser
 using Random
 using Flux, CUDA, KernelAbstractions
 using Optimisers
 using .training: train_step
-using .RecurrentNO: createRNO
+using .TransformerModel: createTransformer
 using .loaders: get_visco_loader
 using .UTILS: loss_fcn, BIC
 
@@ -18,8 +18,13 @@ function objective(trial)
     seed = get_seed(trial)
     Random.seed!(seed)
 
-    @suggest n_hidden in trial
-    @suggest n_layers in trial
+    @suggest d_model in trial
+    @suggest nhead in trial
+    @suggest dim_feedforward in trial
+    @suggest dropout in trial
+    @suggest num_encoder_layers in trial
+    @suggest num_decoder_layers in trial
+    @suggest max_len in trial
     @suggest activation in trial
     @suggest b_size in trial
     @suggest learning_rate in trial
@@ -27,7 +32,7 @@ function objective(trial)
     @suggest step_rate in trial
 
     # Parse config
-    conf = ConfParse("Vanilla_RNO/RNO_config.ini")
+    conf = ConfParse("Vanilla_Transformer/Transformer_config.ini")
     parse_conf!(conf)
 
     # Create model
@@ -37,12 +42,17 @@ function objective(trial)
     ENV["LR"] = learning_rate
     ENV["min_LR"] = retrieve(conf, "Optimizer", "min_lr")
     ENV["activation"] = activation
-    ENV["n_hidden"] = n_hidden
-    ENV["num_layers"] = n_layers
+    ENV["d_model"] = d_model
+    ENV["nhead"] = nhead
+    ENV["dim_feedforward"] = dim_feedforward
+    ENV["dropout"] = dropout
+    ENV["num_encoder_layers"] = num_encoder_layers
+    ENV["num_decoder_layers"] = num_decoder_layers
+    ENV["max_len"] = max_len
 
     train_loader, test_loader = get_visco_loader(b_size)
 
-    model = createRNO(1, 1, size(first(train_loader)[2], 1)) |> gpu
+    model = createTransformer() |> gpu
 
     opt_state = Optimisers.setup(Optimisers.Adam(learning_rate), model)
 
@@ -62,8 +72,13 @@ end
 
 # Define the search space
 space = Scenario(
-    n_hidden = 2:20,
-    n_layers = 1:5,
+    d_model = 50:150,
+    nhead = 1:20,
+    dim_feedforward = 500:1200,
+    dropout = (0.1..0.9),
+    num_encoder_layers = 1:8,
+    num_decoder_layers = 1:3,
+    max_len = 1000:5000,
     activation = ["relu", "selu", "leakyrelu"],
     b_size = 1:20,
     learning_rate = (1e-4..1e-1),
@@ -78,24 +93,25 @@ HyperTuning.optimize(objective, space)
 display(top_parameters(space))
 
 # Save the best configuration
-@unpack n_hidden, n_layers, activation, b_size, learning_rate, gamma, step_rate = space
+@unpack d_model, nhead, dim_feedforward, dropout, num_encoder_layers, num_decoder_layers, max_len, activation, b_size, learning_rate, gamma, step_rate = space
 
-conf = ConfParse("Vanilla_RNO/RNO_config.ini")
+conf = ConfParse("Vanilla_Transformer/Transformer_config.ini")
 parse_conf!(conf)
 
-commit!(conf, "Architecture", "n_hidden", string(n_hidden))
-commit!(conf, "Architecture", "n_layers", string(n_layers))
+commit!(conf, "Architecture", "d_model", string(d_model))
+commit!(conf, "Architecture", "nhead", string(nhead))
+commit!(conf, "Architecture", "dim_feedforward", string(dim_feedforward))
+commit!(conf, "Architecture", "dropout", string(dropout))
+commit!(conf, "Architecture", "num_encoder_layers", string(num_encoder_layers))
+commit!(conf, "Architecture", "num_decoder_layers", string(num_decoder_layers))
+commit!(conf, "Architecture", "max_len", string(max_len))
 commit!(conf, "Architecture", "activation", string(activation))
 commit!(conf, "DataLoader", "batch_size", string(b_size))
 commit!(conf, "Optimizer", "learning_rate", string(learning_rate))
 commit!(conf, "Optimizer", "gamma", string(gamma))
 commit!(conf, "Optimizer", "step_rate", string(step_rate))
 
-save!(conf, "Vanilla_RNO/RNO_config.ini")
-
-
-
-
+save!(conf, "Vanilla_Transformer/Transformer_config.ini")
 
 
 

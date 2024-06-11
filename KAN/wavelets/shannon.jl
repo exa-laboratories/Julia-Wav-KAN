@@ -30,11 +30,11 @@ struct SW
 end
 
 function ShannonWavelet(σ, b, weights)
-    bias = Float32.([b])
-    sinc_norm = Float32.([2.0 * π])
-    cos_norm = Float32.([π / 3.0])
-    base_norm = Float32.([2.0 / sqrt(σ)])
-    return SW(Float32.([σ]), bias, sinc_norm, cos_norm, base_norm, weights)
+    bias = [b]
+    sinc_norm = [2.0 * π]
+    cos_norm = [π / 3.0]
+    base_norm = [2.0 / sqrt(σ)]
+    return SW([σ], bias, sinc_norm, cos_norm, base_norm, weights)
 end
 
 

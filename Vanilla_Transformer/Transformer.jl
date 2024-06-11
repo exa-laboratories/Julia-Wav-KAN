@@ -2,7 +2,7 @@ module TransformerModel
 
 export createTransformer
 
-include("Vanilla_Transformer/transformer_layers.jl")
+include("./transformer_layers.jl")
 
 using Flux
 using Flux: Chain, Dense
@@ -11,27 +11,20 @@ using NNlib: hardtanh
 using CUDA, KernelAbstractions, Tullio
 using .Transform_Layers: encoder_layers, decoder_layers
 
-conf = ConfParse("Vanilla_Transformer/Transformer_config.ini")
-parse_conf!(conf)
-
-d_model = parse(Int, retrieve(conf, "Architecture", "d_model"))
-num_encoder_layers = parse(Int, retrieve(conf, "Architecture", "num_encoder_layers"))
-num_decoder_layers = parse(Int, retrieve(conf, "Architecture", "num_decoder_layers"))
-max_len = parse(Int, retrieve(conf, "Architecture", "max_len"))
-dropout = parse(Float32, retrieve(conf, "Architecture", "dropout"))
-
 struct PositionEncoding
     pe_vector
 end
 
 function PositionalEncoding()
+    d_model = parse(Int, get(ENV, "d_model", "512"))
+    max_len = parse(Int, get(ENV, "max_len", "5000"))
+
     pe_vector = zeros(Float32, d_model, max_len)
-    position = Float32.(range(1, max_len))
-    div_term = exp.(Float32.(-log(10000.0) .* range(1, d_model, step=2) ./ d_model))
+    position = range(1, max_len)
+    div_term = exp.(-log(10000.0) .* range(1, d_model, step=2) ./ d_model)
     div_term = reshape(div_term, 1, floor(Int, d_model/2))
     pe_vector[1:2:end, :] = transpose(sin.(position .* div_term))
     pe_vector[2:2:end, :] = transpose(cos.(position .* div_term))
-    pe_vector = Float32.(pe_vector) 
     return PositionEncoding(pe_vector)
 end
 
@@ -51,6 +44,10 @@ struct Transformer
 end
 
 function createTransformer()
+    num_encoder_layers = parse(Int, get(ENV, "num_encoder_layers", "6"))
+    num_decoder_layers = parse(Int, get(ENV, "num_decoder_layers", "6"))
+    d_model = parse(Int, get(ENV, "d_model", "512"))
+
     position_encoding = PositionalEncoding()
     encoder = [encoder_layers() for _ in 1:num_encoder_layers]
     decoder = [decoder_layers() for _ in 1:num_decoder_layers]

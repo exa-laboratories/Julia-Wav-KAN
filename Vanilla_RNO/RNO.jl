@@ -43,7 +43,7 @@ function createRNO(input_dim::Int64, output_dim::Int64, input_size::Int64)
     out_layers = Chain(out_layers_list..., Dense(layer_output[end-1], layer_output[end]))
     hid_layers = Chain(hid_layers_list..., Dense(layer_hidden[end-1], layer_hidden[end]))
 
-    dt = Float32.([1/(input_size-1)])
+    dt = [1/(input_size-1)]
 
     return RNO(out_layers, hid_layers, dt, input_size, n_hidden)
 end

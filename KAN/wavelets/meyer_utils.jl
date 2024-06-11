@@ -33,10 +33,10 @@ struct nu
 end
 
 function nu()
-    const_term = Float32.([35])
-    lin_term = Float32.([-84])
-    quad_term = Float32.([70])
-    cubic_term = Float32.([-20])
+    const_term = [35]
+    lin_term = [-84]
+    quad_term = [70]
+    cubic_term = [-20]
     return nu(const_term, lin_term, quad_term, cubic_term)
 end
 
@@ -52,8 +52,8 @@ struct smooth_step
 end
 
 function smooth_step()
-    half = Float32.([0.5])
-    one = Float32.([1.0])
+    half = [0.5]
+    one = [1.0]
     return smooth_step(half, one)
 end
 
@@ -73,11 +73,11 @@ struct MeyerAux
 end
 
 function MeyerAux()
-    eps = Float32.([1e-6])
-    half = Float32.([0.5])
-    one = Float32.([1.0])
-    two = Float32.([2.0])
-    zero = Float32.([0.0])
+    eps = [1e-6]
+    half = [0.5]
+    one = [1.0]
+    two = [2.0]
+    zero = [0.0]
     return MeyerAux(nu(), smooth_step(), eps, half, one, two, zero, Float32.([π]))
 end
 

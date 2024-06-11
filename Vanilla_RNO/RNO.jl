@@ -6,15 +6,7 @@ using Flux
 using Flux: Chain, Dense
 using CUDA, KernelAbstractions
 using NNlib
-using ConfParser
 using Tullio
-
-conf = ConfParse("Vanilla_RNO/RNO_config.ini")
-parse_conf!(conf)
-
-n_hidden = parse(Int, retrieve(conf, "Architecture", "n_hidden"))
-num_layers = parse(Int, retrieve(conf, "Architecture", "num_layers"))
-activation = retrieve(conf, "Architecture", "activation")
 
 # Activation mapping
 act_fcn = Dict(
@@ -25,17 +17,21 @@ act_fcn = Dict(
     "swish" => NNlib.hardswish,
     "gelu" => NNlib.gelu,
     "selu" => NNlib.selu,
-)[activation]
+)
 
 struct RNO
     output_layers
     hidden_layers
     dt
     T::Int64
+    n_hidden::Int64
 end
 
 function createRNO(input_dim::Int64, output_dim::Int64, input_size::Int64)
-    phi = act_fcn
+    activation = get(ENV, "activation", "relu")
+    phi = act_fcn[activation]
+    n_hidden = parse(Int, get(ENV, "n_hidden", "10"))
+    num_layers = parse(Int, get(ENV, "num_layers", "2"))
 
     hidden_units = [n_hidden] * num_layers
     layer_output = [input_dim + output_dim + n_hidden, hidden_units..., output_dim]
@@ -49,11 +45,11 @@ function createRNO(input_dim::Int64, output_dim::Int64, input_size::Int64)
 
     dt = Float32.([1/(input_size-1)])
 
-    return RNO(out_layers, hid_layers, dt, input_size)
+    return RNO(out_layers, hid_layers, dt, input_size, n_hidden)
 end
 
 function init_hidden(m::RNO, batch_size)
-    return zeros(Float32, n_hidden, batch_size) |> gpu
+    return zeros(Float32, m.n_hidden, batch_size) |> gpu
 end
 
 function fwd_pass(m::RNO, x, y, hidden)

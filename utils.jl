@@ -1,6 +1,6 @@
 module UTILS
 
-export loss_fcn, UnitGaussianNormaliser, unit_encode, unit_decode, MinMaxNormaliser, minmax_encode, minmax_decode, log_loss, node_mul_1D, node_mul_2D
+export loss_fcn, BIC, UnitGaussianNormaliser, unit_encode, unit_decode, MinMaxNormaliser, minmax_encode, minmax_decode, log_loss, node_mul_1D, node_mul_2D
 
 using Statistics
 using Flux
@@ -10,6 +10,12 @@ p = parse(Float32, get(ENV, "p", "2.0"))
 
 function loss_fcn(m, x, y)
     return sum(abs.(m(x, y) .- y).^p)
+end
+
+function BIC(model, x, loss)
+    n = size(x)[end] # Number of samples
+    k = sum(length, Flux.params(model)) # Number of parameters
+    return 2 * loss + k * log(n)
 end
 
 eps = Float32(1e-5)

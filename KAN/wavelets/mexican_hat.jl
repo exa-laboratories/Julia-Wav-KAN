@@ -35,7 +35,7 @@ function MexicanHatWavelet(σ, weights)
 end
 
 function (w::MHWavelet)(x)
-    term_1 = w.one .- (x.^2 ./ (w.σ.^2))
+    term_1 = (x.^2 ./ (w.σ.^2)) .- w.one
     term_2 = exp.(x.^2 .* w.exp_norm)
     y = batch_mul(term_1, term_2)
     y = y .* w.norm

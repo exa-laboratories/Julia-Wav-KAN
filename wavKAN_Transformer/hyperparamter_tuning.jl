@@ -83,7 +83,7 @@ function objective(trial)
 
 end
 
-wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon", "Meyer"]
+wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon"]#, "Meyer"]
 
 
 # Define the search space

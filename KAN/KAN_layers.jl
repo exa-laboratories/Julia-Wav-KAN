@@ -51,7 +51,8 @@ function KANdense(input_size, output_size, wavelet_name, base_activation, batch_
     wavelet_weights = Flux.kaiming_uniform(input_size, output_size)
     wavelet = wavelet_mapping[wavelet_name](args..., wavelet_weights)
     activation = act_mapping[base_activation]
-    output_layer = Flux.Dense(input_size, output_size, activation)
+    # output_layer = Flux.Dense(input_size, output_size, activation)
+    output_layer = nothing
     batch_norm_layer = batch_norm ? Flux.BatchNorm(output_size, NNlib.relu) : identity
 
     translation = zeros(input_size, output_size)
@@ -73,8 +74,8 @@ function (l::KANdense_layer)(x)
     x_expanded = (x_expanded - translation_expanded) ./ scale_expanded 
 
     y = l.transform(x_expanded)
-    z = l.output_layer(x)
-    out = y + z
+    #z = l.output_layer(x)
+    out = y #+ z
     out = l.batch_norm(l.norm_permute(out))
     return l.norm_permute(out)
 end

@@ -72,11 +72,11 @@ end
 
 # Define the search space
 space = Scenario(
-    d_model = 50:150,
+    d_model = range(64, 192, step=2),
     nhead = 1:20,
     dim_feedforward = 500:1200,
     dropout = (0.1..0.9),
-    num_encoder_layers = 1:8,
+    num_encoder_layers = 2:8,
     num_decoder_layers = 1:3,
     max_len = 1000:5000,
     activation = ["relu", "selu", "leakyrelu"],
@@ -86,6 +86,7 @@ space = Scenario(
     step_rate = 10:40,
     verbose = true,
     max_trials = 50,
+    pruner = MedianPruner(start_after = 5, prune_after = 10),
 )
 
 HyperTuning.optimize(objective, space)

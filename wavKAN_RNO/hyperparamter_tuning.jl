@@ -72,7 +72,7 @@ wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon", "Meye
 # Define the search space
 space = Scenario(
     n_hidden = 2:20,
-    n_layers = 1:5,
+    n_layers = 2:5,
     wav_one = wavelet_list,
     wav_two = wavelet_list,
     wav_three = wavelet_list,
@@ -85,6 +85,7 @@ space = Scenario(
     step_rate = 10:40,
     verbose = true,
     max_trials = 50,
+    pruner = MedianPruner(start_after = 5, prune_after = 10),
 )
 
 HyperTuning.optimize(objective, space)

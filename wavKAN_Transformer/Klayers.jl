@@ -11,18 +11,6 @@ using CUDA, KernelAbstractions, Tullio
 using .layers: KANdense
 using ConfParser
 
-# Activation mapping
-wavelet_conf = ConfParse("wavelet_config.ini")
-parse_conf!(wavelet_conf)
-
-arg_mapping = Dict(
-    "MexicanHat" => parse(Float32, retrieve(wavelet_conf, "MexicanHat", "sigma")),
-    "Morlet" => parse(Float32, retrieve(wavelet_conf, "Morlet", "gamma")),
-    "DerivativeOfGaussian" => parse(Float32, retrieve(wavelet_conf, "DerivativeOfGaussian", "sigma")),
-    "Shannon" => (parse(Float32, retrieve(wavelet_conf, "Shannon", "sigma")), parse(Float32, retrieve(wavelet_conf, "Shannon", "bias"))),
-    "Meyer" => (parse(Float32, retrieve(wavelet_conf, "Meyer", "sigma")), parse(Float32, retrieve(wavelet_conf, "Meyer", "bias")))
-)
-
 struct mh_attn
     Wq
     Wk
@@ -39,9 +27,9 @@ function multi_head_attention(wavelet_name, batch_norm)
     query_mul = [d_k ^ (-0.5)]
     sqrt_d_model = [sqrt(d_model)]
 
-    Wq = KANdense(d_model, d_model, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name])
-    Wk = KANdense(d_model, d_model, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name])
-    Wv = KANdense(d_model, d_model, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name])   
+    Wq = KANdense(d_model, d_model, wavelet_name, base_activation, batch_norm)
+    Wk = KANdense(d_model, d_model, wavelet_name, base_activation, batch_norm)
+    Wv = KANdense(d_model, d_model, wavelet_name, base_activation, batch_norm)   
     return mh_attn(Wq, Wk, Wv, sqrt_d_model, query_mul)
 end
 
@@ -78,9 +66,9 @@ function encoder_layers(wavelet_name, batch_norm)
     base_activation = get(ENV, "activation", "relu")
 
     feed_forward = [
-        KANdense(d_model, dim_feedforward, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name]),
+        KANdense(d_model, dim_feedforward, wavelet_name, base_activation, batch_norm),
         Dropout(dropout),
-        KANdense(dim_feedforward, d_model, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name]),
+        KANdense(dim_feedforward, d_model, wavelet_name, base_activation, batch_norm),
         Dropout(dropout)
     ]
     norm1 = LayerNorm(d_model)
@@ -112,9 +100,9 @@ function decoder_layers(wavelet_name, batch_norm)
     base_activation = get(ENV, "activation", "relu")
 
     feed_forward = [
-        KANdense(d_model, dim_feedforward, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name]),
+        KANdense(d_model, dim_feedforward, wavelet_name, base_activation, batch_norm),
         Dropout(dropout),
-        KANdense(dim_feedforward, d_model, wavelet_name, base_activation, batch_norm, arg_mapping[wavelet_name]),
+        KANdense(dim_feedforward, d_model, wavelet_name, base_activation, batch_norm),
         Dropout(dropout)
     ]
     norm1 = LayerNorm(d_model)

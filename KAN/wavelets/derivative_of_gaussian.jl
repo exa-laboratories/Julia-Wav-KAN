@@ -20,26 +20,24 @@ end
 
 batch_mul = bool_2D ? batch_mul_2D : batch_mul_1D
 
-struct DoGWavelet
-    σ
-    exp_norm
-    base_norm
+exp_norm = [-1 / 2] |> gpu
+normalisation = [1 / (sqrt(2 * π))] |> gpu
+
+struct dogWavelet
     weights
 end
 
-function DoGWavelet(σ, weights)
-    exp_norm = [-1 / (2 * σ^2)]
-    normalisation = [1 / (σ * sqrt(2 * π))]
-    return DoGWavelet(σ, exp_norm, normalisation, weights)
+function DoGWavelet(weights)
+    return dogWavelet(weights)
 end
 
-function (w::DoGWavelet)(x)
-    exp_term = exp.(x .* w.exp_norm)
+function (w::dogWavelet)(x)
+    exp_term = exp.(x .* exp_norm)
     y = batch_mul(x, exp_term)
-    y = y .* w.base_norm
+    y = y .* normalisation
     return node(y, w.weights)
 end
 
-Flux.@functor DoGWavelet
+Flux.@functor dogWavelet
 
 end

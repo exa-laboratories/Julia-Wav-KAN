@@ -20,20 +20,20 @@ end
 
 batch_mul = bool_2D ? batch_mul_2D : batch_mul_1D
 
+half = [0.5] |> gpu
+
 struct MW
     γ
-    norm
     weights
 end
 
 function MorletWavelet(γ, weights)
-    half = [0.5]
-    return MW([γ], half, weights)
+    return MW([γ], weights)
 end
 
 function (w::MW)(x)
     real = cos.(w.γ .* x)
-    envelope = exp.(-x.^2 .* w.norm)
+    envelope = exp.(-x.^2 .* half)
     y = batch_mul(real, envelope)
     return node(y, w.weights)
 end

@@ -10,18 +10,6 @@ using CUDA, KernelAbstractions
 using NNlib
 using Tullio
 using .layers: KANdense
-using ConfParser
-
-wavelet_conf = ConfParse("wavelet_config.ini")
-parse_conf!(wavelet_conf)
-
-arg_mapping = Dict(
-    "MexicanHat" => parse(Float32, retrieve(wavelet_conf, "MexicanHat", "sigma")),
-    "Morlet" => parse(Float32, retrieve(wavelet_conf, "Morlet", "gamma")),
-    "DerivativeOfGaussian" => parse(Float32, retrieve(wavelet_conf, "DerivativeOfGaussian", "sigma")),
-    "Shannon" => (parse(Float32, retrieve(wavelet_conf, "Shannon", "sigma")), parse(Float32, retrieve(wavelet_conf, "Shannon", "bias"))),
-    "Meyer" => (parse(Float32, retrieve(wavelet_conf, "Meyer", "sigma")), parse(Float32, retrieve(wavelet_conf, "Meyer", "bias")))
-)
 
 struct KAN_RNO
     output_layers
@@ -40,8 +28,8 @@ function create_KAN_RNO(input_dim::Int64, output_dim::Int64, input_size::Int64, 
     layer_output = [input_dim + output_dim + n_hidden, hidden_units..., output_dim]
     layer_hidden = [n_hidden + output_dim, hidden_units..., n_hidden]
 
-    out_layers_list = [KANdense(layer_output[i], layer_output[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]]) for i in 1:length(layer_output)-1]
-    hid_layers_list = [KANdense(layer_hidden[i], layer_hidden[i+1], wavelet_names[i], base_activation, batch_norm, arg_mapping[wavelet_names[i]]) for i in 1:length(layer_hidden)-1]
+    out_layers_list = [KANdense(layer_output[i], layer_output[i+1], wavelet_names[i], base_activation, batch_norm) for i in 1:length(layer_output)-1]
+    hid_layers_list = [KANdense(layer_hidden[i], layer_hidden[i+1], wavelet_names[i], base_activation, batch_norm) for i in 1:length(layer_hidden)-1]
 
     dt = [1/(input_size-1)]
 

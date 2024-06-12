@@ -47,8 +47,13 @@ struct KANdense_layer
     norm_permute
 end
 
-function KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm, args)
+function KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm)
     wavelet_weights = Flux.kaiming_uniform(input_size, output_size)
+    if wavelet_name == "Morlet"
+        args = [5.0]
+    else
+        args = []
+    end
     wavelet = wavelet_mapping[wavelet_name](args..., wavelet_weights)
     activation = act_mapping[base_activation]
     # output_layer = Flux.Dense(input_size, output_size, activation)

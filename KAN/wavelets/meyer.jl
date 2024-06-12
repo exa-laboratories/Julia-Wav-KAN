@@ -22,27 +22,22 @@ end
 
 batch_mul = bool_2D ? batch_mul_2D : batch_mul_1D
 
+pie = [π] |> gpu
+
 struct MWavelet
-    σ
-    b
-    pi
-    norm
     weights
     aux
 end
 
-function MeyerWavelet(σ, b, weights, reshape_bool=false)
-    normalisation = [1 / sqrt(σ)]
-    bias = [b]
-    return MWavelet([σ], bias, Float32.([π]), normalisation, weights, MeyerAux())
+function MeyerWavelet(weights)
+    return MWavelet(weights, MeyerAux)
 end
 
 function (w::MWavelet)(x)
-    ω = abs.((x .- w.b) ./ w.σ)
-    sin_term = sin.(ω .* w.pi)
+    ω = abs.(x)
+    sin_term = sin.(ω .* pie)
     meyer_term = w.aux(ω)
     y = batch_mul(sin_term, meyer_term)
-    y = y .* w.norm
 
     return node(y, w.weights)
 end

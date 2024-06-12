@@ -20,30 +20,25 @@ end
 
 batch_mul = bool_2D ? batch_mul_2D : batch_mul_1D
 
+sinc_norm = [2.0 * π] |> gpu
+cos_norm = [π / 3.0] |> gpu
+base_norm = [2.0] |> gpu
+
 struct SW
-    σ
-    b
-    sinc_norm
-    cos_norm
-    norm
     weights
 end
 
-function ShannonWavelet(σ, b, weights)
-    bias = [b]
-    sinc_norm = [2.0 * π]
-    cos_norm = [π / 3.0]
-    base_norm = [2.0 / sqrt(σ)]
-    return SW([σ], bias, sinc_norm, cos_norm, base_norm, weights)
+function ShannonWavelet(weights)
+    return SW(weights)
 end
 
 
 function (w::SW)(x)
-    ω = (x .- w.b) ./ w.σ
-    first_term = sinc.(ω .* w.sinc_norm)
-    second_term = cos.(ω .* w.cos_norm)
+    ω = x
+    first_term = sinc.(ω .* sinc_norm)
+    second_term = cos.(ω .* cos_norm)
     y = batch_mul(first_term, second_term)
-    y = y .* w.norm
+    y = y .* base_norm
 
     return node(y, w.weights)
 end

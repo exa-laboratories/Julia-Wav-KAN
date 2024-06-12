@@ -20,25 +20,23 @@ end
 
 batch_mul = bool_2D ? batch_mul_2D : batch_mul_1D
 
+one = [1] |> gpu
+exp_norm = [-1 / 2] |> gpu
+normalisation = [2 / sqrt(3 * sqrt(π))] |> gpu
+
 struct MHWavelet
-    σ
-    one
-    exp_norm
-    norm
     weights
 end
 
-function MexicanHatWavelet(σ, weights)
-    exp_norm = [-1 / (2 * σ^2)]
-    normalisation = [2 / sqrt((3 * σ * sqrt(π)))]
-    return MHWavelet([σ], [1], exp_norm, normalisation, weights)
+function MexicanHatWavelet(weights)
+    return MHWavelet(weights)
 end
 
 function (w::MHWavelet)(x)
-    term_1 = (x.^2 ./ (w.σ.^2)) .- w.one
-    term_2 = exp.(x.^2 .* w.exp_norm)
+    term_1 = x.^2 .- one
+    term_2 = exp.(x.^2 .* exp_norm)
     y = batch_mul(term_1, term_2)
-    y = y .* w.norm
+    y = y .* normalisation
     return node(y, w.weights)
 end
 

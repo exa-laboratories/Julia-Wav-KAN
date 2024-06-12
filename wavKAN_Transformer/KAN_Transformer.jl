@@ -9,22 +9,10 @@ include("../KAN/KAN_layers.jl")
 
 using Flux
 using Flux: Chain, Dense
-using ConfParser
 using NNlib: hardtanh
 using CUDA, KernelAbstractions, Tullio
 using .KAN_Transform_Layers: encoder_layers, decoder_layers
 using .layers: KANdense
-
-wavelet_conf = ConfParse("wavelet_config.ini")
-parse_conf!(wavelet_conf)
-
-arg_mapping = Dict(
-    "MexicanHat" => parse(Float32, retrieve(wavelet_conf, "MexicanHat", "sigma")),
-    "Morlet" => parse(Float32, retrieve(wavelet_conf, "Morlet", "gamma")),
-    "DerivativeOfGaussian" => parse(Float32, retrieve(wavelet_conf, "DerivativeOfGaussian", "sigma")),
-    "Shannon" => (parse(Float32, retrieve(wavelet_conf, "Shannon", "sigma")), parse(Float32, retrieve(wavelet_conf, "Shannon", "bias"))),
-    "Meyer" => (parse(Float32, retrieve(wavelet_conf, "Meyer", "sigma")), parse(Float32, retrieve(wavelet_conf, "Meyer", "bias")))
-)
 
 struct PositionEncoding
     pe_vector
@@ -66,7 +54,7 @@ function create_KAN_Transformer(encoder_wavlet_names, decoder_wavlet_names, enco
     position_encoding = PositionalEncoding()
     encoder = [encoder_layers(encoder_wavlet_names[i], encoder_batch_norm[i]) for i in 1:num_encoder_layers]
     decoder = [decoder_layers(decoder_wavlet_names[i], decoder_batch_norm[i]) for i in 1:num_decoder_layers]
-    output_layer = KANdense(d_model, 1, output_wavelet_name, base_activation, output_batch_norm, arg_mapping[output_wavelet_name])
+    output_layer = KANdense(d_model, 1, output_wavelet_name, base_activation, output_batch_norm)
 
     return KAN_Transformer(position_encoding, encoder, decoder, output_layer)
 end

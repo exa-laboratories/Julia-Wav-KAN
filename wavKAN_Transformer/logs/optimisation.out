@@ -1,0 +1,59 @@
+┌ Warning: CUDA runtime library `libcublasLt.so.12` was loaded from a system path, `/usr/local/cuda-12.3/lib64/libcublasLt.so.12`.
+│ 
+│ This may cause errors. Ensure that you have not set the LD_LIBRARY_PATH
+│ environment variable, or that it does not contain paths to CUDA libraries.
+│ 
+│ In any other case, please file an issue.
+└ @ CUDA ~/.julia/packages/CUDA/75aiI/src/initialization.jl:219
+┌ Warning: CUDA runtime library `libnvJitLink.so.12` was loaded from a system path, `/usr/local/cuda-12.3/lib64/libnvJitLink.so.12`.
+│ 
+│ This may cause errors. Ensure that you have not set the LD_LIBRARY_PATH
+│ environment variable, or that it does not contain paths to CUDA libraries.
+│ 
+│ In any other case, please file an issue.
+└ @ CUDA ~/.julia/packages/CUDA/75aiI/src/initialization.jl:219
+┌ Warning: CUDA runtime library `libcusparse.so.12` was loaded from a system path, `/usr/local/cuda-12.3/lib64/libcusparse.so.12`.
+│ 
+│ This may cause errors. Ensure that you have not set the LD_LIBRARY_PATH
+│ environment variable, or that it does not contain paths to CUDA libraries.
+│ 
+│ In any other case, please file an issue.
+└ @ CUDA ~/.julia/packages/CUDA/75aiI/src/initialization.jl:219
+ERROR: LoadError: MethodError: no method matching MorletWavelet(::Float64, ::Matrix{Float32})
+
+Closest candidates are:
+  MorletWavelet(::Any)
+   @ Main.KANTransformerModel ~/repos/Julia-Wav-KAN/KAN/wavelets/morlet.jl:30
+
+Stacktrace:
+  [1] KANdense(input_size::Int64, output_size::Int64, wavelet_name::String, base_activation::String, batch_norm::Bool)
+    @ Main.KANTransformerModel.KAN_Transform_Layers.layers ~/repos/Julia-Wav-KAN/KAN/KAN_layers.jl:57
+  [2] decoder_layers(wavelet_name::String, batch_norm::Bool)
+    @ Main.KANTransformerModel.KAN_Transform_Layers ~/repos/Julia-Wav-KAN/wavKAN_Transformer/Klayers.jl:102
+  [3] #3
+    @ ./essentials.jl:0 [inlined]
+  [4] iterate
+    @ ./generator.jl:47 [inlined]
+  [5] collect(itr::Base.Generator{UnitRange{Int64}, Main.KANTransformerModel.var"#3#5"{Vector{String}, Bool}})
+    @ Base ./array.jl:834
+  [6] create_KAN_Transformer(encoder_wavlet_names::Vector{String}, decoder_wavlet_names::Vector{String}, encoder_batch_norm::Bool, decoder_batch_norm::Bool, output_wavelet_name::String, output_batch_norm::Bool)
+    @ Main.KANTransformerModel ~/repos/Julia-Wav-KAN/wavKAN_Transformer/KAN_Transformer.jl:57
+  [7] objective(trial::HyperTuning.Trial{Int64})
+    @ Main ~/repos/Julia-Wav-KAN/wavKAN_Transformer/hyperparamter_tuning.jl:68
+  [8] evaluate_trial!(f::typeof(objective), trial::HyperTuning.Trial{Int64}, verbose::Bool)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:5
+  [9] evaluate_objective_sequential(f::Function, scenario::Scenario)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:27
+ [10] evaluate_objective
+    @ ~/.julia/packages/HyperTuning/7Qthr/src/evaluator/evaluate_objective.jl:12 [inlined]
+ [11] optimize!(f::Function, scenario::Scenario)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:29
+ [12] optimize(f::Function, scenario::Scenario)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:47
+ [13] top-level scope
+    @ ~/repos/Julia-Wav-KAN/wavKAN_Transformer/hyperparamter_tuning.jl:116
+in expression starting at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/hyperparamter_tuning.jl:116
+Train Loss: 709.8486321876037 Test Loss: NaN
+[+] Trial 1: Pair{Symbol, Any}[:activation => "relu", :b_size => 9, :d_model => 56, :decoder_wav_one => "MexicanHat", :decoder_wav_three => "Morlet", :decoder_wav_two => "Shannon", :dim_feedforward => 253, :dropout => 0.5742957829830708, :encoder_wav_five => "Morlet", :encoder_wav_four => "Morlet", :encoder_wav_one => "MexicanHat", :encoder_wav_three => "DerivativeOfGaussian", :encoder_wav_two => "DerivativeOfGaussian", :gamma => 0.24847258887791046, :learning_rate => 0.07844869195238083, :max_len => 510, :nhead => 10, :num_decoder_layers => 1, :num_encoder_layers => 3, :output_wavelet => "DerivativeOfGaussian", :step_rate => 37] evaluated NaN at instance 1
+Train Loss: 709.8486321876038 Test Loss: 223.33667434676906
+[+] Trial 2: Pair{Symbol, Any}[:activation => "relu", :b_size => 3, :d_model => 24, :decoder_wav_one => "MexicanHat", :decoder_wav_three => "DerivativeOfGaussian", :decoder_wav_two => "DerivativeOfGaussian", :dim_feedforward => 333, :dropout => 0.17403465197812523, :encoder_wav_five => "Shannon", :encoder_wav_four => "Shannon", :encoder_wav_one => "Shannon", :encoder_wav_three => "Morlet", :encoder_wav_two => "MexicanHat", :gamma => 0.32573333511549074, :learning_rate => 0.03552993008256021, :max_len => 977, :nhead => 6, :num_decoder_layers => 2, :num_encoder_layers => 2, :output_wavelet => "DerivativeOfGaussian", :step_rate => 32] evaluated 223.33667434676906 at instance 1

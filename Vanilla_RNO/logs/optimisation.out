@@ -1,0 +1,127 @@
+┌ Warning: CUDA runtime library libcublasLt.so.12 was loaded from a system path. This may cause errors.
+│ Ensure that you have not set the LD_LIBRARY_PATH environment variable, or that it does not contain paths to CUDA libraries.
+└ @ CUDA ~/.julia/packages/CUDA/XUdwt/src/initialization.jl:190
+┌ Warning: CUDA runtime library libnvJitLink.so.12 was loaded from a system path. This may cause errors.
+│ Ensure that you have not set the LD_LIBRARY_PATH environment variable, or that it does not contain paths to CUDA libraries.
+└ @ CUDA ~/.julia/packages/CUDA/XUdwt/src/initialization.jl:190
+┌ Warning: CUDA runtime library libcusparse.so.12 was loaded from a system path. This may cause errors.
+│ Ensure that you have not set the LD_LIBRARY_PATH environment variable, or that it does not contain paths to CUDA libraries.
+└ @ CUDA ~/.julia/packages/CUDA/XUdwt/src/initialization.jl:190
+Train Loss: 290.0368928909302 Test Loss: 96.10350799560547
+[+] Trial 1: Pair{Symbol, Any}[:activation => "relu", :b_size => 17, :gamma => 0.7171324441918103, :learning_rate => 0.0914943886233986, :n_hidden => 6, :n_layers => 2, :step_rate => 30] evaluated 1030.8381658318508 at instance 1
+Train Loss: 1.999395564198494 Test Loss: 0.6266241520643234
+[+] Trial 2: Pair{Symbol, Any}[:activation => "selu", :b_size => 18, :gamma => 0.12638819924702568, :learning_rate => 0.07844869195238083, :n_hidden => 11, :n_layers => 3, :step_rate => 19] evaluated 3758.7365335691425 at instance 1
+Train Loss: 1.404256135225296 Test Loss: 0.46517593041062355
+[+] Trial 3: Pair{Symbol, Any}[:activation => "selu", :b_size => 10, :gamma => 0.3739941867743515, :learning_rate => 0.0693846844270222, :n_hidden => 13, :n_layers => 2, :step_rate => 29] evaluated 2729.4936870587658 at instance 1
+Train Loss: 1.0351652065292 Test Loss: 0.3700781399384141
+[+] Trial 4: Pair{Symbol, Any}[:activation => "relu", :b_size => 6, :gamma => 0.6716511151644913, :learning_rate => 0.0275129291951644, :n_hidden => 19, :n_layers => 2, :step_rate => 28] evaluated 4327.839274465629 at instance 1
+Train Loss: 0.9880242366343737 Test Loss: 0.3170671984553337
+[+] Trial 5: Pair{Symbol, Any}[:activation => "selu", :b_size => 15, :gamma => 0.26684317409055924, :learning_rate => 0.03552993008256021, :n_hidden => 16, :n_layers => 5, :step_rate => 25] evaluated 11748.155906778298 at instance 1
+Train Loss: 1.0723627172410488 Test Loss: 0.395411622710526
+[+] Trial 6: Pair{Symbol, Any}[:activation => "selu", :b_size => 6, :gamma => 0.881225708192013, :learning_rate => 0.019249481432103227, :n_hidden => 3, :n_layers => 5, :step_rate => 17] evaluated 412.8955011678737 at instance 1
+Train Loss: 1.102390518411994 Test Loss: 0.3443294409662485
+[+] Trial 7: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 12, :gamma => 0.5580237305399227, :learning_rate => 0.031101829368332123, :n_hidden => 2, :n_layers => 3, :step_rate => 29] evaluated 189.5415642658205 at instance 1
+Train Loss: 1.0490874233655632 Test Loss: 0.3219906138256192
+[+] Trial 8: Pair{Symbol, Any}[:activation => "selu", :b_size => 6, :gamma => 0.7150957792882527, :learning_rate => 0.015575669992319104, :n_hidden => 11, :n_layers => 5, :step_rate => 19] evaluated 3867.260915821794 at instance 1
+Train Loss: 1.0467212907969952 Test Loss: 0.32940346375107765
+[+] Trial 9: Pair{Symbol, Any}[:activation => "selu", :b_size => 17, :gamma => 0.6871624294731044, :learning_rate => 0.011072941577741895, :n_hidden => 7, :n_layers => 5, :step_rate => 30] evaluated 2703.5443371571323 at instance 1
+Train Loss: 1.0551570267416537 Test Loss: 0.31175005849217996
+[+] Trial 10: Pair{Symbol, Any}[:activation => "relu", :b_size => 3, :gamma => 0.19885383898407955, :learning_rate => 0.09413302682761096, :n_hidden => 7, :n_layers => 3, :step_rate => 19] evaluated 633.4241783898156 at instance 1
+Train Loss: 10.450684174895287 Test Loss: 2.8685141503810883
+[+] Trial 11: Pair{Symbol, Any}[:activation => "relu", :b_size => 10, :gamma => 0.5334157034009491, :learning_rate => 0.089653641149635, :n_hidden => 14, :n_layers => 2, :step_rate => 38] evaluated 3137.2527547726645 at instance 1
+Train Loss: 16.174532935023308 Test Loss: 4.68664588779211
+[+] Trial 12: Pair{Symbol, Any}[:activation => "relu", :b_size => 11, :gamma => 0.3023296653557777, :learning_rate => 0.09208444164068233, :n_hidden => 10, :n_layers => 2, :step_rate => 24] evaluated 1764.6326314639916 at instance 1
+Train Loss: 1.1793224080574873 Test Loss: 0.3728111724485643
+[+] Trial 13: Pair{Symbol, Any}[:activation => "relu", :b_size => 1, :gamma => 0.8944955654488477, :learning_rate => 0.07671139622496327, :n_hidden => 13, :n_layers => 4, :step_rate => 18] evaluated 0.7456223448971286 at instance 1
+Train Loss: 1.3424889259040356 Test Loss: 0.46674100682139397
+[+] Trial 14: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 19, :gamma => 0.24565424080116838, :learning_rate => 0.06709175522246395, :n_hidden => 11, :n_layers => 4, :step_rate => 13] evaluated 5091.868476992418 at instance 1
+Train Loss: 1.2708549334201962 Test Loss: 0.372584622586146
+[+] Trial 15: Pair{Symbol, Any}[:activation => "selu", :b_size => 2, :gamma => 0.4075611083850087, :learning_rate => 0.07400468049598605, :n_hidden => 2, :n_layers => 4, :step_rate => 21] evaluated 70.05988730116682 at instance 1
+Train Loss: 337.9975776672363 Test Loss: 114.34253883361816
+[+] Trial 16: Pair{Symbol, Any}[:activation => "relu", :b_size => 18, :gamma => 0.3154137921887774, :learning_rate => 0.0496769977525865, :n_hidden => 9, :n_layers => 2, :step_rate => 18] evaluated 1977.359991194416 at instance 1
+Train Loss: 1.2332400977611542 Test Loss: 0.4265645407140255
+[+] Trial 17: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 18, :gamma => 0.7352566646217745, :learning_rate => 0.03866943260838331, :n_hidden => 8, :n_layers => 4, :step_rate => 24] evaluated 2804.5137342407074 at instance 1
+Train Loss: 1.204310778528452 Test Loss: 0.41892092302441597
+[+] Trial 18: Pair{Symbol, Any}[:activation => "relu", :b_size => 18, :gamma => 0.12308552837119047, :learning_rate => 0.06435663191046243, :n_hidden => 20, :n_layers => 5, :step_rate => 19] evaluated 19140.87962263445 at instance 1
+Train Loss: 12.444727450609207 Test Loss: 3.165960282087326
+[+] Trial 19: Pair{Symbol, Any}[:activation => "relu", :b_size => 18, :gamma => 0.11558401006918935, :learning_rate => 0.09676635407543778, :n_hidden => 11, :n_layers => 3, :step_rate => 34] evaluated 3763.8152058291885 at instance 1
+Train Loss: 4.742482900619507 Test Loss: 1.4642595797777176
+[+] Trial 20: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 17, :gamma => 0.6251366601339094, :learning_rate => 0.06579901475322164, :n_hidden => 12, :n_layers => 2, :step_rate => 37] evaluated 2898.4725567850082 at instance 1
+Train Loss: 1.0541273914277554 Test Loss: 0.3420660011470318
+[+] Trial 21: Pair{Symbol, Any}[:activation => "relu", :b_size => 19, :gamma => 0.8091546422042913, :learning_rate => 0.028801965684319437, :n_hidden => 19, :n_layers => 4, :step_rate => 34] evaluated 14160.491182813705 at instance 1
+Train Loss: 1.0138208959251642 Test Loss: 0.33243678510189056
+[+] Trial 22: Pair{Symbol, Any}[:activation => "relu", :b_size => 8, :gamma => 0.4119967121890876, :learning_rate => 0.056950523979655464, :n_hidden => 7, :n_layers => 5, :step_rate => 14] evaluated 1984.452104332767 at instance 1
+Train Loss: 2.6403335403447272 Test Loss: 0.7187443829607219
+[+] Trial 23: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 1, :gamma => 0.25880672718854913, :learning_rate => 0.03281126931941141, :n_hidden => 20, :n_layers => 4, :step_rate => 36] evaluated 1.4374887659214437 at instance 1
+Train Loss: 0.9847229057922959 Test Loss: 0.3779772575944662
+[+] Trial 24: Pair{Symbol, Any}[:activation => "relu", :b_size => 13, :gamma => 0.572958544612172, :learning_rate => 0.02184243233507367, :n_hidden => 7, :n_layers => 3, :step_rate => 10] evaluated 1478.166784413034 at instance 1
+Train Loss: 32.32298147678375 Test Loss: 8.63014030456543
+[+] Trial 25: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 10, :gamma => 0.2540451174666474, :learning_rate => 0.07133106279614182, :n_hidden => 4, :n_layers => 2, :step_rate => 37] evaluated 362.64804455823776 at instance 1
+Train Loss: 1.8775142040103674 Test Loss: 0.683033847482875
+[+] Trial 26: Pair{Symbol, Any}[:activation => "relu", :b_size => 11, :gamma => 0.3720226383622248, :learning_rate => 0.0844212603637379, :n_hidden => 2, :n_layers => 2, :step_rate => 40] evaluated 126.05662188048103 at instance 1
+Train Loss: 1.0337881818413734 Test Loss: 0.3214313182979822
+[+] Trial 27: Pair{Symbol, Any}[:activation => "selu", :b_size => 15, :gamma => 0.20100297222623642, :learning_rate => 0.04038817480743681, :n_hidden => 18, :n_layers => 2, :step_rate => 22] evaluated 5904.192301039414 at instance 1
+Train Loss: 1.520780086517334 Test Loss: 0.48178791999816895
+[+] Trial 28: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 19, :gamma => 0.2800607431415319, :learning_rate => 0.0423930033204959, :n_hidden => 4, :n_layers => 4, :step_rate => 32] evaluated 866.6286357149298 at instance 1
+Train Loss: 1.0352828023023903 Test Loss: 0.32221922697499394
+[+] Trial 29: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 6, :gamma => 0.7033189516084611, :learning_rate => 0.014682690157044305, :n_hidden => 14, :n_layers => 2, :step_rate => 27] evaluated 2437.4373166041046 at instance 1
+Train Loss: 1.020636968780309 Test Loss: 0.3187689413316548
+[+] Trial 30: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 5, :gamma => 0.7420978868743491, :learning_rate => 0.025241333814413208, :n_hidden => 10, :n_layers => 2, :step_rate => 34] evaluated 1178.7460897844246 at instance 1
+Train Loss: 1.1857248922460712 Test Loss: 0.3371572938049212
+[+] Trial 31: Pair{Symbol, Any}[:activation => "relu", :b_size => 2, :gamma => 0.3780056274607927, :learning_rate => 0.0533836066440663, :n_hidden => 4, :n_layers => 2, :step_rate => 30] evaluated 104.64639167160163 at instance 1
+Train Loss: 0.9795253267511725 Test Loss: 0.32151497225277126
+[+] Trial 32: Pair{Symbol, Any}[:activation => "relu", :b_size => 11, :gamma => 0.3191538332306001, :learning_rate => 0.08559714522575095, :n_hidden => 13, :n_layers => 3, :step_rate => 17] evaluated 4244.917662797621 at instance 1
+Train Loss: 1.1888134216642356 Test Loss: 0.35331801074789837
+[+] Trial 33: Pair{Symbol, Any}[:activation => "relu", :b_size => 1, :gamma => 0.1, :learning_rate => 0.050186534525080886, :n_hidden => 2, :n_layers => 2, :step_rate => 36] evaluated 0.7066360214957967 at instance 1
+Train Loss: 1.0750111666275188 Test Loss: 0.3304715844569728
+[+] Trial 34: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 2, :gamma => 0.39581113161046755, :learning_rate => 0.1, :n_hidden => 2, :n_layers => 3, :step_rate => 17] evaluated 53.34012889146979 at instance 1
+Train Loss: 1.1178021733139758 Test Loss: 0.3625449827522971
+[+] Trial 35: Pair{Symbol, Any}[:activation => "relu", :b_size => 1, :gamma => 0.26733016631670586, :learning_rate => 0.045209043258595566, :n_hidden => 4, :n_layers => 4, :step_rate => 21] evaluated 0.7250899655045941 at instance 1
+Train Loss: 1.0426819808781147 Test Loss: 0.34595353808254004
+[+] Trial 36: Pair{Symbol, Any}[:activation => "relu", :b_size => 6, :gamma => 0.3688744010685485, :learning_rate => 0.0537341423900136, :n_hidden => 13, :n_layers => 3, :step_rate => 36] evaluated 3172.1061676098225 at instance 1
+Train Loss: 1.1423335554427467 Test Loss: 0.3204891229979694
+[+] Trial 37: Pair{Symbol, Any}[:activation => "relu", :b_size => 2, :gamma => 0.14140182647374194, :learning_rate => 0.08294448757180167, :n_hidden => 13, :n_layers => 2, :step_rate => 30] evaluated 822.0203872095311 at instance 1
+Train Loss: 81.01594829559326 Test Loss: 26.495362997055054
+[+] Trial 38: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 19, :gamma => 0.5634122982637099, :learning_rate => 0.0943141799179745, :n_hidden => 2, :n_layers => 2, :step_rate => 18] evaluated 206.101552910765 at instance 1
+Train Loss: 325.35474967956543 Test Loss: 109.6133668422699
+[+] Trial 39: Pair{Symbol, Any}[:activation => "relu", :b_size => 12, :gamma => 0.49690313574191625, :learning_rate => 0.1, :n_hidden => 4, :n_layers => 2, :step_rate => 17] evaluated 591.9627311527398 at instance 1
+Train Loss: 1.2504791310493601 Test Loss: 0.3144874374556821
+[+] Trial 40: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 1, :gamma => 0.8496569085376283, :learning_rate => 0.06210450619810927, :n_hidden => 2, :n_layers => 2, :step_rate => 21] evaluated 0.6289748749113642 at instance 1
+Train Loss: 3.1542150750756264 Test Loss: 0.8412900576367974
+[+] Trial 41: Pair{Symbol, Any}[:activation => "selu", :b_size => 2, :gamma => 0.6512994763536045, :learning_rate => 0.09800030482020025, :n_hidden => 13, :n_layers => 2, :step_rate => 14] evaluated 823.0619890788088 at instance 1
+Train Loss: 1.1870493229362182 Test Loss: 0.31912997527979314
+[+] Trial 42: Pair{Symbol, Any}[:activation => "relu", :b_size => 2, :gamma => 0.15498884513681033, :learning_rate => 0.0007796754804579725, :n_hidden => 2, :n_layers => 2, :step_rate => 30] evaluated 36.68191333967674 at instance 1
+Train Loss: 4.295999031012339e32 Test Loss: 1.4333963429588847e32
+[+] Trial 43: Pair{Symbol, Any}[:activation => "relu", :b_size => 2, :gamma => 0.42553341515418325, :learning_rate => 0.1, :n_hidden => 13, :n_layers => 4, :step_rate => 38] evaluated 2.8667926859177694e32 at instance 1
+Train Loss: 1.1490289811044931 Test Loss: 0.3755418111104518
+[+] Trial 44: Pair{Symbol, Any}[:activation => "selu", :b_size => 11, :gamma => 0.18259633791478733, :learning_rate => 0.059120881309880316, :n_hidden => 4, :n_layers => 2, :step_rate => 40] evaluated 360.4353745419765 at instance 1
+Train Loss: 1.1032642707577907 Test Loss: 0.32614576898049563
+[+] Trial 45: Pair{Symbol, Any}[:activation => "selu", :b_size => 2, :gamma => 0.1, :learning_rate => 0.03185934449721825, :n_hidden => 2, :n_layers => 4, :step_rate => 36] evaluated 69.96700959395552 at instance 1
+Train Loss: 0.997557571856305 Test Loss: 0.3165618312195875
+[+] Trial 46: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 11, :gamma => 0.5461809648785163, :learning_rate => 0.024814107419528414, :n_hidden => 2, :n_layers => 5, :step_rate => 21] evaluated 297.97213748943716 at instance 1
+Train Loss: 1.335508655756712 Test Loss: 0.4448607861995697
+[+] Trial 47: Pair{Symbol, Any}[:activation => "selu", :b_size => 19, :gamma => 0.8049253645446297, :learning_rate => 0.06513378461752155, :n_hidden => 2, :n_layers => 4, :step_rate => 36] evaluated 295.33361948904314 at instance 1
+Train Loss: 712.0445164442062 Test Loss: 232.4921602010727
+[+] Trial 48: Pair{Symbol, Any}[:activation => "relu", :b_size => 1, :gamma => 0.45340668936471856, :learning_rate => 0.1, :n_hidden => 2, :n_layers => 2, :step_rate => 19] evaluated 464.9843204021454 at instance 1
+Train Loss: 1.6332380175590515 Test Loss: 0.5928763635456562
+[+] Trial 49: Pair{Symbol, Any}[:activation => "relu", :b_size => 10, :gamma => 0.1, :learning_rate => 0.04601864274149893, :n_hidden => 2, :n_layers => 2, :step_rate => 29] evaluated 120.9201775627817 at instance 1
+Train Loss: 1.206419613910839 Test Loss: 0.32832930103177205
+[+] Trial 50: Pair{Symbol, Any}[:activation => "relu", :b_size => 2, :gamma => 0.9, :learning_rate => 0.08106881745066229, :n_hidden => 2, :n_layers => 4, :step_rate => 29] evaluated 69.97137665805808 at instance 1
+PARAMETERS:
+┌────┬────────────┬────────┬──────────┬───────────────┬──────────┬──────────┬───────────┬─────────┬───────────┬─────────┬────────┐
+│ ID │ activation │ b_size │    gamma │ learning_rate │ n_hidden │ n_layers │ step_rate │ Success │ Objective │    Time │ Pruned │
+├────┼────────────┼────────┼──────────┼───────────────┼──────────┼──────────┼───────────┼─────────┼───────────┼─────────┼────────┤
+│ 40 │  leakyrelu │      1 │ 0.849657 │     0.0621045 │        2 │        2 │        21 │       0 │  0.628975 │ 4007.71 │  false │
+│ 33 │       relu │      1 │      0.1 │     0.0501865 │        2 │        2 │        36 │       0 │  0.706636 │ 4005.16 │  false │
+│ 23 │  leakyrelu │      1 │ 0.258807 │     0.0328113 │       20 │        4 │        36 │       0 │   1.43749 │ 3982.37 │  false │
+│ 42 │       relu │      2 │ 0.154989 │   0.000779675 │        2 │        2 │        30 │       0 │   36.6819 │ 2125.77 │  false │
+│ 50 │       relu │      2 │      0.9 │     0.0810688 │        2 │        4 │        29 │       0 │   69.9714 │ 2113.03 │  false │
+│ 49 │       relu │     10 │      0.1 │     0.0460186 │        2 │        2 │        29 │       0 │    120.92 │ 420.648 │  false │
+│ 26 │       relu │     11 │ 0.372023 │     0.0844213 │        2 │        2 │        40 │       0 │   126.057 │ 398.666 │  false │
+│  7 │  leakyrelu │     12 │ 0.558024 │     0.0311018 │        2 │        3 │        29 │       0 │   189.542 │ 347.017 │  false │
+│ 38 │  leakyrelu │     19 │ 0.563412 │     0.0943142 │        2 │        2 │        18 │       0 │   206.102 │ 232.959 │  false │
+│ 47 │       selu │     19 │ 0.804925 │     0.0651338 │        2 │        4 │        36 │       0 │   295.334 │ 230.179 │  false │
+│ 14 │  leakyrelu │     19 │ 0.245654 │     0.0670918 │       11 │        4 │        13 │       0 │   5091.87 │ 229.664 │  false │
+│ 21 │       relu │     19 │ 0.809155 │      0.028802 │       19 │        4 │        34 │       0 │   14160.5 │ 229.088 │  false │
+└────┴────────────┴────────┴──────────┴───────────────┴──────────┴──────────┴───────────┴─────────┴───────────┴─────────┴────────┘
+

@@ -1,6 +1,6 @@
 module UTILS
 
-export loss_fcn, BIC, UnitGaussianNormaliser, unit_encode, unit_decode, MinMaxNormaliser, minmax_encode, minmax_decode, log_loss, node_mul_1D, node_mul_2D
+export loss_fcn, BIC, UnitGaussianNormaliser, unit_encode, unit_decode, MinMaxNormaliser, minmax_encode, minmax_decode, log_csv, node_mul_1D, node_mul_2D
 
 using Statistics
 using Flux
@@ -64,9 +64,9 @@ function MinMaxNormaliser(x::AbstractArray)
 end
 
 # Log the loss to CSV
-function log_loss(epoch, train_loss, test_loss, model_name)
-    open("logs/$model_name.csv", "a") do file
-        write(file, "$epoch,$train_loss,$test_loss\n")
+function log_csv(epoch, train_loss, test_loss, BIC, time, file_name)
+    open(file_name, "a") do file
+        write(file, "$epoch,$time,$train_loss,$test_loss,$BIC\n")
     end
 end
 

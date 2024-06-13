@@ -8,7 +8,7 @@ include("./wavelets/meyer.jl")
 
 export KANdense
 
-using Flux, CUDA, KernelAbstractions
+using Flux, CUDA, KernelAbstractions, Tullio
 using Flux: Dense, BatchNorm
 using NNlib
 using .MexicanHat: MexicanHatWavelet
@@ -37,6 +37,14 @@ wavelet_mapping = Dict(
     "Meyer" => MeyerWavelet
 )
 
+function scale_translate_1D(x, scale, translation)
+    return @tullio out[i, o, b] := (x[i, o, b] - translation[i, o]) / scale[i, o]
+end
+
+function scale_translate_2D(x, scale, translation)
+    return @tullio out[i, o, l, b] := (x[i, o, l, b] - translation[i, o]) / scale[i, o]
+end
+
 struct KANdense_layer
     transform
     output_layer
@@ -45,6 +53,7 @@ struct KANdense_layer
     translation
     reshape_fcn
     norm_permute
+    scale_translate_fcn
 end
 
 function KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm)
@@ -67,16 +76,15 @@ function KANdense(input_size, output_size, wavelet_name, base_activation, batch_
     reshape_fcn = bool_2D ? x -> repeat(reshape(x, size(x, 1), 1, size(x, 2), size(x, 3)), 1, size(translation, 2), 1, 1) : x -> repeat(reshape(x, size(x, 1), 1, size(x, 2)), 1, size(translation, 2), 1)
     norm_permute = bool_2D ? x -> reshape(x, size(x, 2), size(x, 1), size(x, 3)) : x -> x
 
-    return KANdense_layer(wavelet, output_layer, batch_norm_layer, scale, translation, reshape_fcn, norm_permute)
+    scale_translate_fcn = bool_2D ? scale_translate_2D : scale_translate_1D
+
+    return KANdense_layer(wavelet, output_layer, batch_norm_layer, scale, translation, reshape_fcn, norm_permute, scale_translate_fcn)
 end
 
 function (l::KANdense_layer)(x) 
 
     x_expanded = l.reshape_fcn(x)
-    translation_expanded = repeat(l.translation, 1, 1, size(x_expanded)[3:end]...)
-    scale_expanded = repeat(l.scale, 1, 1, size(x_expanded)[3:end]...)
-
-    x_expanded = (x_expanded - translation_expanded) ./ scale_expanded 
+    x_expanded = l.scale_translate_fcn(x_expanded, l.scale, l.translation)
 
     y = l.transform(x_expanded)
     #z = l.output_layer(x)

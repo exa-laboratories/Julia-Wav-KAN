@@ -88,7 +88,7 @@ wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon"]#, "Me
 
 # Define the search space
 space = Scenario(
-    d_model = range(10, 80, step=2),
+    d_model = range(10, 60, step=2),
     nhead = 1:20,
     dim_feedforward = 100:400,
     dropout = (0.1..0.9),

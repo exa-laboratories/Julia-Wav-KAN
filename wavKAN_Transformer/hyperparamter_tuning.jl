@@ -11,7 +11,7 @@ using Optimisers
 using .training: train_step
 using .KANTransformerModel: create_KAN_Transformer
 using .loaders: get_visco_loader
-using .UTILS: loss_fcn, BIC
+using .UTILS: loss_fcn
 
 # Define the objective function, edits RNO_config.ini and runs the training 
 function objective(trial)
@@ -78,8 +78,7 @@ function objective(trial)
 
     println("Train Loss: ", train_loss, " Test Loss: ", test_loss)
 
-    # Return BIC
-    return BIC(model, first(train_loader)[2], test_loss)
+    return test_loss
 
 end
 

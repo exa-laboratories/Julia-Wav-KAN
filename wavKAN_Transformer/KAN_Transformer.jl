@@ -47,13 +47,14 @@ struct KAN_Transformer
 end
 
 function create_KAN_Transformer(encoder_wavlet_names, decoder_wavlet_names, encoder_batch_norm, decoder_batch_norm, output_wavelet_name, output_batch_norm)
+    base_activation = get(ENV, "activation", "relu")
     num_encoder_layers = parse(Int, get(ENV, "num_encoder_layers", "6"))
     num_decoder_layers = parse(Int, get(ENV, "num_decoder_layers", "6"))
     d_model = parse(Int, get(ENV, "d_model", "512"))
 
     position_encoding = PositionalEncoding()
-    encoder = [encoder_layers(encoder_wavlet_names[i], encoder_batch_norm[i]) for i in 1:num_encoder_layers]
-    decoder = [decoder_layers(decoder_wavlet_names[i], decoder_batch_norm[i]) for i in 1:num_decoder_layers]
+    encoder = [encoder_layers(encoder_wavlet_names[i], encoder_batch_norm) for i in 1:num_encoder_layers]
+    decoder = [decoder_layers(decoder_wavlet_names[i], decoder_batch_norm) for i in 1:num_decoder_layers]
     output_layer = KANdense(d_model, 1, output_wavelet_name, base_activation, output_batch_norm)
 
     return KAN_Transformer(position_encoding, encoder, decoder, output_layer)

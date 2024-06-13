@@ -43,7 +43,6 @@ function scale_translate_1D(x, scale, translation)
 end
 
 function scale_translate_2D(x, scale, translation)
-    println(size(x), size(scale), size(translation))
     return @tullio out[i, o, l, b] := (x[i, o, l, b] - translation[i, o]) / scale[i, o]
 end
 

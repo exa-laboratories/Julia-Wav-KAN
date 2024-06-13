@@ -45,7 +45,7 @@ function objective(trial)
     decoder_wavelet_names = [decoder_wav_one, decoder_wav_two, decoder_wav_three][1:num_decoder_layers]
 
     # Parse config
-    conf = ConfParse("KAN_Transformer/KAN_Transformer_config.ini")
+    conf = ConfParse("wavKAN_Transformer/KAN_Transformer_config.ini")
     parse_conf!(conf)
 
     # Create model
@@ -92,7 +92,7 @@ space = Scenario(
     nhead = 1:20,
     dim_feedforward = 500:1200,
     dropout = (0.1..0.9),
-    num_encoder_layers = 1:5,
+    num_encoder_layers = 2:5,
     encoder_wav_one = wavelet_list,
     encoder_wav_two = wavelet_list,
     encoder_wav_three = wavelet_list,
@@ -121,7 +121,7 @@ display(top_parameters(space))
 # Save the best configuration
 @unpack d_model, nhead, dim_feedforward, dropout, num_encoder_layers, num_decoder_layers, max_len, activation, b_size, learning_rate, gamma, step_rate, encoder_wav_one, encoder_wav_two, encoder_wav_three, encoder_wav_four, encoder_wav_five, decoder_wav_one, decoder_wav_two, decoder_wav_three, output_wavelet = space
 
-conf = ConfParse("KAN_Transformer/KAN_Transformer_config.ini")
+conf = ConfParse("wavKAN_Transformer/KAN_Transformer_config.ini")
 parse_conf!(conf)
 
 commit!(conf, "Architecture", "d_model", d_model)
@@ -146,7 +146,7 @@ commit!(conf, "Optimizer", "learning_rate", learning_rate)
 commit!(conf, "Optimizer", "gamma", gamma)
 commit!(conf, "Optimizer", "step_rate", step_rate)
 
-save!(conf, "KAN_Transformer/KAN_Transformer_config.ini")
+save!(conf, "wavKAN_Transformer/KAN_Transformer_config.ini")
 
 
 

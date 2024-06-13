@@ -90,9 +90,9 @@ wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon"]#, "Me
 space = Scenario(
     d_model = range(10, 80, step=2),
     nhead = 1:20,
-    dim_feedforward = 100:500,
+    dim_feedforward = 100:400,
     dropout = (0.1..0.9),
-    num_encoder_layers = 2:4,
+    num_encoder_layers = 2:3,
     encoder_wav_one = wavelet_list,
     encoder_wav_two = wavelet_list,
     encoder_wav_three = wavelet_list,

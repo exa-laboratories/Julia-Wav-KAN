@@ -27,8 +27,8 @@ struct MW
     weights
 end
 
-function MorletWavelet(γ, weights)
-    return MW([γ], weights)
+function MorletWavelet(weights)
+    return MW([5.0], weights)
 end
 
 function (w::MW)(x)

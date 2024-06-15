@@ -123,7 +123,7 @@ The output of the macroscopic constitutive model at each time step $t$ is the ma
 
 In essence, the macroscopic constitutive model aims to learn the mapping between the applied macroscopic strain field $\epsilon(x,t)$ and the resulting macroscopic stress field $\sigma(x,t)$ at each time step $t$, for all spatial positions $x$ in the three-phase viscoelastic composite material, based on the underlying unit cell problem and its governing equations.
 
-Both a Transformer and a Recurrent Neural Operator (RNO) are implemented in both their MLP and wavKAN formats.
+Both a Transformer and a Recurrent Neural Operator (RNO) are implemented in both their MLP and wavKAN formats. From a [previous project](https://github.com/PritRaj1/Neural-Operator-Learning), I found this dataset to be especially difficult to learn for the Transformer, but easy enough for the RNO. It is also one-dimensional, making it a prime candidate to compare wavKAN against its MLP equivalents.
 
 ## References
 

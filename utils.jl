@@ -71,11 +71,13 @@ function log_csv(epoch, train_loss, test_loss, BIC, time, file_name)
 end
 
 function node_mul_1D(y, w)
-    @tullio out[o, b] := w[i, o] * y[i, o, b]
+    output = @tullio out[i, o, b] := w[i, o] * y[i, o, b]
+    return reshape(sum(output, dims=1), size(w)[2], size(y)[end])
 end
 
 function node_mul_2D(y, w)
-    @tullio out[o, l, b] := w[i, o] * y[i, o, l, b]
+    output = @tullio out[i, o, l, b] := w[i, o] * y[i, o, l, b]
+    return reshape(sum(output, dims=1), size(w)[2], size(y)[end])
 end
 
 end

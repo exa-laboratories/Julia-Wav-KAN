@@ -77,7 +77,7 @@ end
 
 function node_mul_2D(y, w)
     output = @tullio out[i, o, l, b] := w[i, o] * y[i, o, l, b]
-    return reshape(sum(output, dims=1), size(w)[2], size(y)[end])
+    return reshape(sum(output, dims=1), size(w)[2], size(y)[3] size(y)[end])
 end
 
 end

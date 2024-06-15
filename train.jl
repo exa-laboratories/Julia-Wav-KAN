@@ -71,12 +71,17 @@ for num in 1:NUM_REPETITIONS
     train_loss = 0.0
     test_loss = 0.0
 
+    # Create csv with header
+    open(file_name, "w") do file
+        write(file, "Epoch,Time (s),Train Loss,Test Loss,BIC\n")
+    end
+
     start_time = time()
     for epoch in ProgressBar(1:num_epochs)
         model, opt_state, train_loss, test_loss = train_step(model, opt_state, train_loader, test_loader, loss_fcn, epoch)
-        BIC = BIC(model, first(train_loader)[2], test_loss)
+        BIC_val = BIC(model, first(train_loader)[2], test_loss)
         time_epoch = time() - start_time
-        log_csv(file_name, epoch, train_loss, test_loss, BIC, time_epoch)        
+        log_csv(epoch, train_loss, test_loss, BIC_val, time_epoch, file_name)  
     end
 
     save_file_name = log_file_base * "trained_models/model_" * string(num) * ".bson"

@@ -62,24 +62,41 @@ The behavior of the unit cell is described by the following equations:
 
 #### 1. Kinematic Relation:
 The strain field $\epsilon(x,t)$ is related to the displacement field $u(x,t)$ by:
-```math \frac{\partial \epsilon(x,t)}{\partial x} = \frac{\partial u(x,t)}{\partial x} ```
+
+$$ 
+\frac{\partial \epsilon(x,t)}{\partial x} = \frac{\partial u(x,t)}{\partial x} 
+$$
 
 #### 2. Equilibrium:
 The equilibrium condition is given by:
-```math \int_0^1 \frac{d\sigma(x)}{dx} = 0 ```
+
+$$ 
+\int_0^1 \frac{d\sigma(x)}{dx} = 0 
+$$
 
 #### 3. Constitutive Relation:
 The stress field $\sigma(x,t)$ is related to the strain field $\epsilon(x,t)$ and the displacement field $u(x,t)$ by:
-```math \sigma(x,t) = E(x)\epsilon(x,t) + v(x) \frac{\partial u(x,t)}{\partial t} ```
+
+$$ 
+\sigma(x,t) = E(x)\epsilon(x,t) + v(x) \frac{\partial u(x,t)}{\partial t} 
+$$
+
 where $E(x)$ is the Young's modulus and $v(x)$ is the viscosity, both of which are piecewise constant functions with three different values corresponding to the three phases of the composite material.
 
 ### Initial and Boundary Conditions
 
 #### Initial Conditions:
-```math u(x,0) = 0, \quad \dot{u}(x,0) = 0 ```
+
+$$ 
+u(x,0) = 0, \quad \dot{u}(x,0) = 0 
+$$
 
 #### Boundary Conditions:
-```math u(0,t) = 0, \quad u(1,t) = \bar{u}(t) ```
+
+$$ 
+u(0,t) = 0, \quad u(1,t) = \bar{u}(t) 
+$$
+
 where $\bar{u}(t)$ is a prescribed displacement at $x = 1$.
 
 ### Composite Material Properties
@@ -89,7 +106,11 @@ The composite material is made up of three different phases, each with distinct 
 ### Objective
 
 The objective is to learn the macroscopic constitutive relation that maps the strain field $\epsilon(x,t)$ to the stress field $\sigma(x,t)$:
-```math \epsilon \mapsto \sigma ```
+
+$$ 
+\epsilon \mapsto \sigma
+$$
+
 using a macroscopic constitutive model. This model should capture the complex viscoelastic behavior of the composite material.
 
 ### Input and Output Framework

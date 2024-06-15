@@ -24,10 +24,10 @@ using .hyperparams: set_hyperparams
 NUM_REPETITIONS = 5
 
 model_name = "RNO"
-hyperparams = set_hyperparams(model_name)
-batch_size = get(ENV, "batch_size", 32)
-learning_rate = get(ENV, "learning_rate", 1e-3)
-num_epochs = get(ENV, "num_epochs", 50)
+hparams = set_hyperparams(model_name)
+batch_size = parse(Int, get(ENV, "batch_size", "32"))
+learning_rate = parse(Float32, get(ENV, "LR", "1e-3"))
+num_epochs = parse(Int, get(ENV, "num_epochs", "50"))
 
 train_loader, test_loader = get_visco_loader(batch_size)
 
@@ -40,19 +40,19 @@ function Transformer()
 end
 
 function KAN_RNO()
-    return create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), hyperparams, true) |> gpu
+    return create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), hparams, true) |> gpu
 end
 
 function KAN_Transformer()
-    encoder_wavelet_names, decoder_wavelet_names, output_wavelet = hyperparams
+    encoder_wavelet_names, decoder_wavelet_names, output_wavelet = hparams
     return create_KAN_Transformer(encoder_wavelet_names, decoder_wavelet_names, true, true, output_wavelet, true) |> gpu
 end
 
 instantiate_model = Dict(
-    "RNO" => createRNO,
-    "Transformer" => createTransformer,
-    "KAN_RNO" => create_KAN_RNO,
-    "KAN_Transformer" => create_KAN_Transformer
+    "RNO" => RNO,
+    "Transformer" => Transformer,
+    "KAN_RNO" => KAN_RNO,
+    "KAN_Transformer" => KAN_Transformer
 )[model_name]
 
 log_file_base = Dict(

@@ -56,7 +56,7 @@ The dataset has been sourced from the University of Cambridge Engineering Depart
 
 It consists of the unit cell of a three-phase viscoelastic composite material. The objective is to understand the macroscopic behavior of the material by learning the constitutive relation that maps the strain field $\epsilon(x,t)$ to the stress field $\sigma(x,t)$.
 
-Both a Transformer and a Recurrent Neural Operator (RNO) are implemented in both their MLP and wavKAN formats. From a [previous project](https://github.com/PritRaj1/Neural-Operator-Learning), I found this dataset to be especially difficult to learn for the Transformer, but easy enough for the RNO. It is also one-dimensional, making it a prime candidate to compare wavKAN against its MLP equivalents.
+Both a Transformer and a Recurrent Neural Operator (RNO) are implemented in their MLP and wavKAN formats. From a [previous project](https://github.com/PritRaj1/Neural-Operator-Learning), I found this dataset to be especially difficult to learn for the Transformer, but easy enough for the RNO. It is also one-dimensional, making it a prime candidate to compare wavKAN against its MLP equivalents.
 
 ### Governing Equations
 

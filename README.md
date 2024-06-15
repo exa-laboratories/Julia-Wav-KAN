@@ -54,53 +54,53 @@ julia train.jl
 
 The dataset has been sourced from the University of Cambridge Engineering Department's Part IIB course on [Data-Driven and Learning-Based Methods in Mechanics and Materials.](https://teaching.eng.cam.ac.uk/content/engineering-tripos-part-iib-4c11-data-driven-and-learning-based-methods-mechanics-and)
 
-It consists of the unit cell of a three-phase viscoelastic composite material. The objective is to understand the macroscopic behavior of the material by learning the constitutive relation that maps the strain field \(\epsilon(x,t)\) to the stress field \(\sigma(x,t)\).
+It consists of the unit cell of a three-phase viscoelastic composite material. The objective is to understand the macroscopic behavior of the material by learning the constitutive relation that maps the strain field $\epsilon(x,t)$ to the stress field $\sigma(x,t)$.
 
 ### Governing Equations
 
 The behavior of the unit cell is described by the following equations:
 
 #### 1. Kinematic Relation:
-The strain field \(\epsilon(x,t)\) is related to the displacement field \(u(x,t)\) by:
-\[ \frac{\partial \epsilon(x,t)}{\partial x} = \frac{\partial u(x,t)}{\partial x} \]
+The strain field $\epsilon(x,t)$ is related to the displacement field $u(x,t)$ by:
+```math \frac{\partial \epsilon(x,t)}{\partial x} = \frac{\partial u(x,t)}{\partial x} ```
 
 #### 2. Equilibrium:
 The equilibrium condition is given by:
-\[ \int_0^1 \frac{d\sigma(x)}{dx} = 0 \]
+```math \int_0^1 \frac{d\sigma(x)}{dx} = 0 ```
 
 #### 3. Constitutive Relation:
-The stress field \(\sigma(x,t)\) is related to the strain field \(\epsilon(x,t)\) and the displacement field \(u(x,t)\) by:
-\[ \sigma(x,t) = E(x)\epsilon(x,t) + v(x) \frac{\partial u(x,t)}{\partial t} \]
-where \(E(x)\) is the Young's modulus and \(v(x)\) is the viscosity, both of which are piecewise constant functions with three different values corresponding to the three phases of the composite material.
+The stress field $\sigma(x,t)$ is related to the strain field $\epsilon(x,t)$ and the displacement field $u(x,t)$ by:
+```math \sigma(x,t) = E(x)\epsilon(x,t) + v(x) \frac{\partial u(x,t)}{\partial t} ```
+where $E(x)$ is the Young's modulus and $v(x)$ is the viscosity, both of which are piecewise constant functions with three different values corresponding to the three phases of the composite material.
 
 ### Initial and Boundary Conditions
 
 #### Initial Conditions:
-\[ u(x,0) = 0, \quad \dot{u}(x,0) = 0 \]
+```math u(x,0) = 0, \quad \dot{u}(x,0) = 0 ```
 
 #### Boundary Conditions:
-\[ u(0,t) = 0, \quad u(1,t) = \bar{u}(t) \]
-where \(\bar{u}(t)\) is a prescribed displacement at \(x = 1\).
+```math u(0,t) = 0, \quad u(1,t) = \bar{u}(t) ```
+where $\bar{u}(t)$ is a prescribed displacement at $x = 1$.
 
 ### Composite Material Properties
 
-The composite material is made up of three different phases, each with distinct values of Young's modulus \(E(x)\) and viscosity \(v(x)\). These properties are piecewise constant functions over the spatial domain \(0 \leq x \leq 1\).
+The composite material is made up of three different phases, each with distinct values of Young's modulus $E(x)$ and viscosity $v(x)$. These properties are piecewise constant functions over the spatial domain $0 \leq x \leq 1$.
 
 ### Objective
 
-The objective is to learn the macroscopic constitutive relation that maps the strain field \(\epsilon(x,t)\) to the stress field \(\sigma(x,t)\):
-\[ \epsilon \mapsto \sigma \]
+The objective is to learn the macroscopic constitutive relation that maps the strain field $\epsilon(x,t)$ to the stress field $\sigma(x,t)$:
+```math \epsilon \mapsto \sigma ```
 using a macroscopic constitutive model. This model should capture the complex viscoelastic behavior of the composite material.
 
 ### Input and Output Framework
 
 ##### Input:
-The input to the macroscopic constitutive model at each time step \(t\) is the macroscopic strain field \(\epsilon(x,t)\).
+The input to the macroscopic constitutive model at each time step $t$ is the macroscopic strain field $\epsilon(x,t)$.
 
 ##### Output:
-The output of the macroscopic constitutive model at each time step \(t\) is the macroscopic stress field \(\sigma(x,t)\).
+The output of the macroscopic constitutive model at each time step $t$ is the macroscopic stress field $\sigma(x,t)$.
 
-In essence, the macroscopic constitutive model aims to learn the mapping between the applied macroscopic strain field \(\epsilon(x,t)\) and the resulting macroscopic stress field \(\sigma(x,t)\) at each time step \(t\), for all spatial positions \(x\) in the three-phase viscoelastic composite material, based on the underlying unit cell problem and its governing equations.
+In essence, the macroscopic constitutive model aims to learn the mapping between the applied macroscopic strain field $\epsilon(x,t)$ and the resulting macroscopic stress field $\sigma(x,t)$ at each time step $t$, for all spatial positions $x$ in the three-phase viscoelastic composite material, based on the underlying unit cell problem and its governing equations.
 
 Both a Transformer and a Recurrent Neural Operator (RNO) are implemented in both their MLP and wavKAN formats.
 

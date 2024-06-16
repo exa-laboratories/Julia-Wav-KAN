@@ -61,4 +61,6 @@ function MeyerAux(x)
     return term1 + term2 + term3
 end
 
+Flux.@functor MeyerAux
+
 end

@@ -42,6 +42,6 @@ function (w::MWavelet)(x)
     return node(y, w.weights)
 end
 
-Flux.@functor MWavelet
+Flux.@layer MWavelet
 
 end

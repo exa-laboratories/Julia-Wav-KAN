@@ -38,6 +38,6 @@ function (w::dogWavelet)(x)
     return node(y, w.weights)
 end
 
-Flux.@functor dogWavelet
+Flux.@layer dogWavelet
 
 end

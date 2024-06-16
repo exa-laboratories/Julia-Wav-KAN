@@ -40,6 +40,6 @@ function (w::MHWavelet)(x)
     return node(y, w.weights)
 end
 
-Flux.@functor MHWavelet
+Flux.@layer MHWavelet
 
 end 

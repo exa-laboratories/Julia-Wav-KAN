@@ -80,6 +80,6 @@ function (l::KANdense_layer)(x)
     return l.norm_permute(out)
 end
 
-Flux.@functor KANdense_layer
+Flux.@layer KANdense_layer
 
 end

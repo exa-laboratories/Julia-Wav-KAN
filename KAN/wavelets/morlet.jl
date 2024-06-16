@@ -38,6 +38,6 @@ function (w::MW)(x)
     return node(y, w.weights)
 end
 
-Flux.@functor MW
+Flux.@layer MW
 
 end

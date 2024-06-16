@@ -20,24 +20,21 @@ end
 
 eps = Float32(1e-5)
 
-### Normaliser for zero mean and unit variance ###
+### Normalisers really help on this dataset! ###
 struct UnitGaussianNormaliser{T<:AbstractFloat}
     μ::T
     σ::T
     ε::T
 end
 
-# Normalise to zero mean and unit variance
 function unit_encode(normaliser::UnitGaussianNormaliser, x::AbstractArray)
     return (x .- normaliser.μ) ./ (normaliser.σ .+ normaliser.ε)
 end
 
-# Denormalise
 function unit_decode(normaliser::UnitGaussianNormaliser, x::AbstractArray)
     return x .* (normaliser.σ .+ normaliser.ε) .+ normaliser.μ
 end
 
-# Constructor, characterises the distribution of the data, takes 3D array
 function UnitGaussianNormaliser(x::AbstractArray)
     data_mean = Statistics.mean(x)
     data_std = Statistics.std(x)
@@ -69,6 +66,8 @@ function log_csv(epoch, train_loss, test_loss, BIC, time, file_name)
         write(file, "$epoch,$time,$train_loss,$test_loss,$BIC\n")
     end
 end
+
+# This is a node of the KAN. It sums wavelets in a manner presented by the wavKAN paper.
 
 function node_mul_1D(y, w)
     output = @tullio out[i, o, b] := w[i, o] * y[i, o, b]

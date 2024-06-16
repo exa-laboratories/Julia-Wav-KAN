@@ -1,307 +1,0 @@
-
-[80709] signal (15): Terminated
-in expression starting at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/train.jl:65
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
-ijl_task_get_next at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/partr.c:517
-poptask at ./task.jl:985
-wait at ./task.jl:994
-#wait#645 at ./condition.jl:130
-wait at ./condition.jl:125 [inlined]
-take! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/XUdwt/lib/cudadrv/synchronization.jl:53
-synchronization_worker at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/XUdwt/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f65f0042408)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-jlcapi_synchronization_worker_14078 at /home/pr478@ad.eng.cam.ac.uk/.julia/compiled/v1.10/CUDA/oWw5k_IuraR.so (unknown line)
-start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: (nil))
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
-ijl_task_get_next at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/partr.c:517
-poptask at ./task.jl:985
-wait at ./task.jl:994
-#wait#645 at ./condition.jl:130
-wait at ./condition.jl:125 [inlined]
-take! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/XUdwt/lib/cudadrv/synchronization.jl:53
-synchronization_worker at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/XUdwt/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f65f0042408)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-jlcapi_synchronization_worker_14078 at /home/pr478@ad.eng.cam.ac.uk/.julia/compiled/v1.10/CUDA/oWw5k_IuraR.so (unknown line)
-start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: (nil))
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
-ijl_task_get_next at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/partr.c:517
-poptask at ./task.jl:985
-wait at ./task.jl:994
-#wait#645 at ./condition.jl:130
-wait at ./condition.jl:125 [inlined]
-take! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/XUdwt/lib/cudadrv/synchronization.jl:53
-synchronization_worker at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/XUdwt/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f65f0042408)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-jlcapi_synchronization_worker_14078 at /home/pr478@ad.eng.cam.ac.uk/.julia/compiled/v1.10/CUDA/oWw5k_IuraR.so (unknown line)
-start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: (nil))
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
-ijl_task_get_next at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/partr.c:517
-poptask at ./task.jl:985
-wait at ./task.jl:994
-#wait#645 at ./condition.jl:130
-wait at ./condition.jl:125 [inlined]
-take! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/XUdwt/lib/cudadrv/synchronization.jl:53
-synchronization_worker at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/XUdwt/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f65f0042408)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-jlcapi_synchronization_worker_14078 at /home/pr478@ad.eng.cam.ac.uk/.julia/compiled/v1.10/CUDA/oWw5k_IuraR.so (unknown line)
-start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: (nil))
-jl_gc_pool_alloc_inner at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gc.c:1326
-jl_gc_pool_alloc_noinline at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gc.c:1357 [inlined]
-jl_gc_alloc_ at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/julia_internal.h:476 [inlined]
-jl_gc_alloc at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gc.c:3583
-ijl_new_bits at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/datatype.c:970
-ijl_get_nth_field at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/datatype.c:1598
-do_apply at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/builtins.c:707
-Kernel at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/XUdwt/src/CUDAKernels.jl:105
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-𝒜𝒸𝓉! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Tullio/vChiX/src/macro.jl:1172 [inlined]
-𝒜𝒸𝓉! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Tullio/vChiX/src/macro.jl:1169 [inlined]
-threader at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Tullio/vChiX/ext/TullioCUDAExt.jl:9
-ℳ𝒶𝓀ℯ at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Tullio/vChiX/src/macro.jl:807 [inlined]
-Eval at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Tullio/vChiX/src/eval.jl:20 [inlined]
-macro expansion at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Tullio/vChiX/src/macro.jl:976 [inlined]
-batch_mul_1D at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/KAN/wavelets/derivative_of_gaussian.jl:14
-unknown function (ip: 0x7f65f00363f9)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-dogWavelet at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/KAN/wavelets/derivative_of_gaussian.jl:36
-unknown function (ip: 0x7f65f0033665)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-KANdense_layer at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/KAN/KAN_layers.jl:76
-unknown function (ip: 0x7f65f002ab05)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-fwd_pass at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/wavKAN_RNO/KAN_RNO.jl:58
-unknown function (ip: 0x7f65f002a4e5)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-KAN_RNO at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/wavKAN_RNO/KAN_RNO.jl:71
-loss_fcn at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/utils.jl:12
-unknown function (ip: 0x7f65f0029dd0)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-train_step at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/pipeline/train.jl:31
-unknown function (ip: 0x7f65f426c68c)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-jl_apply at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/julia.h:1982 [inlined]
-do_call at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/interpreter.c:126
-eval_value at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/interpreter.c:223
-eval_stmt_value at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/interpreter.c:174 [inlined]
-eval_body at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/interpreter.c:617
-jl_interpret_toplevel_thunk at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/interpreter.c:775
-jl_toplevel_eval_flex at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/toplevel.c:934
-jl_toplevel_eval_flex at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/toplevel.c:877
-ijl_toplevel_eval_in at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/toplevel.c:985
-eval at ./boot.jl:385 [inlined]
-include_string at ./loading.jl:2076
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-_include at ./loading.jl:2136
-include at ./Base.jl:495
-jfptr_include_46393.1 at /home/pr478@ad.eng.cam.ac.uk/.julia/juliaup/julia-1.10.4+0.x64.linux.gnu/lib/julia/sys.so (unknown line)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-exec_options at ./client.jl:318
-_start at ./client.jl:552
-jfptr__start_82729.1 at /home/pr478@ad.eng.cam.ac.uk/.julia/juliaup/julia-1.10.4+0.x64.linux.gnu/lib/julia/sys.so (unknown line)
-_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-jl_apply at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/julia.h:1982 [inlined]
-true_main at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/jlapi.c:582
-jl_repl_entrypoint at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/jlapi.c:731
-main at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/cli/loader_exe.c:58
-__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: 0x4010b8)
-unknown function (ip: (nil))
-Allocations: 9865488833 (Pool: 9865332011; Big: 156822); GC: 4348
-┌ Warning: CUDA runtime library libcublasLt.so.12 was loaded from a system path. This may cause errors.
-│ Ensure that you have not set the LD_LIBRARY_PATH environment variable, or that it does not contain paths to CUDA libraries.
-└ @ CUDA ~/.julia/packages/CUDA/XUdwt/src/initialization.jl:190
-┌ Warning: CUDA runtime library libnvJitLink.so.12 was loaded from a system path. This may cause errors.
-│ Ensure that you have not set the LD_LIBRARY_PATH environment variable, or that it does not contain paths to CUDA libraries.
-└ @ CUDA ~/.julia/packages/CUDA/XUdwt/src/initialization.jl:190
-┌ Warning: CUDA runtime library libcusparse.so.12 was loaded from a system path. This may cause errors.
-│ Ensure that you have not set the LD_LIBRARY_PATH environment variable, or that it does not contain paths to CUDA libraries.
-└ @ CUDA ~/.julia/packages/CUDA/XUdwt/src/initialization.jl:190
-0.0%┣                                              ┫ 0/50 [00:02<-1:-34, -2s/it]
-[1A2.0%┣▉                                          ┫ 1/50 [00:52<Inf:Inf, InfGs/it]
-[1A4.0%┣█▉                                             ┫ 2/50 [01:08<54:46, 68s/it]
-[1A6.0%┣██▉                                            ┫ 3/50 [01:24<32:58, 42s/it]
-[1A8.0%┣███▊                                           ┫ 4/50 [01:40<25:31, 33s/it]
-[1A10.0%┣████▋                                         ┫ 5/50 [01:56<21:39, 29s/it]
-[1A12.0%┣█████▌                                        ┫ 6/50 [02:11<19:15, 26s/it]
-[1A14.0%┣██████▍                                       ┫ 7/50 [02:27<17:33, 24s/it]
-[1A16.0%┣███████▍                                      ┫ 8/50 [02:43<16:18, 23s/it]
-[1A18.0%┣████████▎                                     ┫ 9/50 [02:59<15:16, 22s/it]
-[1A20.0%┣█████████                                    ┫ 10/50 [03:14<14:24, 22s/it]
-[1A22.0%┣██████████                                   ┫ 11/50 [03:30<13:40, 21s/it]
-[1A24.0%┣██████████▉                                  ┫ 12/50 [03:46<13:02, 21s/it]
-[1A26.0%┣███████████▊                                 ┫ 13/50 [04:02<12:26, 20s/it]
-[1A28.0%┣████████████▋                                ┫ 14/50 [04:18<11:54, 20s/it]
-[1A30.0%┣█████████████▌                               ┫ 15/50 [04:34<11:24, 20s/it]
-[1A32.0%┣██████████████▍                              ┫ 16/50 [04:49<10:56, 19s/it]
-[1A34.0%┣███████████████▎                             ┫ 17/50 [05:05<10:30, 19s/it]
-[1A36.0%┣████████████████▏                            ┫ 18/50 [05:21<10:04, 19s/it]
-[1A38.0%┣█████████████████                            ┫ 19/50 [05:37<09:40, 19s/it]
-[1A40.0%┣██████████████████                           ┫ 20/50 [05:53<09:17, 19s/it]
-[1A42.0%┣███████████████████                          ┫ 21/50 [06:09<08:54, 18s/it]
-[1A44.0%┣███████████████████▉                         ┫ 22/50 [06:24<08:32, 18s/it]
-[1A46.0%┣████████████████████▊                        ┫ 23/50 [06:40<08:11, 18s/it]
-[1A48.0%┣█████████████████████▋                       ┫ 24/50 [06:56<07:50, 18s/it]
-[1A50.0%┣██████████████████████▌                      ┫ 25/50 [07:12<07:30, 18s/it]
-[1A52.0%┣███████████████████████▍                     ┫ 26/50 [07:28<07:10, 18s/it]
-[1A54.0%┣████████████████████████▎                    ┫ 27/50 [07:43<06:50, 18s/it]
-[1A56.0%┣█████████████████████████▏                   ┫ 28/50 [07:59<06:31, 18s/it]
-[1A58.0%┣██████████████████████████                   ┫ 29/50 [08:15<06:11, 18s/it]
-[1A60.0%┣███████████████████████████                  ┫ 30/50 [08:31<05:52, 18s/it]
-[1A62.0%┣████████████████████████████                 ┫ 31/50 [08:47<05:34, 18s/it]
-[1A64.0%┣████████████████████████████▉                ┫ 32/50 [09:03<05:15, 18s/it]
-[1A66.0%┣█████████████████████████████▊               ┫ 33/50 [09:18<04:57, 17s/it]
-[1A68.0%┣██████████████████████████████▋              ┫ 34/50 [09:34<04:38, 17s/it]
-[1A70.0%┣███████████████████████████████▌             ┫ 35/50 [09:50<04:20, 17s/it]
-[1A72.0%┣████████████████████████████████▍            ┫ 36/50 [10:06<04:02, 17s/it]
-[1A74.0%┣█████████████████████████████████▎           ┫ 37/50 [10:22<03:45, 17s/it]
-[1A76.0%┣██████████████████████████████████▏          ┫ 38/50 [10:38<03:27, 17s/it]
-[1A78.0%┣███████████████████████████████████          ┫ 39/50 [10:53<03:09, 17s/it]
-[1A80.0%┣████████████████████████████████████         ┫ 40/50 [11:09<02:52, 17s/it]
-[1A82.0%┣█████████████████████████████████████        ┫ 41/50 [11:25<02:34, 17s/it]
-[1A84.0%┣█████████████████████████████████████▉       ┫ 42/50 [11:40<02:17, 17s/it]
-[1A86.0%┣██████████████████████████████████████▊      ┫ 43/50 [11:56<01:59, 17s/it]
-[1A88.0%┣███████████████████████████████████████▋     ┫ 44/50 [12:12<01:42, 17s/it]
-[1A90.0%┣████████████████████████████████████████▌    ┫ 45/50 [12:27<01:25, 17s/it]
-[1A92.0%┣█████████████████████████████████████████▍   ┫ 46/50 [12:42<01:08, 17s/it]
-[1A94.0%┣██████████████████████████████████████████▎  ┫ 47/50 [12:58<00:51, 17s/it]
-[1A96.0%┣███████████████████████████████████████████▏ ┫ 48/50 [13:14<00:34, 17s/it]
-[1A98.0%┣████████████████████████████████████████████ ┫ 49/50 [13:29<00:17, 17s/it]
-[1A100.0%┣████████████████████████████████████████████┫ 50/50 [13:45<00:00, 17s/it]
-[1A100.0%┣████████████████████████████████████████████┫ 50/50 [13:45<00:00, 17s/it]
-0.0%┣                                               ┫ 0/50 [00:00<00:00, -0s/it]
-[1A2.0%┣▉                                          ┫ 1/50 [00:15<Inf:Inf, InfGs/it]
-[1A4.0%┣█▉                                             ┫ 2/50 [00:31<24:47, 31s/it]
-[1A6.0%┣██▉                                            ┫ 3/50 [00:47<18:19, 23s/it]
-[1A8.0%┣███▊                                           ┫ 4/50 [01:03<16:02, 21s/it]
-[1A10.0%┣████▋                                         ┫ 5/50 [01:18<14:41, 20s/it]
-[1A12.0%┣█████▌                                        ┫ 6/50 [01:34<13:47, 19s/it]
-[1A14.0%┣██████▍                                       ┫ 7/50 [01:50<13:05, 18s/it]
-[1A16.0%┣███████▍                                      ┫ 8/50 [02:05<12:31, 18s/it]
-[1A18.0%┣████████▎                                     ┫ 9/50 [02:21<12:01, 18s/it]
-[1A20.0%┣█████████                                    ┫ 10/50 [02:36<11:34, 17s/it]
-[1A22.0%┣██████████                                   ┫ 11/50 [02:52<11:10, 17s/it]
-[1A24.0%┣██████████▉                                  ┫ 12/50 [03:07<10:47, 17s/it]
-[1A26.0%┣███████████▊                                 ┫ 13/50 [03:23<10:26, 17s/it]
-[1A28.0%┣████████████▋                                ┫ 14/50 [03:39<10:05, 17s/it]
-[1A30.0%┣█████████████▌                               ┫ 15/50 [03:54<09:45, 17s/it]
-[1A32.0%┣██████████████▍                              ┫ 16/50 [04:10<09:26, 17s/it]
-[1A34.0%┣███████████████▎                             ┫ 17/50 [04:25<09:07, 17s/it]
-[1A36.0%┣████████████████▏                            ┫ 18/50 [04:41<08:50, 17s/it]
-[1A38.0%┣█████████████████                            ┫ 19/50 [04:57<08:31, 16s/it]
-[1A40.0%┣██████████████████                           ┫ 20/50 [05:13<08:14, 16s/it]
-[1A42.0%┣███████████████████                          ┫ 21/50 [05:28<07:56, 16s/it]
-[1A44.0%┣███████████████████▉                         ┫ 22/50 [05:44<07:39, 16s/it]
-[1A46.0%┣████████████████████▊                        ┫ 23/50 [06:00<07:21, 16s/it]
-[1A48.0%┣█████████████████████▋                       ┫ 24/50 [06:15<07:04, 16s/it]
-[1A50.0%┣██████████████████████▌                      ┫ 25/50 [06:31<06:47, 16s/it]
-[1A52.0%┣███████████████████████▍                     ┫ 26/50 [06:46<06:30, 16s/it]
-[1A54.0%┣████████████████████████▎                    ┫ 27/50 [07:02<06:13, 16s/it]
-[1A56.0%┣█████████████████████████▏                   ┫ 28/50 [07:18<05:56, 16s/it]
-[1A58.0%┣██████████████████████████                   ┫ 29/50 [07:33<05:40, 16s/it]
-[1A60.0%┣███████████████████████████                  ┫ 30/50 [07:49<05:23, 16s/it]
-[1A62.0%┣████████████████████████████                 ┫ 31/50 [08:04<05:07, 16s/it]
-[1A64.0%┣████████████████████████████▉                ┫ 32/50 [08:21<04:51, 16s/it]
-[1A66.0%┣█████████████████████████████▊               ┫ 33/50 [08:36<04:34, 16s/it]
-[1A68.0%┣██████████████████████████████▋              ┫ 34/50 [08:52<04:18, 16s/it]
-[1A70.0%┣███████████████████████████████▌             ┫ 35/50 [09:07<04:01, 16s/it]
-[1A72.0%┣████████████████████████████████▍            ┫ 36/50 [09:23<03:45, 16s/it]
-[1A74.0%┣█████████████████████████████████▎           ┫ 37/50 [09:39<03:29, 16s/it]
-[1A76.0%┣██████████████████████████████████▏          ┫ 38/50 [09:54<03:13, 16s/it]
-[1A78.0%┣███████████████████████████████████          ┫ 39/50 [10:10<02:57, 16s/it]
-[1A80.0%┣████████████████████████████████████         ┫ 40/50 [10:26<02:40, 16s/it]
-[1A82.0%┣█████████████████████████████████████        ┫ 41/50 [10:41<02:24, 16s/it]
-[1A84.0%┣█████████████████████████████████████▉       ┫ 42/50 [10:57<02:08, 16s/it]
-[1A86.0%┣██████████████████████████████████████▊      ┫ 43/50 [11:12<01:52, 16s/it]
-[1A88.0%┣███████████████████████████████████████▋     ┫ 44/50 [11:28<01:36, 16s/it]
-[1A90.0%┣████████████████████████████████████████▌    ┫ 45/50 [11:44<01:20, 16s/it]
-[1A92.0%┣█████████████████████████████████████████▍   ┫ 46/50 [12:00<01:04, 16s/it]
-[1A94.0%┣██████████████████████████████████████████▎  ┫ 47/50 [12:15<00:48, 16s/it]
-[1A96.0%┣███████████████████████████████████████████▏ ┫ 48/50 [12:31<00:32, 16s/it]
-[1A98.0%┣████████████████████████████████████████████ ┫ 49/50 [12:47<00:16, 16s/it]
-[1A100.0%┣████████████████████████████████████████████┫ 50/50 [13:02<00:00, 16s/it]
-[1A100.0%┣████████████████████████████████████████████┫ 50/50 [13:02<00:00, 16s/it]
-0.0%┣                                               ┫ 0/50 [00:00<00:00, -0s/it]
-[1A2.0%┣▉                                          ┫ 1/50 [00:16<Inf:Inf, InfGs/it]
-[1A4.0%┣█▉                                             ┫ 2/50 [00:31<25:01, 31s/it]
-[1A6.0%┣██▉                                            ┫ 3/50 [00:47<18:23, 23s/it]
-[1A8.0%┣███▊                                           ┫ 4/50 [01:02<15:58, 21s/it]
-[1A10.0%┣████▋                                         ┫ 5/50 [01:18<14:40, 20s/it]
-[1A12.0%┣█████▌                                        ┫ 6/50 [01:34<13:44, 19s/it]
-[1A14.0%┣██████▍                                       ┫ 7/50 [01:49<13:03, 18s/it]
-[1A16.0%┣███████▍                                      ┫ 8/50 [02:05<12:29, 18s/it]
-[1A18.0%┣████████▎                                     ┫ 9/50 [02:20<12:00, 18s/it]
-[1A20.0%┣█████████                                    ┫ 10/50 [02:36<11:34, 17s/it]
-[1A22.0%┣██████████                                   ┫ 11/50 [02:52<11:11, 17s/it]
-[1A24.0%┣██████████▉                                  ┫ 12/50 [03:07<10:48, 17s/it]
-[1A26.0%┣███████████▊                                 ┫ 13/50 [03:23<10:27, 17s/it]
-[1A28.0%┣████████████▋                                ┫ 14/50 [03:39<10:06, 17s/it]
-[1A30.0%┣█████████████▌                               ┫ 15/50 [03:54<09:46, 17s/it]
-[1A32.0%┣██████████████▍                              ┫ 16/50 [04:10<09:27, 17s/it]
-[1A34.0%┣███████████████▎                             ┫ 17/50 [04:26<09:08, 17s/it]
-[1A36.0%┣████████████████▏                            ┫ 18/50 [04:42<08:50, 17s/it]
-[1A38.0%┣█████████████████                            ┫ 19/50 [04:57<08:32, 17s/it]
-[1A40.0%┣██████████████████                           ┫ 20/50 [05:13<08:14, 16s/it]
-[1A42.0%┣███████████████████                          ┫ 21/50 [05:28<07:56, 16s/it]
-[1A44.0%┣███████████████████▉                         ┫ 22/50 [05:44<07:38, 16s/it]
-[1A46.0%┣████████████████████▊                        ┫ 23/50 [05:59<07:21, 16s/it]
-[1A48.0%┣█████████████████████▋                       ┫ 24/50 [06:15<07:04, 16s/it]
-[1A50.0%┣██████████████████████▌                      ┫ 25/50 [06:31<06:47, 16s/it]
-[1A52.0%┣███████████████████████▍                     ┫ 26/50 [06:47<06:30, 16s/it]
-[1A54.0%┣████████████████████████▎                    ┫ 27/50 [07:02<06:13, 16s/it]
-[1A56.0%┣█████████████████████████▏                   ┫ 28/50 [07:18<05:57, 16s/it]
-[1A58.0%┣██████████████████████████                   ┫ 29/50 [07:33<05:40, 16s/it]
-[1A60.0%┣███████████████████████████                  ┫ 30/50 [07:49<05:23, 16s/it]
-[1A62.0%┣████████████████████████████                 ┫ 31/50 [08:05<05:07, 16s/it]
-[1A64.0%┣████████████████████████████▉                ┫ 32/50 [08:20<04:50, 16s/it]
-[1A66.0%┣█████████████████████████████▊               ┫ 33/50 [08:36<04:34, 16s/it]
-[1A68.0%┣██████████████████████████████▋              ┫ 34/50 [08:51<04:18, 16s/it]
-[1A70.0%┣███████████████████████████████▌             ┫ 35/50 [09:07<04:01, 16s/it]
-[1A72.0%┣████████████████████████████████▍            ┫ 36/50 [09:23<03:45, 16s/it]
-[1A74.0%┣█████████████████████████████████▎           ┫ 37/50 [09:39<03:29, 16s/it]
-[1A76.0%┣██████████████████████████████████▏          ┫ 38/50 [09:54<03:13, 16s/it]
-[1A78.0%┣███████████████████████████████████          ┫ 39/50 [10:10<02:57, 16s/it]
-[1A80.0%┣████████████████████████████████████         ┫ 40/50 [10:26<02:40, 16s/it]
-[1A82.0%┣█████████████████████████████████████        ┫ 41/50 [10:41<02:24, 16s/it]
-[1A84.0%┣█████████████████████████████████████▉       ┫ 42/50 [10:57<02:08, 16s/it]
-[1A86.0%┣██████████████████████████████████████▊      ┫ 43/50 [11:13<01:52, 16s/it]
-[1A88.0%┣███████████████████████████████████████▋     ┫ 44/50 [11:28<01:36, 16s/it]
-[1A90.0%┣████████████████████████████████████████▌    ┫ 45/50 [11:44<01:20, 16s/it]
-[1A92.0%┣█████████████████████████████████████████▍   ┫ 46/50 [12:00<01:04, 16s/it]
-[1A94.0%┣██████████████████████████████████████████▎  ┫ 47/50 [12:15<00:48, 16s/it]
-[1A96.0%┣███████████████████████████████████████████▏ ┫ 48/50 [12:31<00:32, 16s/it]
-[1A98.0%┣████████████████████████████████████████████ ┫ 49/50 [12:47<00:16, 16s/it]
-[1A100.0%┣████████████████████████████████████████████┫ 50/50 [13:02<00:00, 16s/it]
-[1A100.0%┣████████████████████████████████████████████┫ 50/50 [13:02<00:00, 16s/it]
-0.0%┣                                               ┫ 0/50 [00:00<00:00, -0s/it]
-[1A2.0%┣▉                                          ┫ 1/50 [00:16<Inf:Inf, InfGs/it]
-[1A4.0%┣█▉                                             ┫ 2/50 [00:31<25:04, 31s/it]

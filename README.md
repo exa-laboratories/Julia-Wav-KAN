@@ -1,5 +1,7 @@
 # Julia-Wav-KAN
-A Julia implementation of Wavelet Kolmogorov-Arnold Networks. MLP and wavKAN implementations of the Transformer and Recurrent Neural Operator (RNO) are applied to the 1D unit cell problem with a viscoelastic constitutive relation.
+A Julia implementation of Wavelet Kolmogorov-Arnold Networks (wavKAN). 
+
+Mutli-layer Perceptron (MLP) and wavKAN implementations of the Transformer and Recurrent Neural Operator (RNO) are applied to the 1D unit cell problem with a viscoelastic constitutive relation.
 
 ## To Run
 

@@ -64,6 +64,15 @@ julia predict_stress.jl
   <img src="figures/loss_table.png" width="100%"/>
 </p>
 
+### Visualised Predicted Stress Fields
+
+<p align="center">
+<img src="figures/Transformer_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%" style="padding-right: 20px;">
+<img src="figures/KAN_Transformer_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%">
+<img src="figures/RNO_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%" style="padding-right: 20px;">
+<img src="figures/KAN_RNO_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%">
+</p>
+
 ### TODO - Plot FLOPs comparison
 
 Training time was recorded for each of the models, but this is not considered a reliable estimate of the computational cost of the models, given that they were not run on the same hardware, and multiple tasks were running on the same machine. The number of FLOPs for each model will be calculated and compared in the future, once GFlops is updated to work with the latest Julia version.
@@ -76,15 +85,6 @@ Training time was recorded for each of the models, but this is not considered a 
     <img src="KAN/wavelets/animations/Meyer.gif" width="30%" />
     <img src="KAN/wavelets/animations/Morlet.gif" width="30%" />
     <img src="KAN/wavelets/animations/Shannon.gif" width="30%" />
-</p>
-
-### Visualised Predicted Stress Fields
-
-<p align="center">
-<img src="figures/Transformer_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%" style="padding-right: 20px;">
-<img src="figures/KAN_Transformer_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%">
-<img src="figures/RNO_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%" style="padding-right: 20px;">
-<img src="figures/KAN_RNO_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%">
 </p>
 
 ## Problem and Data - Unit Cell Problem with Viscoelastic Constitutive Relation

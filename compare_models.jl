@@ -84,7 +84,6 @@ function box_data(df, name)
     data = []
     for (idx, plot_name) in enumerate(plot_names)
         vals = Float64.(df[df.model .== plot_name, :value])
-        println(vals)
         trace = box(;y=vals, name=plot_name)
         push!(data, trace)
     end

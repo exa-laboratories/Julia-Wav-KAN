@@ -1,4 +1,5 @@
 using CSV, DataFrames, Statistics, Printf, PlotlyJS
+using PlotlyJS: box, plot
 
 log_locations = [
     "Vanilla_RNO/logs",
@@ -19,6 +20,10 @@ num_repetitions = 5
 # Create an empty DataFrame to hold all results
 results = DataFrame(Model = String[], train_loss = String[], test_loss = String[], BIC = String[])
 
+box_plot_train = DataFrame(model = String[], value = Float64)
+box_plot_test = DataFrame(model = String[], value = Float64)
+box_plot_BIC = DataFrame(model = String[], value = Float64)
+
 for (idx, log_location) in enumerate(log_locations)
     train_loss, test_loss, BIC = [], [], []
     for i in 1:num_repetitions
@@ -26,6 +31,10 @@ for (idx, log_location) in enumerate(log_locations)
         push!(train_loss, df[!,"Train Loss"][end])
         push!(test_loss, df[!,"Test Loss"][end])
         push!(BIC, df[!,"BIC"][end])
+
+        push!(box_plot_train, (model = plot_names[idx], value = df[!,"Train Loss"][end]), promote = true)
+        push!(box_plot_test, (model = plot_names[idx], value = df[!,"Test Loss"][end]), promote = true)
+        push!(box_plot_BIC, (model = plot_names[idx], value = df[!,"BIC"][end]), promote = true)
     end
 
     # Calculate means and stds
@@ -72,5 +81,28 @@ table_plot = plot(
 )
 
 savefig(table_plot, "figures/loss_table.png")
+
+# Create box plots
+function box_data(df, name)
+    data = []
+    for (idx, plot_name) in enumerate(plot_names)
+        vals = Float64.(df[df.model .== plot_name, :value])
+        println(vals)
+        trace = box(;y=vals, name=plot_name)
+        push!(data, trace)
+    end
+    data = [data...]
+    boxplot = plot(data)
+    
+    savefig(boxplot, "figures/$(name).png")
+end
+
+
+box_data(box_plot_train, "Train Loss")
+box_data(box_plot_test, "Test Loss")
+box_data(box_plot_BIC, "BIC")
+
+
+
 
 

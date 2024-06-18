@@ -39,6 +39,17 @@ julia wavKAN_Transformer/hyperparameter_tuning.jl
 julia train.jl
 ```
 
+5. Compare the training loops:
+  
+```bash
+julia compare_models.jl
+```
+
+## Results
+
+<p align="center">
+  <img src="figures/loss_table.png" width="100%"/>
+</p>
 
 ## Wavelets
 

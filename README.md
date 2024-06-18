@@ -45,6 +45,17 @@ julia train.jl
 julia compare_models.jl
 ```
 
+6. Visualize the results, (first need to remove PlotlyJS from environment):
+
+```bash
+julia
+import Pkg; Pkg.rm("PlotlyJS")
+```
+
+```bash
+julia predict_stress.jl
+```
+
 ## Results
 
 <p align="center">

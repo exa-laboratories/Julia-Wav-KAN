@@ -37,7 +37,6 @@ for (idx, log_location) in enumerate(log_locations)
         push!(box_plot_BIC, (model = plot_names[idx], value = df[!,"BIC"][end]), promote = true)
     end
 
-    # Calculate means and stds
     train_loss_mean = mean(train_loss)
     train_loss_std = std(train_loss)
     test_loss_mean = mean(test_loss)
@@ -45,7 +44,6 @@ for (idx, log_location) in enumerate(log_locations)
     BIC_mean = mean(BIC)
     BIC_std = std(BIC)
 
-    # Add results to the DataFrame
     push!(results, (
         Model = plot_names[idx],
         train_loss = @sprintf("%.2g ± %.2g", train_loss_mean, train_loss_std),
@@ -82,7 +80,6 @@ table_plot = plot(
 
 savefig(table_plot, "figures/loss_table.png")
 
-# Create box plots
 function box_data(df, name)
     data = []
     for (idx, plot_name) in enumerate(plot_names)

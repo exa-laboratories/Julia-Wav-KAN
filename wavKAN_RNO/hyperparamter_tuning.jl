@@ -70,7 +70,7 @@ wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon"]#, "Me
 
 # Define the search space
 space = Scenario(
-    n_hidden = 2:120,
+    n_hidden = 2:70,
     n_layers = 2:7,
     wav_one = wavelet_list,
     wav_two = wavelet_list,
@@ -100,7 +100,7 @@ conf = ConfParse("wavKAN_RNO/KAN_RNO_config.ini")
 parse_conf!(conf)
 
 commit!(conf, "Architecture", "n_hidden", string(n_hidden))
-commit!(conf, "Architecture", "n_layers", string(n_layers))
+commit!(conf, "Architecture", "num_layers", string(n_layers))
 commit!(conf, "Architecture", "activation", string(activation))
 commit!(conf, "Architecture", "wav_one", string(wav_one))
 commit!(conf, "Architecture", "wav_two", string(wav_two))
@@ -115,7 +115,6 @@ commit!(conf, "Optimizer", "gamma", string(gamma))
 commit!(conf, "Optimizer", "step_rate", string(step_rate))
 
 save!(conf, "wavKAN_RNO/KAN_RNO_config.ini")
-
 
 
 

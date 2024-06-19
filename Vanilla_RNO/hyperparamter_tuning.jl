@@ -82,7 +82,7 @@ conf = ConfParse("Vanilla_RNO/RNO_config.ini")
 parse_conf!(conf)
 
 commit!(conf, "Architecture", "n_hidden", string(n_hidden))
-commit!(conf, "Architecture", "n_layers", string(n_layers))
+commit!(conf, "Architecture", "num_layers", string(n_layers))
 commit!(conf, "Architecture", "activation", string(activation))
 commit!(conf, "DataLoader", "batch_size", string(b_size))
 commit!(conf, "Optimizer", "learning_rate", string(learning_rate))

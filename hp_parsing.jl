@@ -50,7 +50,7 @@ function set_KAN_RNO_params()
 end
 
 function set_Transformer_params()
-    conf = ConfParse("Transformer/Transformer_config.ini")
+    conf = ConfParse("Vanilla_Transformer/Transformer_config.ini")
     parse_conf!(conf)
 
     ENV["p"] = retrieve(conf, "Loss", "p")

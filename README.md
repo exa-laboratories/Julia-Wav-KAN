@@ -1,5 +1,7 @@
 # Julia-Wav-KAN
-A Julia implementation of Wavelet Kolmogorov-Arnold Networks. MLP and wavKAN implementations of the Transformer and Recurrent Neural Operator (RNO) are applied to the 1D unit cell problem with a viscoelastic constitutive relation.
+A Julia implementation of Wavelet Kolmogorov-Arnold Networks (wavKAN). 
+
+Mutli-layer Perceptron (MLP) and wavKAN implementations of the Transformer and Recurrent Neural Operator (RNO) are applied to the 1D unit cell problem with a viscoelastic constitutive relation.
 
 ## To Run
 
@@ -39,6 +41,43 @@ julia wavKAN_Transformer/hyperparameter_tuning.jl
 julia train.jl
 ```
 
+5. Compare the training loops:
+  
+```bash
+julia compare_models.jl
+```
+
+6. Visualize the results, (first need to remove PlotlyJS from environment):
+
+```bash
+julia
+import Pkg; Pkg.rm("PlotlyJS")
+```
+
+```bash
+julia predict_stress.jl
+```
+
+## Results
+
+### Predictive Power and Consistency
+
+<p align="center">
+  <img src="figures/loss_table.png" width="100%"/>
+</p>
+
+### Visualised Predicted Stress Fields
+
+<p align="center">
+<img src="figures/Transformer_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%" style="padding-right: 20px;">
+<img src="figures/KAN_Transformer_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%">
+<img src="figures/RNO_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%" style="padding-right: 20px;">
+<img src="figures/KAN_RNO_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%">
+</p>
+
+### TODO - Plot FLOPs comparison
+
+Training time was recorded for each of the models, but this is not considered a reliable estimate of the computational cost of the models, given that they were not run on the same hardware, and multiple tasks were running on the same machine. The number of FLOPs for each model will be calculated and compared in the future, once GFlops is updated to work with the latest Julia version.
 
 ## Wavelets
 

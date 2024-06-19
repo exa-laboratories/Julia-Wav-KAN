@@ -61,7 +61,7 @@ end
 space = Scenario(
     n_hidden = 2:20,
     n_layers = 2:5,
-    activation = ["relu", "selu", "leakyrelu"],
+    activation = ["relu", "selu", "leakyrelu", "swish", "gelu"],
     b_size = 1:20,
     learning_rate = (1e-4..1e-1),
     gamma = (0.1..0.9),

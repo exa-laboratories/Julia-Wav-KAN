@@ -82,7 +82,7 @@ function objective(trial)
 
 end
 
-wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon"]#, "Meyer"]
+wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon", "Meyer"]
 
 
 # Define the search space
@@ -103,7 +103,7 @@ space = Scenario(
     decoder_wav_three = wavelet_list,
     output_wavelet = wavelet_list,
     max_len = 500:1000,
-    activation = ["relu", "selu", "leakyrelu"],
+    activation = ["relu", "selu", "leakyrelu", "swish", "gelu"],
     b_size = 1:10,
     learning_rate = (1e-4..1e-1),
     gamma = (0.1..0.9),

@@ -31,9 +31,8 @@ function objective(trial)
     @suggest wav_four in trial
     @suggest wav_five in trial
     @suggest wav_six in trial
-    @suggest wav_seven in trial
 
-    wavelet_names = [wav_one, wav_two, wav_three, wav_four, wav_five, wav_six, wav_seven][1:n_layers]
+    wavelet_names = [wav_one, wav_two, wav_three, wav_four, wav_five, wav_six][1:n_layers]
 
     # Parse config
     conf = ConfParse("wavKAN_RNO/KAN_RNO_config.ini")
@@ -71,16 +70,15 @@ wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon"]#, "Me
 # Define the search space
 space = Scenario(
     n_hidden = 2:70,
-    n_layers = 2:7,
+    n_layers = 2:6,
     wav_one = wavelet_list,
     wav_two = wavelet_list,
     wav_three = wavelet_list,
     wav_four = wavelet_list,
     wav_five = wavelet_list,
     wav_six = wavelet_list,
-    wav_seven = wavelet_list,
     activation = ["relu", "selu", "leakyrelu"],
-    b_size = 1:20,
+    b_size = 1:12,
     learning_rate = (1e-4..1e-1),
     gamma = (0.1..0.9),
     step_rate = 10:40,
@@ -94,7 +92,7 @@ HyperTuning.optimize(objective, space)
 display(top_parameters(space))
 
 # Save the best configuration
-@unpack n_hidden, n_layers, activation, b_size, learning_rate, gamma, step_rate, wav_one, wav_two, wav_three, wav_four, wav_five, wav_six, wav_seven = space
+@unpack n_hidden, n_layers, activation, b_size, learning_rate, gamma, step_rate, wav_one, wav_two, wav_three, wav_four, wav_five, wav_six = space
 
 conf = ConfParse("wavKAN_RNO/KAN_RNO_config.ini")
 parse_conf!(conf)
@@ -108,7 +106,6 @@ commit!(conf, "Architecture", "wav_three", string(wav_three))
 commit!(conf, "Architecture", "wav_four", string(wav_four))
 commit!(conf, "Architecture", "wav_five", string(wav_five))
 commit!(conf, "Architecture", "wav_six", string(wav_six))
-commit!(conf, "Architecture", "wav_seven", string(wav_seven))
 commit!(conf, "DataLoader", "batch_size", string(b_size))
 commit!(conf, "Optimizer", "learning_rate", string(learning_rate))
 commit!(conf, "Optimizer", "gamma", string(gamma))

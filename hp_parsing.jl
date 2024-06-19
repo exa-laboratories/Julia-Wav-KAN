@@ -43,7 +43,8 @@ function set_KAN_RNO_params()
         retrieve(conf, "Architecture", "wav_two"),
         retrieve(conf, "Architecture", "wav_three"),
         retrieve(conf, "Architecture", "wav_four"),
-        retrieve(conf, "Architecture", "wav_five")
+        retrieve(conf, "Architecture", "wav_five"),
+        retrieve(conf, "Architecture", "wav_six"),
     ][1:parse(Int, num_layers)]
 
     return wavelet_names

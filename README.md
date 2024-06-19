@@ -7,7 +7,7 @@ Mutli-layer Perceptron (MLP) and wavKAN implementations of the Transformer and R
 
 This is work in progress!
 
-I'm currently in the process of tuning hyperparameters, so the results shown below aren't currently correct. This is a skeleton currently. The LR scheduler used for the below results was not configured correctly - I only recently fixed it.
+I'm currently in the process of tuning hyperparameters, so the results shown below aren't currently correct. The LR scheduler used for the below results was not configured correctly - I only recently fixed it.
 
 ## To Run
 

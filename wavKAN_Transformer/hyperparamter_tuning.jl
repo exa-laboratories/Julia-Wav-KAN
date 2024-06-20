@@ -35,13 +35,16 @@ function objective(trial)
     @suggest encoder_wav_three in trial
     @suggest encoder_wav_four in trial
     @suggest encoder_wav_five in trial
+    @suggest encoder_wav_six in trial
+    @suggest encoder_wav_seven in trial
+    @suggest encoder_wav_eight in trial
     @suggest num_decoder_layers in trial
     @suggest decoder_wav_one in trial
     @suggest decoder_wav_two in trial
     @suggest decoder_wav_three in trial
     @suggest output_wavelet in trial
 
-    encoder_wavelet_names = [encoder_wav_one, encoder_wav_two, encoder_wav_three, encoder_wav_four, encoder_wav_five][1:num_encoder_layers]
+    encoder_wavelet_names = [encoder_wav_one, encoder_wav_two, encoder_wav_three, encoder_wav_four, encoder_wav_five, encoder_wav_six, encoder_wav_seven, encoder_wav_eight][1:num_encoder_layers]
     decoder_wavelet_names = [decoder_wav_one, decoder_wav_two, decoder_wav_three][1:num_decoder_layers]
 
     # Parse config
@@ -76,7 +79,9 @@ function objective(trial)
         model, opt_state, train_loss, test_loss = train_step(model, opt_state, train_loader, test_loader, loss_fcn, epoch)
     end
 
-    println("Train Loss: ", train_loss, " Test Loss: ", test_loss)
+    model = nothing
+    train_loader = nothing
+    test_loader = nothing
 
     return test_loss
 
@@ -91,12 +96,15 @@ space = Scenario(
     nhead = 1:10,
     dim_feedforward = 100:400,
     dropout = (0.1..0.9),
-    num_encoder_layers = 2:5,
+    num_encoder_layers = 2:8,
     encoder_wav_one = wavelet_list,
     encoder_wav_two = wavelet_list,
     encoder_wav_three = wavelet_list,
     encoder_wav_four = wavelet_list,
     encoder_wav_five = wavelet_list,
+    encoder_wav_six = wavelet_list,
+    encoder_wav_seven = wavelet_list,
+    encoder_wav_eight = wavelet_list,
     num_decoder_layers = 1:2,
     decoder_wav_one = wavelet_list,
     decoder_wav_two = wavelet_list,
@@ -118,7 +126,7 @@ HyperTuning.optimize(objective, space)
 display(top_parameters(space))
 
 # Save the best configuration
-@unpack d_model, nhead, dim_feedforward, dropout, num_encoder_layers, num_decoder_layers, max_len, activation, b_size, learning_rate, gamma, step_rate, encoder_wav_one, encoder_wav_two, encoder_wav_three, encoder_wav_four, encoder_wav_five, decoder_wav_one, decoder_wav_two, decoder_wav_three, output_wavelet = space
+@unpack d_model, nhead, dim_feedforward, dropout, num_encoder_layers, num_decoder_layers, max_len, activation, b_size, learning_rate, gamma, step_rate, encoder_wav_one, encoder_wav_two, encoder_wav_three, encoder_wav_four, encoder_wav_five, encoder_wav_six, encoder_wav_seven, encoder_wav_eight, decoder_wav_one, decoder_wav_two, decoder_wav_three, output_wavelet = space
 
 conf = ConfParse("wavKAN_Transformer/KAN_Transformer_config.ini")
 parse_conf!(conf)
@@ -136,6 +144,9 @@ commit!(conf, "EncoderWavelets", "wav_two", encoder_wav_two)
 commit!(conf, "EncoderWavelets", "wav_three", encoder_wav_three)
 commit!(conf, "EncoderWavelets", "wav_four", encoder_wav_four)
 commit!(conf, "EncoderWavelets", "wav_five", encoder_wav_five)
+commit!(conf, "EncoderWavelets", "wav_six", encoder_wav_six)
+commit!(conf, "EncoderWavelets", "wav_seven", encoder_wav_seven)
+commit!(conf, "EncoderWavelets", "wav_eight", encoder_wav_eight)
 commit!(conf, "DecoderWavelets", "wav_one", decoder_wav_one)
 commit!(conf, "DecoderWavelets", "wav_two", decoder_wav_two)
 commit!(conf, "DecoderWavelets", "wav_three", decoder_wav_three)

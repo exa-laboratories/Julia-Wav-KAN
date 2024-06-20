@@ -26,15 +26,13 @@ function train_step(m, opt_state, train_loader, test_loader, loss, epoch)
         test_loss += loss(m, x, y)
     end
 
-    
-
     # Update learning rate
     LR = parse(Float32, get(ENV, "LR", "0.01"))
     step = parse(Int, get(ENV, "step", "20"))
     decay = parse(Float32, get(ENV, "decay", "0.8"))
     min_LR = parse(Float32, get(ENV, "min_LR", "1e-4"))
     Optimisers.adjust!(opt_state, step_decay(epoch, LR, step, decay, min_LR))
-    
+
     train_loss /= length(train_loader.data)
     test_loss /= length(test_loader.data)
 

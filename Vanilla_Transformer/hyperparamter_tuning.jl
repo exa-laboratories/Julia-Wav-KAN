@@ -65,6 +65,10 @@ function objective(trial)
         should_prune(trial) && (return)
     end
 
+    model = nothing
+    train_loader = nothing
+    test_loader = nothing
+
     test_loss < 100 && report_success!(trial)
 
 end

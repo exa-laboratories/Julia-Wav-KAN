@@ -77,12 +77,15 @@ function objective(trial)
     num_epochs = parse(Int, retrieve(conf, "Pipeline", "num_epochs"))
     for epoch in 1:num_epochs
         model, opt_state, train_loss, test_loss = train_step(model, opt_state, train_loader, test_loader, loss_fcn, epoch)
+        report_value!(trial, test_loss)
+        should_prune(trial) && (return)
     end
 
     model = nothing
     train_loader = nothing
     test_loader = nothing
 
+    test_loss < 100 && report_success!(trial)
     return test_loss
 
 end

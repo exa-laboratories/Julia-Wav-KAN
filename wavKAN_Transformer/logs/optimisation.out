@@ -1,6 +1,6 @@
 
-[304798] signal (15): Terminated
-in expression starting at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/hyperparamter_tuning.jl:124
+[314942] signal (15): Terminated
+in expression starting at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/hyperparamter_tuning.jl:129
 pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
 uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
 ijl_task_get_next at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/partr.c:509
@@ -10,150 +10,134 @@ wait at ./task.jl:994
 wait at ./condition.jl:125 [inlined]
 take! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
 synchronization_worker at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f8beb9c3428)
+unknown function (ip: 0x7f3c177298f8)
 _jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
 jlcapi_synchronization_worker_13798 at /home/pr478/.julia/compiled/v1.10/CUDA/oWw5k_9PMhb.so (unknown line)
 start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
 clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
 unknown function (ip: (nil))
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
-ijl_task_get_next at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/partr.c:509
-poptask at ./task.jl:985
-wait at ./task.jl:994
-#wait#645 at ./condition.jl:130
-wait at ./condition.jl:125 [inlined]
-take! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
-synchronization_worker at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f8beb9c3428)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-jlcapi_synchronization_worker_13798 at /home/pr478/.julia/compiled/v1.10/CUDA/oWw5k_9PMhb.so (unknown line)
-start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: (nil))
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
-ijl_task_get_next at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/partr.c:509
-poptask at ./task.jl:985
-wait at ./task.jl:994
-#wait#645 at ./condition.jl:130
-wait at ./condition.jl:125 [inlined]
-take! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
-synchronization_worker at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f8beb9c3428)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-jlcapi_synchronization_worker_13798 at /home/pr478/.julia/compiled/v1.10/CUDA/oWw5k_9PMhb.so (unknown line)
-start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: (nil))
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
-ijl_task_get_next at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/partr.c:509
-poptask at ./task.jl:985
-wait at ./task.jl:994
-#wait#645 at ./condition.jl:130
-wait at ./condition.jl:125 [inlined]
-take! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
-synchronization_worker at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f8beb9c3428)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-jlcapi_synchronization_worker_13798 at /home/pr478/.julia/compiled/v1.10/CUDA/oWw5k_9PMhb.so (unknown line)
-start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: (nil))
-unknown function (ip: 0x7f8d23cc4390)
-unknown function (ip: 0x7f8d23dcdfce)
-unknown function (ip: 0x7f8d23c3f6d7)
-unknown function (ip: 0x7f8d23b45055)
-unknown function (ip: 0x7f8d23bedc3c)
+unknown function (ip: 0x7f3d4b9dc390)
+unknown function (ip: 0x7f3d4bae5fce)
+unknown function (ip: 0x7f3d4bae6364)
+unknown function (ip: 0x7f3d4b79bddb)
+unknown function (ip: 0x7f3d4b85e859)
+unknown function (ip: 0x7f3d4bab7d78)
+unknown function (ip: 0x7f3d4b90600c)
 macro expansion at /home/pr478/.julia/packages/CUDA/75aiI/lib/utils/call.jl:218 [inlined]
-unchecked_cuStreamQuery at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/libcuda.jl:4260 [inlined]
-isdone at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/stream.jl:128 [inlined]
-spinning_synchronization at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:92
-#synchronize#1000 at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:198
-synchronize at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:196 [inlined]
-synchronize at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:196 [inlined]
-#1127 at /home/pr478/.julia/packages/CUDA/75aiI/src/array.jl:554
-#context!#990 at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/state.jl:168 [inlined]
-context! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/state.jl:163 [inlined]
-unsafe_copyto! at /home/pr478/.julia/packages/CUDA/75aiI/src/array.jl:550
-copyto! at /home/pr478/.julia/packages/CUDA/75aiI/src/array.jl:503 [inlined]
-getindex at /home/pr478/.julia/packages/GPUArrays/OqrUV/src/host/indexing.jl:50
-scalar_getindex at /home/pr478/.julia/packages/GPUArrays/OqrUV/src/host/indexing.jl:34 [inlined]
-_getindex at /home/pr478/.julia/packages/GPUArrays/OqrUV/src/host/indexing.jl:17 [inlined]
-getindex at /home/pr478/.julia/packages/GPUArrays/OqrUV/src/host/indexing.jl:15 [inlined]
-macro expansion at /home/pr478/.julia/packages/GPUArraysCore/GMsgk/src/GPUArraysCore.jl:210 [inlined]
-#_mapreduce#42 at /home/pr478/.julia/packages/GPUArrays/OqrUV/src/host/mapreduce.jl:71
-_mapreduce at /home/pr478/.julia/packages/GPUArrays/OqrUV/src/host/mapreduce.jl:33 [inlined]
-#mapreduce#40 at /home/pr478/.julia/packages/GPUArrays/OqrUV/src/host/mapreduce.jl:28 [inlined]
-mapreduce at /home/pr478/.julia/packages/GPUArrays/OqrUV/src/host/mapreduce.jl:28 [inlined]
-#_sum#831 at ./reducedim.jl:1015 [inlined]
-_sum at ./reducedim.jl:1015 [inlined]
-#_sum#830 at ./reducedim.jl:1014 [inlined]
-_sum at ./reducedim.jl:1014 [inlined]
-#sum#828 at ./reducedim.jl:1010 [inlined]
-sum at ./reducedim.jl:1010 [inlined]
-#accum_sum#1170 at /home/pr478/.julia/packages/Zygote/nsBv0/src/lib/broadcast.jl:47 [inlined]
-accum_sum at /home/pr478/.julia/packages/Zygote/nsBv0/src/lib/broadcast.jl:47 [inlined]
-unbroadcast at /home/pr478/.julia/packages/Zygote/nsBv0/src/lib/broadcast.jl:65 [inlined]
-#1176 at /home/pr478/.julia/packages/Zygote/nsBv0/src/lib/broadcast.jl:83 [inlined]
-map at ./tuple.jl:292 [inlined]
-#1175 at /home/pr478/.julia/packages/Zygote/nsBv0/src/lib/broadcast.jl:83
-#3746#back at /home/pr478/.julia/packages/ZygoteRules/M4xmc/src/adjoint.jl:72
-unknown function (ip: 0x7f8bebd0d40d)
+unchecked_cuStreamSynchronize at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/libcuda.jl:4265 [inlined]
+#996 at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:127
+take! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:56
+synchronization_worker at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
+unknown function (ip: 0x7f3c177298f8)
 _jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-#_norm_layer_forward#264 at /home/pr478/.julia/packages/Flux/Wz6D4/src/layers/normalise.jl:248 [inlined]
-Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-unknown function (ip: 0x7f8bebcfbbb5)
+jlcapi_synchronization_worker_13798 at /home/pr478/.julia/compiled/v1.10/CUDA/oWw5k_9PMhb.so (unknown line)
+start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: (nil))
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
+ijl_task_get_next at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/partr.c:509
+poptask at ./task.jl:985
+wait at ./task.jl:994
+#wait#645 at ./condition.jl:130
+wait at ./condition.jl:125 [inlined]
+take! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
+synchronization_worker at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
+unknown function (ip: 0x7f3c177298f8)
 _jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-_norm_layer_forward at /home/pr478/.julia/packages/Flux/Wz6D4/src/layers/normalise.jl:225 [inlined]
-Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-BatchNorm at /home/pr478/.julia/packages/Flux/Wz6D4/src/layers/normalise.jl:354 [inlined]
-Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-KANdense_layer at /home/pr478/repos/Julia-Wav-KAN/KAN/KAN_layers.jl:79 [inlined]
-Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-unknown function (ip: 0x7f8beb96df95)
+jlcapi_synchronization_worker_13798 at /home/pr478/.julia/compiled/v1.10/CUDA/oWw5k_9PMhb.so (unknown line)
+start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: (nil))
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
+ijl_task_get_next at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/partr.c:509
+poptask at ./task.jl:985
+wait at ./task.jl:994
+#wait#645 at ./condition.jl:130
+wait at ./condition.jl:125 [inlined]
+take! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
+synchronization_worker at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
+unknown function (ip: 0x7f3c177298f8)
 _jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-decoder_layer at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/Klayers.jl:119 [inlined]
+jlcapi_synchronization_worker_13798 at /home/pr478/.julia/compiled/v1.10/CUDA/oWw5k_9PMhb.so (unknown line)
+start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: (nil))
+pthread_mutex_unlock at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+unknown function (ip: 0x7f3d4b954ecc)
+unknown function (ip: 0x7f3d4b912dfe)
+macro expansion at /home/pr478/.julia/packages/CUDA/75aiI/lib/utils/call.jl:218 [inlined]
+macro expansion at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/libcuda.jl:3997 [inlined]
+#407 at /home/pr478/.julia/packages/CUDA/75aiI/lib/utils/call.jl:35 [inlined]
+check at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/libcuda.jl:35 [inlined]
+cuMemAllocFromPoolAsync at /home/pr478/.julia/packages/CUDA/75aiI/lib/utils/call.jl:34 [inlined]
+#alloc#930 at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/memory.jl:71
+alloc at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/memory.jl:61 [inlined]
+#1098 at /home/pr478/.julia/packages/CUDA/75aiI/src/memory.jl:639
+retry_reclaim at /home/pr478/.julia/packages/CUDA/75aiI/src/memory.jl:434 [inlined]
+_pool_alloc at /home/pr478/.julia/packages/CUDA/75aiI/src/memory.jl:634 [inlined]
+macro expansion at /home/pr478/.julia/packages/CUDA/75aiI/src/memory.jl:617 [inlined]
+macro expansion at ./timing.jl:395 [inlined]
+pool_alloc at /home/pr478/.julia/packages/CUDA/75aiI/src/memory.jl:616 [inlined]
+CuArray at /home/pr478/.julia/packages/CUDA/75aiI/src/array.jl:74
+similar at ./abstractarray.jl:877 [inlined]
+similar at ./abstractarray.jl:876 [inlined]
+similar at /home/pr478/.julia/packages/CUDA/75aiI/src/broadcast.jl:25 [inlined]
+similar at ./broadcast.jl:223 [inlined]
+copy at /home/pr478/.julia/packages/GPUArrays/OqrUV/src/host/broadcast.jl:29 [inlined]
+materialize at ./broadcast.jl:903 [inlined]
+std_pullback at /home/pr478/.julia/packages/ChainRules/hShjJ/src/rulesets/Statistics/statistics.jl:78
+ZBack at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/chainrules.jl:211 [inlined]
+kw_zpullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/chainrules.jl:237 [inlined]
+#normalise#164 at /home/pr478/.julia/packages/Flux/Wz6D4/src/layers/stateless.jl:40 [inlined]
 Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-unknown function (ip: 0x7f8beb95b485)
+unknown function (ip: 0x7f3c176cecc5)
 _jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-KAN_Transformer at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/KAN_Transformer.jl:71 [inlined]
+normalise at /home/pr478/.julia/packages/Flux/Wz6D4/src/layers/stateless.jl:37 [inlined]
+LayerNorm at /home/pr478/.julia/packages/Flux/Wz6D4/src/layers/normalise.jl:211 [inlined]
+Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+unknown function (ip: 0x7f3c176c9045)
+_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
+encoder_layer at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/Klayers.jl:80 [inlined]
+Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+unknown function (ip: 0x7f3c17742475)
+_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
+KAN_Transformer at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/KAN_Transformer.jl:68 [inlined]
 Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
 loss_fcn at /home/pr478/repos/Julia-Wav-KAN/utils.jl:12 [inlined]
 Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
 #1 at /home/pr478/repos/Julia-Wav-KAN/pipeline/train.jl:19 [inlined]
 Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
 #75 at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:91
-unknown function (ip: 0x7f8bebcdf1b9)
+unknown function (ip: 0x7f3c17a44be9)
 _jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
 withgradient at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:213
-unknown function (ip: 0x7f8befef6039)
+unknown function (ip: 0x7f3c17c83599)
 _jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
 train_step at /home/pr478/repos/Julia-Wav-KAN/pipeline/train.jl:19
-unknown function (ip: 0x7f8befe3335c)
+unknown function (ip: 0x7f3c161034ec)
 _jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
 objective at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/hyperparamter_tuning.jl:79
 evaluate_trial! at /home/pr478/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:5
-unknown function (ip: 0x7f8df8c85a44)
+unknown function (ip: 0x7f3e2099e3b4)
 _jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
 evaluate_objective_sequential at /home/pr478/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:27
 evaluate_objective at /home/pr478/.julia/packages/HyperTuning/7Qthr/src/evaluator/evaluate_objective.jl:12 [inlined]
 optimize! at /home/pr478/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:29
 optimize at /home/pr478/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:47
-unknown function (ip: 0x7f8df8c70459)
+unknown function (ip: 0x7f3e209884c9)
 _jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
 jl_apply at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/julia.h:1982 [inlined]
@@ -176,3 +160,38 @@ _jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src
 ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
 exec_options at ./client.jl:318
 _start at ./client.jl:552
+jfptr__start_82726.1 at /home/pr478/julia-1.10.3/lib/julia/sys.so (unknown line)
+_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
+jl_apply at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/julia.h:1982 [inlined]
+true_main at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/jlapi.c:582
+jl_repl_entrypoint at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/jlapi.c:731
+main at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/cli/loader_exe.c:58
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 0x4010b8)
+unknown function (ip: (nil))
+Allocations: 2390852714 (Pool: 2390327263; Big: 525451); GC: 70955
+┌ Warning: CUDA runtime library `libcublasLt.so.12` was loaded from a system path, `/usr/local/cuda-12.3/lib64/libcublasLt.so.12`.
+│ 
+│ This may cause errors. Ensure that you have not set the LD_LIBRARY_PATH
+│ environment variable, or that it does not contain paths to CUDA libraries.
+│ 
+│ In any other case, please file an issue.
+└ @ CUDA ~/.julia/packages/CUDA/75aiI/src/initialization.jl:219
+┌ Warning: CUDA runtime library `libnvJitLink.so.12` was loaded from a system path, `/usr/local/cuda-12.3/lib64/libnvJitLink.so.12`.
+│ 
+│ This may cause errors. Ensure that you have not set the LD_LIBRARY_PATH
+│ environment variable, or that it does not contain paths to CUDA libraries.
+│ 
+│ In any other case, please file an issue.
+└ @ CUDA ~/.julia/packages/CUDA/75aiI/src/initialization.jl:219
+┌ Warning: CUDA runtime library `libcusparse.so.12` was loaded from a system path, `/usr/local/cuda-12.3/lib64/libcusparse.so.12`.
+│ 
+│ This may cause errors. Ensure that you have not set the LD_LIBRARY_PATH
+│ environment variable, or that it does not contain paths to CUDA libraries.
+│ 
+│ In any other case, please file an issue.
+└ @ CUDA ~/.julia/packages/CUDA/75aiI/src/initialization.jl:219
+[+] Trial 1: Pair{Symbol, Any}[:activation => "relu", :b_size => 9, :d_model => 56, :decoder_wav_one => "MexicanHat", :decoder_wav_three => "Morlet", :decoder_wav_two => "Shannon", :dim_feedforward => 253, :dropout => 0.3026070764265413, :encoder_wav_eight => "Morlet", :encoder_wav_five => "DerivativeOfGaussian", :encoder_wav_four => "MexicanHat", :encoder_wav_one => "Morlet", :encoder_wav_seven => "DerivativeOfGaussian", :encoder_wav_six => "Morlet", :encoder_wav_three => "DerivativeOfGaussian", :encoder_wav_two => "Morlet", :gamma => 0.24847258887791046, :learning_rate => 0.07844869195238083, :max_len => 2085, :nhead => 5, :num_decoder_layers => 1, :num_encoder_layers => 6, :output_wavelet => "Shannon", :step_rate => 37] evaluated NaN at instance 1
+[+] Trial 2: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 8, :d_model => 56, :decoder_wav_one => "Shannon", :decoder_wav_three => "Meyer", :decoder_wav_two => "Shannon", :dim_feedforward => 285, :dropout => 0.5580237305399227, :encoder_wav_eight => "Morlet", :encoder_wav_five => "Morlet", :encoder_wav_four => "DerivativeOfGaussian", :encoder_wav_one => "DerivativeOfGaussian", :encoder_wav_seven => "Shannon", :encoder_wav_six => "DerivativeOfGaussian", :encoder_wav_three => "Meyer", :encoder_wav_two => "MexicanHat", :gamma => 0.28185354433081455, :learning_rate => 0.07752221865036653, :max_len => 1276, :nhead => 10, :num_decoder_layers => 1, :num_encoder_layers => 2, :output_wavelet => "Morlet", :step_rate => 16] evaluated NaN at instance 1
+[+] Trial 3: Pair{Symbol, Any}[:activation => "relu", :b_size => 7, :d_model => 30, :decoder_wav_one => "Shannon", :decoder_wav_three => "MexicanHat", :decoder_wav_two => "MexicanHat", :dim_feedforward => 384, :dropout => 0.3405091065831237, :encoder_wav_eight => "Meyer", :encoder_wav_five => "Shannon", :encoder_wav_four => "MexicanHat", :encoder_wav_one => "Meyer", :encoder_wav_seven => "Morlet", :encoder_wav_six => "DerivativeOfGaussian", :encoder_wav_three => "Meyer", :encoder_wav_two => "MexicanHat", :gamma => 0.3233889240473633, :learning_rate => 0.051758915768573686, :max_len => 1246, :nhead => 7, :num_decoder_layers => 1, :num_encoder_layers => 3, :output_wavelet => "DerivativeOfGaussian", :step_rate => 19] evaluated 223.33667434676906 at instance 1

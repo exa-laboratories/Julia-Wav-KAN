@@ -84,6 +84,8 @@ function objective(trial)
     model = nothing
     train_loader = nothing
     test_loader = nothing
+    GC.gc(true) 
+    CUDA.reclaim()
 
     test_loss < 100 && report_success!(trial)
     return test_loss
@@ -95,9 +97,9 @@ wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon", "Meye
 
 # Define the search space
 space = Scenario(
-    d_model = range(10, 60, step=2),
+    d_model = range(10, 80, step=2),
     nhead = 1:10,
-    dim_feedforward = 100:400,
+    dim_feedforward = 100:1000,
     dropout = (0.1..0.9),
     num_encoder_layers = 2:8,
     encoder_wav_one = wavelet_list,

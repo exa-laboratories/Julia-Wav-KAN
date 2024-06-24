@@ -54,7 +54,7 @@ function objective(trial)
     _ = set_hyperparams("Transformer")
     # b_size = parse(Int, get(ENV, "batch_size", "32"))
     learning_rate = parse(Float32, get(ENV, "LR", "1e-3"))
-    num_epochs = parse(Int, get(ENV, "num_epochs", "50"))
+    num_epochs = 20
 
     num_encoder_layers = parse(Int, get(ENV, "num_encoder_layers", "2"))
     num_decoder_layers = parse(Int, get(ENV, "num_decoder_layers", "2"))
@@ -74,7 +74,7 @@ function objective(trial)
     ENV["dim_feedforward"] = dim_feedforward
     # ENV["dropout"] = dropout
     # ENV["num_encoder_layers"] = num_encoder_layers
-    # ENV["num_decoder_layers"] = num_decoder_layers
+    ENV["num_decoder_layers"] = num_decoder_layers-1
     ENV["max_len"] = max_len
 
     train_loader, test_loader = get_visco_loader(b_size)
@@ -133,8 +133,8 @@ space = Scenario(
     gamma = (0.5..0.9),
     step_rate = 10:40,
     verbose = true,
-    max_trials = 15,
-    pruner = MedianPruner(start_after = 5, prune_after = 10),
+    max_trials = 50,
+    pruner = MedianPruner(),
 )
 
 HyperTuning.optimize(objective, space)

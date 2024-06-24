@@ -2,6 +2,7 @@ include("../pipeline/data_processing/data_loader.jl")
 include("KAN_RNO.jl")
 include("../utils.jl")
 include("../pipeline/train.jl")
+include("../hp_parsing.jl")
 
 using HyperTuning
 using ConfParser
@@ -12,6 +13,7 @@ using .training: train_step
 using .KAN_RecurrentNO: create_KAN_RNO
 using .loaders: get_visco_loader
 using .UTILS: loss_fcn
+using .hyperparams: set_hyperparams
 
 # Define the objective function, edits RNO_config.ini and runs the training 
 function objective(trial)
@@ -38,15 +40,21 @@ function objective(trial)
     conf = ConfParse("wavKAN_RNO/KAN_RNO_config.ini")
     parse_conf!(conf)
 
+    # Use Vanilla_RNO config
+    _ = set_hyperparams("RNO")
+    b_size = parse(Int, get(ENV, "batch_size", "32"))
+    learning_rate = parse(Float32, get(ENV, "LR", "1e-3"))
+    num_epochs = 20
+
     # Create model
-    ENV["p"] = retrieve(conf, "Loss", "p")
-    ENV["step"] = step_rate
-    ENV["decay"] = gamma
-    ENV["LR"] = learning_rate
-    ENV["min_LR"] = retrieve(conf, "Optimizer", "min_lr")
-    ENV["activation"] = activation
-    ENV["n_hidden"] = n_hidden
-    ENV["num_layers"] = n_layers
+    # ENV["p"] = retrieve(conf, "Loss", "p")
+    # ENV["step"] = step_rate
+    # ENV["decay"] = gamma
+    # ENV["LR"] = learning_rate
+    # ENV["min_LR"] = retrieve(conf, "Optimizer", "min_lr")
+    # ENV["activation"] = activation
+    # ENV["n_hidden"] = n_hidden
+    # ENV["num_layers"] = n_layers
 
     train_loader, test_loader = get_visco_loader(b_size)
 
@@ -72,7 +80,7 @@ function objective(trial)
 
 end
 
-wavelet_list = ["MexicanHat", "DerivativeOfGaussian"]#, "Morlet", "Shannon", "Meyer"]
+wavelet_list = ["MexicanHat", "DerivativeOfGaussian", "Morlet", "Shannon", "Meyer"]
 
 # Define the search space
 space = Scenario(
@@ -91,7 +99,7 @@ space = Scenario(
     step_rate = 10:40,
     verbose = true,
     max_trials = 50,
-    pruner = MedianPruner(start_after = 5, prune_after = 10),
+    pruner = MedianPruner(),
 )
 
 HyperTuning.optimize(objective, space)
@@ -103,6 +111,17 @@ display(top_parameters(space))
 
 conf = ConfParse("wavKAN_RNO/KAN_RNO_config.ini")
 parse_conf!(conf)
+
+# Use Vanilla_RNO config
+vanilla_conf = ConfParse("Vanilla_RNO/RNO_config.ini")
+parse_conf!(vanilla_conf)
+n_hidden = retrieve(vanilla_conf, "Architecture", "n_hidden")
+n_layers = retrieve(vanilla_conf, "Architecture", "num_layers")
+activation = retrieve(vanilla_conf, "Architecture", "activation")
+b_size = retrieve(vanilla_conf, "DataLoader", "batch_size")
+learning_rate = retrieve(vanilla_conf, "Optimizer", "learning_rate")
+gamma = retrieve(vanilla_conf, "Optimizer", "gamma")
+step_rate = retrieve(vanilla_conf, "Optimizer", "step_rate")
 
 commit!(conf, "Architecture", "n_hidden", string(n_hidden))
 commit!(conf, "Architecture", "num_layers", string(n_layers))

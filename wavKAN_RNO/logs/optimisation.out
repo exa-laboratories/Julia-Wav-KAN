@@ -1,6 +1,6 @@
 
-[48436] signal (15): Terminated
-in expression starting at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/wavKAN_RNO/hyperparamter_tuning.jl:90
+[78857] signal (15): Terminated
+in expression starting at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/wavKAN_RNO/hyperparamter_tuning.jl:97
 pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
 uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
 ijl_task_get_next at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/partr.c:517
@@ -10,7 +10,7 @@ wait at ./task.jl:994
 wait at ./condition.jl:125 [inlined]
 take! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
 synchronization_worker at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f96f8d315d8)
+unknown function (ip: 0x7f48c05d2c78)
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
 jlcapi_synchronization_worker_13807 at /home/pr478@ad.eng.cam.ac.uk/.julia/compiled/v1.10/CUDA/oWw5k_IuraR.so (unknown line)
@@ -26,7 +26,7 @@ wait at ./task.jl:994
 wait at ./condition.jl:125 [inlined]
 take! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
 synchronization_worker at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f96f8d315d8)
+unknown function (ip: 0x7f48c05d2c78)
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
 jlcapi_synchronization_worker_13807 at /home/pr478@ad.eng.cam.ac.uk/.julia/compiled/v1.10/CUDA/oWw5k_IuraR.so (unknown line)
@@ -42,7 +42,7 @@ wait at ./task.jl:994
 wait at ./condition.jl:125 [inlined]
 take! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
 synchronization_worker at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f96f8d315d8)
+unknown function (ip: 0x7f48c05d2c78)
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
 jlcapi_synchronization_worker_13807 at /home/pr478@ad.eng.cam.ac.uk/.julia/compiled/v1.10/CUDA/oWw5k_IuraR.so (unknown line)
@@ -58,67 +58,126 @@ wait at ./task.jl:994
 wait at ./condition.jl:125 [inlined]
 take! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
 synchronization_worker at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f96f8d315d8)
+unknown function (ip: 0x7f48c05d2c78)
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
 jlcapi_synchronization_worker_13807 at /home/pr478@ad.eng.cam.ac.uk/.julia/compiled/v1.10/CUDA/oWw5k_IuraR.so (unknown line)
 start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
 clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
 unknown function (ip: (nil))
-jl_lookup_generic_ at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2994 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3073
-Pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:106
-unknown function (ip: 0x7f96f8cd7475)
+unknown function (ip: 0x7f49c23a8d4b)
+unknown function (ip: 0x7f49c22d5847)
+unknown function (ip: 0x7f49c2147ec5)
+unknown function (ip: 0x7f49c2148231)
+unknown function (ip: 0x7f49c24b28b8)
+unknown function (ip: 0x7f49c23e8f52)
+unknown function (ip: 0x7f49c24ada0b)
+unknown function (ip: 0x7f49c20f7604)
+unknown function (ip: 0x7f49c20f7e77)
+unknown function (ip: 0x7f49c20fea6e)
+unknown function (ip: 0x7f49c22bb26f)
+macro expansion at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/utils/call.jl:218 [inlined]
+macro expansion at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/libcuda.jl:4429 [inlined]
+#535 at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/utils/call.jl:35 [inlined]
+check at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/libcuda.jl:35 [inlined]
+cuLaunchKernel at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/utils/call.jl:34 [inlined]
+#966 at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/execution.jl:66
+macro expansion at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/execution.jl:33 [inlined]
+macro expansion at ./none:0 [inlined]
+pack_arguments at ./none:0
+#launch#965 at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/execution.jl:59
+launch at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/execution.jl:52 [inlined]
+#972 at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/execution.jl:189 [inlined]
+macro expansion at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/execution.jl:149 [inlined]
+macro expansion at ./none:0 [inlined]
+convert_arguments at ./none:0 [inlined]
+#cudacall#971 at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/execution.jl:191 [inlined]
+cudacall at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/lib/cudadrv/execution.jl:187 [inlined]
+macro expansion at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/src/compiler/execution.jl:268 [inlined]
+macro expansion at ./none:0 [inlined]
+#call#1157 at ./none:0 [inlined]
+call at ./none:0 [inlined]
+#_#1172 at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/src/compiler/execution.jl:390
+HostKernel at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/src/compiler/execution.jl:389 [inlined]
+macro expansion at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/src/compiler/execution.jl:114 [inlined]
+#gpu_call#1205 at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/src/gpuarrays.jl:30 [inlined]
+gpu_call at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/CUDA/75aiI/src/gpuarrays.jl:28 [inlined]
+#gpu_call#1 at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/GPUArrays/HjWFN/src/device/execution.jl:69
+gpu_call at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/GPUArrays/HjWFN/src/device/execution.jl:34 [inlined]
+_copyto! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/GPUArrays/HjWFN/src/host/broadcast.jl:82 [inlined]
+copyto! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/GPUArrays/HjWFN/src/host/broadcast.jl:44 [inlined]
+copy at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/GPUArrays/HjWFN/src/host/broadcast.jl:29 [inlined]
+materialize at ./broadcast.jl:903
+unknown function (ip: 0x7f48c0636ec5)
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-_cuda at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Flux/CUn7U/ext/FluxCUDAExt/functor.jl:56 [inlined]
-Pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-unknown function (ip: 0x7f96f8cd5995)
+broadcast_forward at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/lib/broadcast.jl:282
+adjoint at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/lib/broadcast.jl:361 [inlined]
+_pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/ZygoteRules/M4xmc/src/adjoint.jl:67
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-gpu at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Flux/CUn7U/src/functor.jl:356 [inlined]
-Pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-gpu at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Flux/CUn7U/src/functor.jl:259 [inlined]
-Pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-|> at ./operators.jl:917 [inlined]
-init_hidden at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/wavKAN_RNO/KAN_RNO.jl:40 [inlined]
-Pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-unknown function (ip: 0x7f96f8cd4e55)
+jl_apply at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/julia.h:1982 [inlined]
+do_apply at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/builtins.c:768
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-fwd_pass at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/wavKAN_RNO/KAN_RNO.jl:48 [inlined]
-Pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-unknown function (ip: 0x7f96f8ce8ee5)
+jl_apply at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/julia.h:1982 [inlined]
+do_apply at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/builtins.c:768
+_apply at ./boot.jl:838
+adjoint at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/lib/lib.jl:203 [inlined]
+_pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/ZygoteRules/M4xmc/src/adjoint.jl:67 [inlined]
+broadcasted at ./broadcast.jl:1341 [inlined]
+_pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+unknown function (ip: 0x7f48c0634c5f)
+_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
+MeyerAux at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/KAN/wavelets/meyer_utils.jl:56 [inlined]
+_pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
+MWavelet at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/KAN/wavelets/meyer.jl:39 [inlined]
+_pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+unknown function (ip: 0x7f4920195ee0)
+_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
+KANdense_layer at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/KAN/KAN_layers.jl:76 [inlined]
+_pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+unknown function (ip: 0x7f4920181d80)
+_jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
+fwd_pass at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/wavKAN_RNO/KAN_RNO.jl:51 [inlined]
+_pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+unknown function (ip: 0x7f492016e239)
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
 KAN_RNO at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/wavKAN_RNO/KAN_RNO.jl:71 [inlined]
-Pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+_pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
 loss_fcn at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/utils.jl:12 [inlined]
-Pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+_pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
 #1 at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/pipeline/train.jl:19 [inlined]
-Pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-#75 at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:91
-unknown function (ip: 0x7f97100dfe49)
+_pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+unknown function (ip: 0x7f492014d260)
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
-withgradient at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:213
-unknown function (ip: 0x7f977014b1b9)
+pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:90
+pullback at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:88 [inlined]
+withgradient at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:205
+unknown function (ip: 0x7f49202d6679)
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
 train_step at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/pipeline/train.jl:19
-unknown function (ip: 0x7f977014a49c)
+unknown function (ip: 0x7f49202d595c)
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
 objective at /home/pr478@ad.eng.cam.ac.uk/repos/Julia-Wav-KAN/wavKAN_RNO/hyperparamter_tuning.jl:61
 evaluate_trial! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:5
-unknown function (ip: 0x7f98ce37fa94)
+unknown function (ip: 0x7f4a7f1c3cd4)
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
 evaluate_objective_sequential at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:27
 evaluate_objective at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/HyperTuning/7Qthr/src/evaluator/evaluate_objective.jl:12 [inlined]
 optimize! at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:29
 optimize at /home/pr478@ad.eng.cam.ac.uk/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:47
-unknown function (ip: 0x7f98ce369c99)
+unknown function (ip: 0x7f4a7f1adc89)
 _jl_invoke at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
 ijl_apply_generic at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/gf.c:3077
 jl_apply at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/src/julia.h:1982 [inlined]
@@ -151,7 +210,7 @@ main at /cache/build/builder-amdci4-0/julialang/julia-release-1-dot-10/cli/loade
 __libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
 unknown function (ip: 0x4010b8)
 unknown function (ip: (nil))
-Allocations: 408712978928 (Pool: 408687787609; Big: 25191319); GC: 212478
+Allocations: 188383080342 (Pool: 188372683956; Big: 10396386); GC: 61635
 ┌ Warning: CUDA runtime library `libcublasLt.so.12` was loaded from a system path, `/usr/local/cuda-12.4/lib64/libcublasLt.so.12`.
 │ 
 │ This may cause errors. Ensure that you have not set the LD_LIBRARY_PATH
@@ -173,21 +232,12 @@ Allocations: 408712978928 (Pool: 408687787609; Big: 25191319); GC: 212478
 │ 
 │ In any other case, please file an issue.
 └ @ CUDA ~/.julia/packages/CUDA/75aiI/src/initialization.jl:219
-[+] Trial 1: Pair{Symbol, Any}[:activation => "relu", :b_size => 10, :gamma => 0.24847258887791046, :learning_rate => 0.07716441396845232, :n_hidden => 17, :n_layers => 4, :step_rate => 38, :wav_five => "DerivativeOfGaussian", :wav_four => "Shannon", :wav_one => "Meyer", :wav_six => "DerivativeOfGaussian", :wav_three => "Shannon", :wav_two => "MexicanHat"] evaluated 21.790691137313843 at instance 1
-[+] Trial 2: Pair{Symbol, Any}[:activation => "selu", :b_size => 4, :gamma => 0.46832164408262933, :learning_rate => 0.0693846844270222, :n_hidden => 3, :n_layers => 3, :step_rate => 20, :wav_five => "Shannon", :wav_four => "Morlet", :wav_one => "Shannon", :wav_six => "Morlet", :wav_three => "DerivativeOfGaussian", :wav_two => "Morlet"] evaluated 3251.653694152832 at instance 1
-[+] Trial 3: Pair{Symbol, Any}[:activation => "selu", :b_size => 12, :gamma => 0.582127741065247, :learning_rate => 0.04618861287146734, :n_hidden => 16, :n_layers => 6, :step_rate => 32, :wav_five => "MexicanHat", :wav_four => "Morlet", :wav_one => "Shannon", :wav_six => "DerivativeOfGaussian", :wav_three => "Meyer", :wav_two => "Shannon"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 4: Pair{Symbol, Any}[:activation => "swish", :b_size => 12, :gamma => 0.17403465197812523, :learning_rate => 0.0578779027641859, :n_hidden => 23, :n_layers => 2, :step_rate => 17, :wav_five => "DerivativeOfGaussian", :wav_four => "Shannon", :wav_one => "DerivativeOfGaussian", :wav_six => "MexicanHat", :wav_three => "DerivativeOfGaussian", :wav_two => "Morlet"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 5: Pair{Symbol, Any}[:activation => "gelu", :b_size => 10, :gamma => 0.8353871086519683, :learning_rate => 0.031300500668918825, :n_hidden => 37, :n_layers => 3, :step_rate => 25, :wav_five => "MexicanHat", :wav_four => "Morlet", :wav_one => "Shannon", :wav_six => "Meyer", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated 3251.653778076172 at instance 1
-[+] Trial 6: Pair{Symbol, Any}[:activation => "selu", :b_size => 12, :gamma => 0.19885383898407955, :learning_rate => 0.02990613296399288, :n_hidden => 34, :n_layers => 4, :step_rate => 20, :wav_five => "Meyer", :wav_four => "MexicanHat", :wav_one => "Meyer", :wav_six => "DerivativeOfGaussian", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 7: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 2, :gamma => 0.8366121452707292, :learning_rate => 0.0031003791680519264, :n_hidden => 33, :n_layers => 3, :step_rate => 17, :wav_five => "DerivativeOfGaussian", :wav_four => "Meyer", :wav_one => "MexicanHat", :wav_six => "Shannon", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated 53458.16030883789 at instance 1
-[+] Trial 8: Pair{Symbol, Any}[:activation => "swish", :b_size => 11, :gamma => 0.8784034634102377, :learning_rate => 0.018288573320045902, :n_hidden => 36, :n_layers => 2, :step_rate => 30, :wav_five => "DerivativeOfGaussian", :wav_four => "Shannon", :wav_one => "MexicanHat", :wav_six => "DerivativeOfGaussian", :wav_three => "MexicanHat", :wav_two => "Morlet"] evaluated 3251.6536865234375 at instance 1
-[+] Trial 9: Pair{Symbol, Any}[:activation => "selu", :b_size => 5, :gamma => 0.8111730017633216, :learning_rate => 0.0496769977525865, :n_hidden => 11, :n_layers => 4, :step_rate => 10, :wav_five => "Shannon", :wav_four => "Meyer", :wav_one => "Morlet", :wav_six => "Meyer", :wav_three => "DerivativeOfGaussian", :wav_two => "Morlet"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 10: Pair{Symbol, Any}[:activation => "swish", :b_size => 4, :gamma => 0.4669289772915025, :learning_rate => 0.004236376680730223, :n_hidden => 3, :n_layers => 2, :step_rate => 37, :wav_five => "Meyer", :wav_four => "Meyer", :wav_one => "Meyer", :wav_six => "Morlet", :wav_three => "Meyer", :wav_two => "MexicanHat"] evaluated 721.9472332000732 at instance 1
-[+] Trial 11: Pair{Symbol, Any}[:activation => "gelu", :b_size => 5, :gamma => 0.5136100357965112, :learning_rate => 0.08437958280601252, :n_hidden => 47, :n_layers => 3, :step_rate => 34, :wav_five => "MexicanHat", :wav_four => "Meyer", :wav_one => "MexicanHat", :wav_six => "DerivativeOfGaussian", :wav_three => "Shannon", :wav_two => "Meyer"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 12: Pair{Symbol, Any}[:activation => "selu", :b_size => 11, :gamma => 0.6148262070998238, :learning_rate => 0.07856809266944909, :n_hidden => 13, :n_layers => 5, :step_rate => 38, :wav_five => "MexicanHat", :wav_four => "Morlet", :wav_one => "Morlet", :wav_six => "Shannon", :wav_three => "DerivativeOfGaussian", :wav_two => "MexicanHat"] evaluated 3251.6536865234375 at instance 1
-[+] Trial 13: Pair{Symbol, Any}[:activation => "gelu", :b_size => 4, :gamma => 0.25880672718854913, :learning_rate => 0.09815677546221903, :n_hidden => 44, :n_layers => 4, :step_rate => 28, :wav_five => "MexicanHat", :wav_four => "Morlet", :wav_one => "Morlet", :wav_six => "DerivativeOfGaussian", :wav_three => "Morlet", :wav_two => "Morlet"] evaluated 3251.653694152832 at instance 1
-[+] Trial 14: Pair{Symbol, Any}[:activation => "relu", :b_size => 11, :gamma => 0.6704189212904249, :learning_rate => 0.0002655779477978724, :n_hidden => 63, :n_layers => 6, :step_rate => 15, :wav_five => "MexicanHat", :wav_four => "Morlet", :wav_one => "MexicanHat", :wav_six => "Meyer", :wav_three => "DerivativeOfGaussian", :wav_two => "MexicanHat"] evaluated 1550.8701190948486 at instance 1
-[+] Trial 15: Pair{Symbol, Any}[:activation => "selu", :b_size => 9, :gamma => 0.5668967324565499, :learning_rate => 0.01271274615675127, :n_hidden => 63, :n_layers => 2, :step_rate => 22, :wav_five => "DerivativeOfGaussian", :wav_four => "DerivativeOfGaussian", :wav_one => "Meyer", :wav_six => "Shannon", :wav_three => "Morlet", :wav_two => "Morlet"] evaluated 3251.6536254882812 at instance 1
-[+] Trial 16: Pair{Symbol, Any}[:activation => "swish", :b_size => 9, :gamma => 0.30038391623297034, :learning_rate => 0.014682690157044305, :n_hidden => 10, :n_layers => 2, :step_rate => 36, :wav_five => "Meyer", :wav_four => "Meyer", :wav_one => "DerivativeOfGaussian", :wav_six => "Morlet", :wav_three => "Shannon", :wav_two => "Morlet"] evaluated 3251.6536254882812 at instance 1
-[+] Trial 17: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 6, :gamma => 0.7283052067478801, :learning_rate => 0.028513059309917422, :n_hidden => 25, :n_layers => 3, :step_rate => 11, :wav_five => "Meyer", :wav_four => "DerivativeOfGaussian", :wav_one => "MexicanHat", :wav_six => "Shannon", :wav_three => "Morlet", :wav_two => "Morlet"] evaluated 3251.6536712646484 at instance 1
-[+] Trial 18: Pair{Symbol, Any}[:activation => "gelu", :b_size => 6, :gamma => 0.5761010479485188, :learning_rate => 0.03625801975688303, :n_hidden => 70, :n_layers => 3, :step_rate => 17, :wav_five => "MexicanHat", :wav_four => "Morlet", :wav_one => "MexicanHat", :wav_six => "Shannon", :wav_three => "Shannon", :wav_two => "Morlet"] evaluated 3251.6536712646484 at instance 1
+[*] Trial 1: Pair{Symbol, Any}[:activation => "relu", :b_size => 10, :gamma => 0.5742362944389552, :learning_rate => 0.007716441396845231, :n_hidden => 17, :n_layers => 4, :step_rate => 38, :wav_five => "DerivativeOfGaussian", :wav_four => "Shannon", :wav_one => "Meyer", :wav_six => "DerivativeOfGaussian", :wav_three => "Shannon", :wav_two => "MexicanHat"] evaluated 19.789621829986572 at instance 1
+[+] Trial 2: Pair{Symbol, Any}[:activation => "selu", :b_size => 4, :gamma => 0.6841608220413147, :learning_rate => 0.006938468442702219, :n_hidden => 3, :n_layers => 3, :step_rate => 20, :wav_five => "Shannon", :wav_four => "Morlet", :wav_one => "Shannon", :wav_six => "Morlet", :wav_three => "DerivativeOfGaussian", :wav_two => "Morlet"] evaluated 3251.653694152832 at instance 1
+[+] Trial 3: Pair{Symbol, Any}[:activation => "selu", :b_size => 12, :gamma => 0.7410638705326235, :learning_rate => 0.004618861287146734, :n_hidden => 16, :n_layers => 6, :step_rate => 32, :wav_five => "MexicanHat", :wav_four => "Morlet", :wav_one => "Shannon", :wav_six => "DerivativeOfGaussian", :wav_three => "Meyer", :wav_two => "Shannon"] evaluated 3251.6537170410156 at instance 1
+[*] Trial 4: Pair{Symbol, Any}[:activation => "swish", :b_size => 12, :gamma => 0.5370173259890626, :learning_rate => 0.0057877902764185895, :n_hidden => 23, :n_layers => 2, :step_rate => 17, :wav_five => "DerivativeOfGaussian", :wav_four => "Shannon", :wav_one => "DerivativeOfGaussian", :wav_six => "MexicanHat", :wav_three => "DerivativeOfGaussian", :wav_two => "Morlet"] evaluated 15.1538787484169 at instance 1
+[+] Trial 5: Pair{Symbol, Any}[:activation => "gelu", :b_size => 10, :gamma => 0.8676935543259842, :learning_rate => 0.0031300500668918828, :n_hidden => 37, :n_layers => 3, :step_rate => 25, :wav_five => "MexicanHat", :wav_four => "Morlet", :wav_one => "Shannon", :wav_six => "Meyer", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated 3251.653778076172 at instance 1
+[+] Trial 6: Pair{Symbol, Any}[:activation => "selu", :b_size => 12, :gamma => 0.5494269194920398, :learning_rate => 0.002990613296399288, :n_hidden => 34, :n_layers => 4, :step_rate => 20, :wav_five => "Meyer", :wav_four => "MexicanHat", :wav_one => "Meyer", :wav_six => "DerivativeOfGaussian", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated 3251.6537170410156 at instance 1
+[+] Trial 7: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 2, :gamma => 0.8683060726353646, :learning_rate => 0.00031003791680519273, :n_hidden => 33, :n_layers => 3, :step_rate => 17, :wav_five => "DerivativeOfGaussian", :wav_four => "Meyer", :wav_one => "MexicanHat", :wav_six => "Shannon", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated 2253.262439727783 at instance 1
+[+] Trial 8: Pair{Symbol, Any}[:activation => "swish", :b_size => 11, :gamma => 0.8892017317051188, :learning_rate => 0.0018288573320045902, :n_hidden => 36, :n_layers => 2, :step_rate => 30, :wav_five => "DerivativeOfGaussian", :wav_four => "Shannon", :wav_one => "MexicanHat", :wav_six => "DerivativeOfGaussian", :wav_three => "MexicanHat", :wav_two => "Morlet"] evaluated 219.68159699440002 at instance 1
+[+] Trial 9: Pair{Symbol, Any}[:activation => "selu", :b_size => 5, :gamma => 0.8555865008816608, :learning_rate => 0.00496769977525865, :n_hidden => 11, :n_layers => 4, :step_rate => 10, :wav_five => "Shannon", :wav_four => "Meyer", :wav_one => "Morlet", :wav_six => "Meyer", :wav_three => "DerivativeOfGaussian", :wav_two => "Morlet"] evaluated 3251.6537170410156 at instance 1

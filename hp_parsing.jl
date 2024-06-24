@@ -100,7 +100,10 @@ function set_KAN_Transformer_params()
         retrieve(conf, "EncoderWavelets", "wav_two"),
         retrieve(conf, "EncoderWavelets", "wav_three"),
         retrieve(conf, "EncoderWavelets", "wav_four"),
-        retrieve(conf, "EncoderWavelets", "wav_five")
+        retrieve(conf, "EncoderWavelets", "wav_five"),
+        retrieve(conf, "EncoderWavelets", "wav_six"),
+        retrieve(conf, "EncoderWavelets", "wav_seven"),
+        retrieve(conf, "EncoderWavelets", "wav_eight"),
     ][1:parse(Int, num_encoder_layers)]
 
     decoder_wavelet_names = [

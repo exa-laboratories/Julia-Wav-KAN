@@ -1,176 +1,3 @@
-
-[314942] signal (15): Terminated
-in expression starting at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/hyperparamter_tuning.jl:129
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
-ijl_task_get_next at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/partr.c:509
-poptask at ./task.jl:985
-wait at ./task.jl:994
-#wait#645 at ./condition.jl:130
-wait at ./condition.jl:125 [inlined]
-take! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
-synchronization_worker at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f3c177298f8)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-jlcapi_synchronization_worker_13798 at /home/pr478/.julia/compiled/v1.10/CUDA/oWw5k_9PMhb.so (unknown line)
-start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: (nil))
-unknown function (ip: 0x7f3d4b9dc390)
-unknown function (ip: 0x7f3d4bae5fce)
-unknown function (ip: 0x7f3d4bae6364)
-unknown function (ip: 0x7f3d4b79bddb)
-unknown function (ip: 0x7f3d4b85e859)
-unknown function (ip: 0x7f3d4bab7d78)
-unknown function (ip: 0x7f3d4b90600c)
-macro expansion at /home/pr478/.julia/packages/CUDA/75aiI/lib/utils/call.jl:218 [inlined]
-unchecked_cuStreamSynchronize at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/libcuda.jl:4265 [inlined]
-#996 at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:127
-take! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:56
-synchronization_worker at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f3c177298f8)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-jlcapi_synchronization_worker_13798 at /home/pr478/.julia/compiled/v1.10/CUDA/oWw5k_9PMhb.so (unknown line)
-start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: (nil))
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
-ijl_task_get_next at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/partr.c:509
-poptask at ./task.jl:985
-wait at ./task.jl:994
-#wait#645 at ./condition.jl:130
-wait at ./condition.jl:125 [inlined]
-take! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
-synchronization_worker at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f3c177298f8)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-jlcapi_synchronization_worker_13798 at /home/pr478/.julia/compiled/v1.10/CUDA/oWw5k_9PMhb.so (unknown line)
-start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: (nil))
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:883
-ijl_task_get_next at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/partr.c:509
-poptask at ./task.jl:985
-wait at ./task.jl:994
-#wait#645 at ./condition.jl:130
-wait at ./condition.jl:125 [inlined]
-take! at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:53
-synchronization_worker at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/synchronization.jl:121
-unknown function (ip: 0x7f3c177298f8)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-jlcapi_synchronization_worker_13798 at /home/pr478/.julia/compiled/v1.10/CUDA/oWw5k_9PMhb.so (unknown line)
-start_thread at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-clone at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: (nil))
-pthread_mutex_unlock at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-unknown function (ip: 0x7f3d4b954ecc)
-unknown function (ip: 0x7f3d4b912dfe)
-macro expansion at /home/pr478/.julia/packages/CUDA/75aiI/lib/utils/call.jl:218 [inlined]
-macro expansion at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/libcuda.jl:3997 [inlined]
-#407 at /home/pr478/.julia/packages/CUDA/75aiI/lib/utils/call.jl:35 [inlined]
-check at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/libcuda.jl:35 [inlined]
-cuMemAllocFromPoolAsync at /home/pr478/.julia/packages/CUDA/75aiI/lib/utils/call.jl:34 [inlined]
-#alloc#930 at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/memory.jl:71
-alloc at /home/pr478/.julia/packages/CUDA/75aiI/lib/cudadrv/memory.jl:61 [inlined]
-#1098 at /home/pr478/.julia/packages/CUDA/75aiI/src/memory.jl:639
-retry_reclaim at /home/pr478/.julia/packages/CUDA/75aiI/src/memory.jl:434 [inlined]
-_pool_alloc at /home/pr478/.julia/packages/CUDA/75aiI/src/memory.jl:634 [inlined]
-macro expansion at /home/pr478/.julia/packages/CUDA/75aiI/src/memory.jl:617 [inlined]
-macro expansion at ./timing.jl:395 [inlined]
-pool_alloc at /home/pr478/.julia/packages/CUDA/75aiI/src/memory.jl:616 [inlined]
-CuArray at /home/pr478/.julia/packages/CUDA/75aiI/src/array.jl:74
-similar at ./abstractarray.jl:877 [inlined]
-similar at ./abstractarray.jl:876 [inlined]
-similar at /home/pr478/.julia/packages/CUDA/75aiI/src/broadcast.jl:25 [inlined]
-similar at ./broadcast.jl:223 [inlined]
-copy at /home/pr478/.julia/packages/GPUArrays/OqrUV/src/host/broadcast.jl:29 [inlined]
-materialize at ./broadcast.jl:903 [inlined]
-std_pullback at /home/pr478/.julia/packages/ChainRules/hShjJ/src/rulesets/Statistics/statistics.jl:78
-ZBack at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/chainrules.jl:211 [inlined]
-kw_zpullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/chainrules.jl:237 [inlined]
-#normalise#164 at /home/pr478/.julia/packages/Flux/Wz6D4/src/layers/stateless.jl:40 [inlined]
-Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-unknown function (ip: 0x7f3c176cecc5)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-normalise at /home/pr478/.julia/packages/Flux/Wz6D4/src/layers/stateless.jl:37 [inlined]
-LayerNorm at /home/pr478/.julia/packages/Flux/Wz6D4/src/layers/normalise.jl:211 [inlined]
-Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-unknown function (ip: 0x7f3c176c9045)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-encoder_layer at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/Klayers.jl:80 [inlined]
-Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-unknown function (ip: 0x7f3c17742475)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-KAN_Transformer at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/KAN_Transformer.jl:68 [inlined]
-Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-loss_fcn at /home/pr478/repos/Julia-Wav-KAN/utils.jl:12 [inlined]
-Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-#1 at /home/pr478/repos/Julia-Wav-KAN/pipeline/train.jl:19 [inlined]
-Pullback at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
-#75 at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:91
-unknown function (ip: 0x7f3c17a44be9)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-withgradient at /home/pr478/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:213
-unknown function (ip: 0x7f3c17c83599)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-train_step at /home/pr478/repos/Julia-Wav-KAN/pipeline/train.jl:19
-unknown function (ip: 0x7f3c161034ec)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-objective at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/hyperparamter_tuning.jl:79
-evaluate_trial! at /home/pr478/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:5
-unknown function (ip: 0x7f3e2099e3b4)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-evaluate_objective_sequential at /home/pr478/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:27
-evaluate_objective at /home/pr478/.julia/packages/HyperTuning/7Qthr/src/evaluator/evaluate_objective.jl:12 [inlined]
-optimize! at /home/pr478/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:29
-optimize at /home/pr478/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:47
-unknown function (ip: 0x7f3e209884c9)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-jl_apply at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/julia.h:1982 [inlined]
-do_call at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/interpreter.c:126
-eval_value at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/interpreter.c:223
-eval_stmt_value at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/interpreter.c:174 [inlined]
-eval_body at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/interpreter.c:617
-jl_interpret_toplevel_thunk at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/interpreter.c:775
-jl_toplevel_eval_flex at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/toplevel.c:934
-jl_toplevel_eval_flex at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/toplevel.c:877
-ijl_toplevel_eval_in at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/toplevel.c:985
-eval at ./boot.jl:385 [inlined]
-include_string at ./loading.jl:2076
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-_include at ./loading.jl:2136
-include at ./Base.jl:495
-jfptr_include_46394.1 at /home/pr478/julia-1.10.3/lib/julia/sys.so (unknown line)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-exec_options at ./client.jl:318
-_start at ./client.jl:552
-jfptr__start_82726.1 at /home/pr478/julia-1.10.3/lib/julia/sys.so (unknown line)
-_jl_invoke at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:2895 [inlined]
-ijl_apply_generic at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/gf.c:3077
-jl_apply at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/julia.h:1982 [inlined]
-true_main at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/jlapi.c:582
-jl_repl_entrypoint at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/src/jlapi.c:731
-main at /cache/build/builder-amdci4-2/julialang/julia-release-1-dot-10/cli/loader_exe.c:58
-__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
-unknown function (ip: 0x4010b8)
-unknown function (ip: (nil))
-Allocations: 2390852714 (Pool: 2390327263; Big: 525451); GC: 70955
 ┌ Warning: CUDA runtime library `libcublasLt.so.12` was loaded from a system path, `/usr/local/cuda-12.3/lib64/libcublasLt.so.12`.
 │ 
 │ This may cause errors. Ensure that you have not set the LD_LIBRARY_PATH
@@ -192,6 +19,81 @@ Allocations: 2390852714 (Pool: 2390327263; Big: 525451); GC: 70955
 │ 
 │ In any other case, please file an issue.
 └ @ CUDA ~/.julia/packages/CUDA/75aiI/src/initialization.jl:219
-[+] Trial 1: Pair{Symbol, Any}[:activation => "relu", :b_size => 9, :d_model => 56, :decoder_wav_one => "MexicanHat", :decoder_wav_three => "Morlet", :decoder_wav_two => "Shannon", :dim_feedforward => 253, :dropout => 0.3026070764265413, :encoder_wav_eight => "Morlet", :encoder_wav_five => "DerivativeOfGaussian", :encoder_wav_four => "MexicanHat", :encoder_wav_one => "Morlet", :encoder_wav_seven => "DerivativeOfGaussian", :encoder_wav_six => "Morlet", :encoder_wav_three => "DerivativeOfGaussian", :encoder_wav_two => "Morlet", :gamma => 0.24847258887791046, :learning_rate => 0.07844869195238083, :max_len => 2085, :nhead => 5, :num_decoder_layers => 1, :num_encoder_layers => 6, :output_wavelet => "Shannon", :step_rate => 37] evaluated NaN at instance 1
-[+] Trial 2: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 8, :d_model => 56, :decoder_wav_one => "Shannon", :decoder_wav_three => "Meyer", :decoder_wav_two => "Shannon", :dim_feedforward => 285, :dropout => 0.5580237305399227, :encoder_wav_eight => "Morlet", :encoder_wav_five => "Morlet", :encoder_wav_four => "DerivativeOfGaussian", :encoder_wav_one => "DerivativeOfGaussian", :encoder_wav_seven => "Shannon", :encoder_wav_six => "DerivativeOfGaussian", :encoder_wav_three => "Meyer", :encoder_wav_two => "MexicanHat", :gamma => 0.28185354433081455, :learning_rate => 0.07752221865036653, :max_len => 1276, :nhead => 10, :num_decoder_layers => 1, :num_encoder_layers => 2, :output_wavelet => "Morlet", :step_rate => 16] evaluated NaN at instance 1
-[+] Trial 3: Pair{Symbol, Any}[:activation => "relu", :b_size => 7, :d_model => 30, :decoder_wav_one => "Shannon", :decoder_wav_three => "MexicanHat", :decoder_wav_two => "MexicanHat", :dim_feedforward => 384, :dropout => 0.3405091065831237, :encoder_wav_eight => "Meyer", :encoder_wav_five => "Shannon", :encoder_wav_four => "MexicanHat", :encoder_wav_one => "Meyer", :encoder_wav_seven => "Morlet", :encoder_wav_six => "DerivativeOfGaussian", :encoder_wav_three => "Meyer", :encoder_wav_two => "MexicanHat", :gamma => 0.3233889240473633, :learning_rate => 0.051758915768573686, :max_len => 1246, :nhead => 7, :num_decoder_layers => 1, :num_encoder_layers => 3, :output_wavelet => "DerivativeOfGaussian", :step_rate => 19] evaluated 223.33667434676906 at instance 1
+ERROR: LoadError: Out of GPU memory trying to allocate 174.732 MiB
+Effective GPU memory usage: 99.97% (47.516 GiB/47.528 GiB)
+Memory pool usage: 46.757 GiB (46.969 GiB reserved)
+
+Stacktrace:
+  [1] _pool_alloc
+    @ ~/.julia/packages/CUDA/75aiI/src/memory.jl:660 [inlined]
+  [2] macro expansion
+    @ ~/.julia/packages/CUDA/75aiI/src/memory.jl:617 [inlined]
+  [3] macro expansion
+    @ ./timing.jl:395 [inlined]
+  [4] pool_alloc
+    @ ~/.julia/packages/CUDA/75aiI/src/memory.jl:616 [inlined]
+  [5] CuArray{Float32, 4, CUDA.DeviceMemory}(::UndefInitializer, dims::NTuple{4, Int64})
+    @ CUDA ~/.julia/packages/CUDA/75aiI/src/array.jl:74
+  [6] similar
+    @ ./abstractarray.jl:877 [inlined]
+  [7] similar
+    @ ./abstractarray.jl:876 [inlined]
+  [8] similar
+    @ ~/.julia/packages/CUDA/75aiI/src/broadcast.jl:25 [inlined]
+  [9] similar
+    @ ./broadcast.jl:223 [inlined]
+ [10] copy
+    @ ~/.julia/packages/GPUArrays/HjWFN/src/host/broadcast.jl:29 [inlined]
+ [11] materialize
+    @ ./broadcast.jl:903 [inlined]
+ [12] adjoint
+    @ ~/.julia/packages/Zygote/nsBv0/src/lib/broadcast.jl:92 [inlined]
+ [13] _pullback(__context__::Zygote.Context{false}, 590::typeof(Base.Broadcast.broadcasted), 591::typeof(*), x::CuArray{Float32, 4, CUDA.DeviceMemory}, y::CuArray{Float32, 1, CUDA.DeviceMemory})
+    @ Zygote ~/.julia/packages/ZygoteRules/M4xmc/src/adjoint.jl:67
+ [14] SW
+    @ ~/repos/Julia-Wav-KAN/KAN/wavelets/shannon.jl:39 [inlined]
+ [15] _pullback(ctx::Zygote.Context{false}, f::Main.KANTransformerModel.KAN_Transform_Layers.layers.Shannon.SW, args::CuArray{Float32, 4, CUDA.DeviceMemory})
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+ [16] KANdense_layer
+    @ ~/repos/Julia-Wav-KAN/KAN/KAN_layers.jl:76 [inlined]
+ [17] _pullback(ctx::Zygote.Context{false}, f::Main.KANTransformerModel.KAN_Transform_Layers.layers.KANdense_layer, args::CuArray{Float32, 3, CUDA.DeviceMemory})
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+ [18] decoder_layer
+    @ ~/repos/Julia-Wav-KAN/wavKAN_Transformer/Klayers.jl:119 [inlined]
+ [19] _pullback(::Zygote.Context{false}, ::Main.KANTransformerModel.KAN_Transform_Layers.decoder_layer, ::CuArray{Float32, 3, CUDA.DeviceMemory}, ::CuArray{Float32, 3, CUDA.DeviceMemory})
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+ [20] KAN_Transformer
+    @ ~/repos/Julia-Wav-KAN/wavKAN_Transformer/KAN_Transformer.jl:71 [inlined]
+ [21] _pullback(::Zygote.Context{false}, ::Main.KANTransformerModel.KAN_Transformer, ::CuArray{Float32, 2, CUDA.DeviceMemory}, ::CuArray{Float32, 2, CUDA.DeviceMemory})
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+ [22] loss_fcn
+    @ ~/repos/Julia-Wav-KAN/utils.jl:12 [inlined]
+ [23] _pullback(::Zygote.Context{false}, ::typeof(loss_fcn), ::Main.KANTransformerModel.KAN_Transformer, ::CuArray{Float32, 2, CUDA.DeviceMemory}, ::CuArray{Float32, 2, CUDA.DeviceMemory})
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+ [24] #1
+    @ ~/repos/Julia-Wav-KAN/pipeline/train.jl:19 [inlined]
+ [25] _pullback(ctx::Zygote.Context{false}, f::Main.training.var"#1#2"{typeof(loss_fcn), CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}}, args::Main.KANTransformerModel.KAN_Transformer)
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+ [26] pullback(f::Function, cx::Zygote.Context{false}, args::Main.KANTransformerModel.KAN_Transformer)
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:90
+ [27] pullback
+    @ ~/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:88 [inlined]
+ [28] withgradient(f::Function, args::Main.KANTransformerModel.KAN_Transformer)
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:205
+ [29] train_step(m::Main.KANTransformerModel.KAN_Transformer, opt_state::@NamedTuple{position_encoding::@NamedTuple{pe_vector::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}}, encoder::Vector{NamedTuple{(:self_attn, :feed_forward, :norm1, :norm2)}}, decoder::Vector{@NamedTuple{mh_attn::@NamedTuple{Wq::@NamedTuple{transform::@NamedTuple{weights::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}}, output_layer::Tuple{}, batch_norm::@NamedTuple{λ::Tuple{}, β::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, γ::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, μ::Tuple{}, σ²::Tuple{}, ϵ::Tuple{}, momentum::Tuple{}, affine::Tuple{}, track_stats::Tuple{}, active::Tuple{}, chs::Tuple{}}, scale::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, translation::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, reshape_fcn::Tuple{}, norm_permute::Tuple{}}, Wk::@NamedTuple{transform::@NamedTuple{weights::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}}, output_layer::Tuple{}, batch_norm::@NamedTuple{λ::Tuple{}, β::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, γ::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, μ::Tuple{}, σ²::Tuple{}, ϵ::Tuple{}, momentum::Tuple{}, affine::Tuple{}, track_stats::Tuple{}, active::Tuple{}, chs::Tuple{}}, scale::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, translation::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, reshape_fcn::Tuple{}, norm_permute::Tuple{}}, Wv::@NamedTuple{transform::@NamedTuple{weights::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}}, output_layer::Tuple{}, batch_norm::@NamedTuple{λ::Tuple{}, β::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, γ::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, μ::Tuple{}, σ²::Tuple{}, ϵ::Tuple{}, momentum::Tuple{}, affine::Tuple{}, track_stats::Tuple{}, active::Tuple{}, chs::Tuple{}}, scale::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, translation::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, reshape_fcn::Tuple{}, norm_permute::Tuple{}}, sqrt_D::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, query_M::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}}, feed_forward::Vector{NamedTuple}, norm1::@NamedTuple{λ::Tuple{}, diag::@NamedTuple{scale::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, bias::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, σ::Tuple{}}, ϵ::Tuple{}, size::Tuple{Tuple{}}, affine::Tuple{}}, norm2::@NamedTuple{λ::Tuple{}, diag::@NamedTuple{scale::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, bias::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, σ::Tuple{}}, ϵ::Tuple{}, size::Tuple{Tuple{}}, affine::Tuple{}}, norm3::@NamedTuple{λ::Tuple{}, diag::@NamedTuple{scale::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, bias::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, σ::Tuple{}}, ϵ::Tuple{}, size::Tuple{Tuple{}}, affine::Tuple{}}}}, output_layer::@NamedTuple{transform::@NamedTuple{weights::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}}, output_layer::Tuple{}, batch_norm::@NamedTuple{λ::Tuple{}, β::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, γ::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, μ::Tuple{}, σ²::Tuple{}, ϵ::Tuple{}, momentum::Tuple{}, affine::Tuple{}, track_stats::Tuple{}, active::Tuple{}, chs::Tuple{}}, scale::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, translation::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, reshape_fcn::Tuple{}, norm_permute::Tuple{}}}, train_loader::MLUtils.DataLoader{Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}}, Random._GLOBAL_RNG, Val{nothing}}, test_loader::MLUtils.DataLoader{Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}}, Random._GLOBAL_RNG, Val{nothing}}, loss::typeof(loss_fcn), epoch::Int64)
+    @ Main.training ~/repos/Julia-Wav-KAN/pipeline/train.jl:19
+ [30] objective(trial::HyperTuning.Trial{Int64})
+    @ Main ~/repos/Julia-Wav-KAN/wavKAN_Transformer/hyperparamter_tuning.jl:90
+ [31] evaluate_trial!(f::typeof(objective), trial::HyperTuning.Trial{Int64}, verbose::Bool)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:5
+ [32] evaluate_objective_sequential(f::Function, scenario::Scenario)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:27
+ [33] evaluate_objective
+    @ ~/.julia/packages/HyperTuning/7Qthr/src/evaluator/evaluate_objective.jl:12 [inlined]
+ [34] optimize!(f::Function, scenario::Scenario)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:29
+ [35] optimize(f::Function, scenario::Scenario)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:47
+ [36] top-level scope
+    @ ~/repos/Julia-Wav-KAN/wavKAN_Transformer/hyperparamter_tuning.jl:140
+in expression starting at /home/pr478/repos/Julia-Wav-KAN/wavKAN_Transformer/hyperparamter_tuning.jl:140

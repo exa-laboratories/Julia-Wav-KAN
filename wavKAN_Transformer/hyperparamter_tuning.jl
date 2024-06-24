@@ -2,6 +2,7 @@ include("../pipeline/data_processing/data_loader.jl")
 include("KAN_Transformer.jl")
 include("../utils.jl")
 include("../pipeline/train.jl")
+include("../hp_parsing.jl")
 
 using HyperTuning
 using ConfParser
@@ -12,6 +13,7 @@ using .training: train_step
 using .KANTransformerModel: create_KAN_Transformer
 using .loaders: get_visco_loader
 using .UTILS: loss_fcn
+using .hyperparams: set_hyperparams
 
 # Define the objective function, edits RNO_config.ini and runs the training 
 function objective(trial)
@@ -44,26 +46,35 @@ function objective(trial)
     @suggest decoder_wav_three in trial
     @suggest output_wavelet in trial
 
-    encoder_wavelet_names = [encoder_wav_one, encoder_wav_two, encoder_wav_three, encoder_wav_four, encoder_wav_five, encoder_wav_six, encoder_wav_seven, encoder_wav_eight][1:num_encoder_layers]
-    decoder_wavelet_names = [decoder_wav_one, decoder_wav_two, decoder_wav_three][1:num_decoder_layers]
-
     # Parse config
     conf = ConfParse("wavKAN_Transformer/KAN_Transformer_config.ini")
     parse_conf!(conf)
 
+    # Use Vanilla_Transformer config
+    _ = set_hyperparams("Transformer")
+    # b_size = parse(Int, get(ENV, "batch_size", "32"))
+    learning_rate = parse(Float32, get(ENV, "LR", "1e-3"))
+    num_epochs = parse(Int, get(ENV, "num_epochs", "50"))
+
+    num_encoder_layers = parse(Int, get(ENV, "num_encoder_layers", "2"))
+    num_decoder_layers = parse(Int, get(ENV, "num_decoder_layers", "2"))
+
+    encoder_wavelet_names = [encoder_wav_one, encoder_wav_two, encoder_wav_three, encoder_wav_four, encoder_wav_five, encoder_wav_six, encoder_wav_seven, encoder_wav_eight][1:num_encoder_layers]
+    decoder_wavelet_names = [decoder_wav_one, decoder_wav_two, decoder_wav_three][1:num_decoder_layers]
+
     # Create model
-    ENV["p"] = retrieve(conf, "Loss", "p")
-    ENV["step"] = step_rate
-    ENV["decay"] = gamma
-    ENV["LR"] = learning_rate
-    ENV["min_LR"] = retrieve(conf, "Optimizer", "min_lr")
-    ENV["activation"] = activation
+    # ENV["p"] = retrieve(conf, "Loss", "p")
+    # ENV["step"] = step_rate
+    # ENV["decay"] = gamma
+    # ENV["LR"] = learning_rate
+    # ENV["min_LR"] = retrieve(conf, "Optimizer", "min_lr")
+    # ENV["activation"] = activation
     ENV["d_model"] = d_model
     ENV["nhead"] = nhead
     ENV["dim_feedforward"] = dim_feedforward
-    ENV["dropout"] = dropout
-    ENV["num_encoder_layers"] = num_encoder_layers
-    ENV["num_decoder_layers"] = num_decoder_layers
+    # ENV["dropout"] = dropout
+    # ENV["num_encoder_layers"] = num_encoder_layers
+    # ENV["num_decoder_layers"] = num_decoder_layers
     ENV["max_len"] = max_len
 
     train_loader, test_loader = get_visco_loader(b_size)
@@ -92,16 +103,16 @@ function objective(trial)
 
 end
 
-wavelet_list = ["MexicanHat", "Morlet", "DerivativeOfGaussian", "Shannon", "Meyer"]
+wavelet_list = ["MexicanHat", "DerivativeOfGaussian", "Morlet", "Shannon", "Meyer"]
 
 
 # Define the search space
 space = Scenario(
-    d_model = range(10, 80, step=2),
-    nhead = 1:10,
-    dim_feedforward = 100:1000,
+    d_model = range(10, 70, step=2),
+    nhead = 1:7,
+    dim_feedforward = 400:700,
     dropout = (0.1..0.9),
-    num_encoder_layers = 2:8,
+    num_encoder_layers = 2:6,
     encoder_wav_one = wavelet_list,
     encoder_wav_two = wavelet_list,
     encoder_wav_three = wavelet_list,
@@ -110,19 +121,19 @@ space = Scenario(
     encoder_wav_six = wavelet_list,
     encoder_wav_seven = wavelet_list,
     encoder_wav_eight = wavelet_list,
-    num_decoder_layers = 1:2,
+    num_decoder_layers = [1,1],
     decoder_wav_one = wavelet_list,
     decoder_wav_two = wavelet_list,
     decoder_wav_three = wavelet_list,
     output_wavelet = wavelet_list,
-    max_len = 500:3000,
+    max_len = 500:1000,
     activation = ["relu", "selu", "leakyrelu", "swish", "gelu"],
-    b_size = 1:10,
-    learning_rate = (1e-4..1e-1),
-    gamma = (0.1..0.9),
+    b_size = 1:6,
+    learning_rate = (1e-6..1e-1),
+    gamma = (0.5..0.9),
     step_rate = 10:40,
     verbose = true,
-    max_trials = 50,
+    max_trials = 15,
     pruner = MedianPruner(start_after = 5, prune_after = 10),
 )
 
@@ -136,14 +147,29 @@ display(top_parameters(space))
 conf = ConfParse("wavKAN_Transformer/KAN_Transformer_config.ini")
 parse_conf!(conf)
 
-commit!(conf, "Architecture", "d_model", d_model)
-commit!(conf, "Architecture", "nhead", nhead)
-commit!(conf, "Architecture", "dim_feedforward", dim_feedforward)
-commit!(conf, "Architecture", "dropout", dropout)
-commit!(conf, "Architecture", "num_encoder_layers", num_encoder_layers)
-commit!(conf, "Architecture", "num_decoder_layers", num_decoder_layers)
-commit!(conf, "Architecture", "max_len", max_len)
-commit!(conf, "Architecture", "activation", activation)
+vanilla_conf = ConfParse("Vanilla_Transformer/Transformer_config.ini")
+parse_conf!(vanilla_conf)
+
+# Take vanilla config 
+d_model = retrieve(vanilla_conf, "Architecture", "d_model")
+nhead = retrieve(vanilla_conf, "Architecture", "nhead")
+dim_feedforward = retrieve(vanilla_conf, "Architecture", "dim_feedforward")
+dropout = retrieve(vanilla_conf, "Architecture", "dropout")
+max_len = retrieve(vanilla_conf, "Architecture", "max_len")
+activation = retrieve(vanilla_conf, "Architecture", "activation")
+b_size = retrieve(vanilla_conf, "DataLoader", "batch_size")
+learning_rate = retrieve(vanilla_conf, "Optimizer", "learning_rate")
+gamma = retrieve(vanilla_conf, "Optimizer", "gamma")
+step_rate = retrieve(vanilla_conf, "Optimizer", "step_rate")
+
+commit!(conf, "Architecture", "d_model", string(d_model))
+commit!(conf, "Architecture", "nhead", string(nhead))
+commit!(conf, "Architecture", "dim_feedforward", string(dim_feedforward))
+commit!(conf, "Architecture", "dropout", string(dropout))
+commit!(conf, "Architecture", "num_encoder_layers", string(num_encoder_layers))
+commit!(conf, "Architecture", "num_decoder_layers", string(num_decoder_layers))
+commit!(conf, "Architecture", "max_len", string(max_len))
+commit!(conf, "Architecture", "activation", string(activation))
 commit!(conf, "EncoderWavelets", "wav_one", encoder_wav_one)
 commit!(conf, "EncoderWavelets", "wav_two", encoder_wav_two)
 commit!(conf, "EncoderWavelets", "wav_three", encoder_wav_three)
@@ -156,10 +182,10 @@ commit!(conf, "DecoderWavelets", "wav_one", decoder_wav_one)
 commit!(conf, "DecoderWavelets", "wav_two", decoder_wav_two)
 commit!(conf, "DecoderWavelets", "wav_three", decoder_wav_three)
 commit!(conf, "OutputWavelet", "wav", output_wavelet)
-commit!(conf, "DataLoader", "batch_size", b_size)
-commit!(conf, "Optimizer", "learning_rate", learning_rate)
-commit!(conf, "Optimizer", "gamma", gamma)
-commit!(conf, "Optimizer", "step_rate", step_rate)
+commit!(conf, "DataLoader", "batch_size", string(b_size))
+commit!(conf, "Optimizer", "learning_rate", string(learning_rate))
+commit!(conf, "Optimizer", "gamma", string(gamma))
+commit!(conf, "Optimizer", "step_rate", string(step_rate))
 
 save!(conf, "wavKAN_Transformer/KAN_Transformer_config.ini")
 

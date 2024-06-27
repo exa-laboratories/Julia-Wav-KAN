@@ -51,10 +51,10 @@ function objective(trial)
     parse_conf!(conf)
 
     # Use Vanilla_Transformer config
-    _ = set_hyperparams("Transformer")
+    # _ = set_hyperparams("Transformer")
     # b_size = parse(Int, get(ENV, "batch_size", "32"))
-    learning_rate = parse(Float32, get(ENV, "LR", "1e-3"))
-    num_epochs = 20
+    # learning_rate = parse(Float32, get(ENV, "LR", "1e-3"))
+    num_epochs = 15
 
     num_encoder_layers = parse(Int, get(ENV, "num_encoder_layers", "2"))
     num_decoder_layers = parse(Int, get(ENV, "num_decoder_layers", "2"))
@@ -63,18 +63,18 @@ function objective(trial)
     decoder_wavelet_names = [decoder_wav_one, decoder_wav_two, decoder_wav_three][1:num_decoder_layers]
 
     # Create model
-    # ENV["p"] = retrieve(conf, "Loss", "p")
-    # ENV["step"] = step_rate
-    # ENV["decay"] = gamma
-    # ENV["LR"] = learning_rate
-    # ENV["min_LR"] = retrieve(conf, "Optimizer", "min_lr")
-    # ENV["activation"] = activation
+    ENV["p"] = retrieve(conf, "Loss", "p")
+    ENV["step"] = step_rate
+    ENV["decay"] = gamma
+    ENV["LR"] = learning_rate
+    ENV["min_LR"] = retrieve(conf, "Optimizer", "min_lr")
+    ENV["activation"] = activation
     ENV["d_model"] = d_model
     ENV["nhead"] = nhead
     ENV["dim_feedforward"] = dim_feedforward
-    # ENV["dropout"] = dropout
-    # ENV["num_encoder_layers"] = num_encoder_layers
-    ENV["num_decoder_layers"] = num_decoder_layers-1
+    ENV["dropout"] = dropout
+    ENV["num_encoder_layers"] = num_encoder_layers
+    ENV["num_decoder_layers"] = num_decoder_layers
     ENV["max_len"] = max_len
 
     train_loader, test_loader = get_visco_loader(b_size)
@@ -85,7 +85,7 @@ function objective(trial)
 
     train_loss = 0.0
     test_loss = 0.0
-    num_epochs = parse(Int, retrieve(conf, "Pipeline", "num_epochs"))
+    # num_epochs = parse(Int, retrieve(conf, "Pipeline", "num_epochs"))
     for epoch in 1:num_epochs
         model, opt_state, train_loss, test_loss = train_step(model, opt_state, train_loader, test_loader, loss_fcn, epoch)
         report_value!(trial, test_loss)
@@ -108,9 +108,9 @@ wavelet_list = ["MexicanHat", "DerivativeOfGaussian", "Morlet", "Shannon", "Meye
 
 # Define the search space
 space = Scenario(
-    d_model = range(10, 70, step=2),
+    d_model = range(10, 74, step=2),
     nhead = 1:7,
-    dim_feedforward = 400:700,
+    dim_feedforward = 300:750,
     dropout = (0.1..0.9),
     num_encoder_layers = 2:6,
     encoder_wav_one = wavelet_list,
@@ -126,14 +126,14 @@ space = Scenario(
     decoder_wav_two = wavelet_list,
     decoder_wav_three = wavelet_list,
     output_wavelet = wavelet_list,
-    max_len = 500:1000,
+    max_len = 251:450,
     activation = ["relu", "selu", "leakyrelu", "swish", "gelu"],
-    b_size = 1:6,
+    b_size = 1:5,
     learning_rate = (1e-6..1e-1),
     gamma = (0.5..0.9),
     step_rate = 10:40,
     verbose = true,
-    max_trials = 50,
+    max_trials = 100,
     pruner = MedianPruner(),
 )
 
@@ -150,17 +150,17 @@ parse_conf!(conf)
 vanilla_conf = ConfParse("Vanilla_Transformer/Transformer_config.ini")
 parse_conf!(vanilla_conf)
 
-# Take vanilla config 
-d_model = retrieve(vanilla_conf, "Architecture", "d_model")
-nhead = retrieve(vanilla_conf, "Architecture", "nhead")
-dim_feedforward = retrieve(vanilla_conf, "Architecture", "dim_feedforward")
-dropout = retrieve(vanilla_conf, "Architecture", "dropout")
-max_len = retrieve(vanilla_conf, "Architecture", "max_len")
-activation = retrieve(vanilla_conf, "Architecture", "activation")
-b_size = retrieve(vanilla_conf, "DataLoader", "batch_size")
-learning_rate = retrieve(vanilla_conf, "Optimizer", "learning_rate")
-gamma = retrieve(vanilla_conf, "Optimizer", "gamma")
-step_rate = retrieve(vanilla_conf, "Optimizer", "step_rate")
+# # Take vanilla config 
+# d_model = retrieve(vanilla_conf, "Architecture", "d_model")
+# nhead = retrieve(vanilla_conf, "Architecture", "nhead")
+# dim_feedforward = retrieve(vanilla_conf, "Architecture", "dim_feedforward")
+# dropout = retrieve(vanilla_conf, "Architecture", "dropout")
+# max_len = retrieve(vanilla_conf, "Architecture", "max_len")
+# activation = retrieve(vanilla_conf, "Architecture", "activation")
+# b_size = retrieve(vanilla_conf, "DataLoader", "batch_size")
+# learning_rate = retrieve(vanilla_conf, "Optimizer", "learning_rate")
+# gamma = retrieve(vanilla_conf, "Optimizer", "gamma")
+# step_rate = retrieve(vanilla_conf, "Optimizer", "step_rate")
 
 commit!(conf, "Architecture", "d_model", string(d_model))
 commit!(conf, "Architecture", "nhead", string(nhead))

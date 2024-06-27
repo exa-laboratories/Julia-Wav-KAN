@@ -41,20 +41,20 @@ function objective(trial)
     parse_conf!(conf)
 
     # Use Vanilla_RNO config
-    _ = set_hyperparams("RNO")
-    b_size = parse(Int, get(ENV, "batch_size", "32"))
-    learning_rate = parse(Float32, get(ENV, "LR", "1e-3"))
-    num_epochs = 20
+    # _ = set_hyperparams("RNO")
+    # b_size = parse(Int, get(ENV, "batch_size", "32"))
+    # learning_rate = parse(Float32, get(ENV, "LR", "1e-3"))
+    num_epochs = 15
 
     # Create model
-    # ENV["p"] = retrieve(conf, "Loss", "p")
-    # ENV["step"] = step_rate
-    # ENV["decay"] = gamma
-    # ENV["LR"] = learning_rate
-    # ENV["min_LR"] = retrieve(conf, "Optimizer", "min_lr")
-    # ENV["activation"] = activation
-    # ENV["n_hidden"] = n_hidden
-    # ENV["num_layers"] = n_layers
+    ENV["p"] = retrieve(conf, "Loss", "p")
+    ENV["step"] = step_rate
+    ENV["decay"] = gamma
+    ENV["LR"] = learning_rate
+    ENV["min_LR"] = retrieve(conf, "Optimizer", "min_lr")
+    ENV["activation"] = activation
+    ENV["n_hidden"] = n_hidden
+    ENV["num_layers"] = n_layers
 
     train_loader, test_loader = get_visco_loader(b_size)
 
@@ -64,7 +64,7 @@ function objective(trial)
 
     train_loss = 0.0
     test_loss = 0.0
-    num_epochs = parse(Int, retrieve(conf, "Pipeline", "num_epochs"))
+    # num_epochs = parse(Int, retrieve(conf, "Pipeline", "num_epochs"))
     for epoch in 1:num_epochs
         model, opt_state, train_loss, test_loss = train_step(model, opt_state, train_loader, test_loader, loss_fcn, epoch)
         report_value!(trial, test_loss)
@@ -112,16 +112,16 @@ display(top_parameters(space))
 conf = ConfParse("wavKAN_RNO/KAN_RNO_config.ini")
 parse_conf!(conf)
 
-# Use Vanilla_RNO config
-vanilla_conf = ConfParse("Vanilla_RNO/RNO_config.ini")
-parse_conf!(vanilla_conf)
-n_hidden = retrieve(vanilla_conf, "Architecture", "n_hidden")
-n_layers = retrieve(vanilla_conf, "Architecture", "num_layers")
-activation = retrieve(vanilla_conf, "Architecture", "activation")
-b_size = retrieve(vanilla_conf, "DataLoader", "batch_size")
-learning_rate = retrieve(vanilla_conf, "Optimizer", "learning_rate")
-gamma = retrieve(vanilla_conf, "Optimizer", "gamma")
-step_rate = retrieve(vanilla_conf, "Optimizer", "step_rate")
+# # Use Vanilla_RNO config
+# vanilla_conf = ConfParse("Vanilla_RNO/RNO_config.ini")
+# parse_conf!(vanilla_conf)
+# n_hidden = retrieve(vanilla_conf, "Architecture", "n_hidden")
+# n_layers = retrieve(vanilla_conf, "Architecture", "num_layers")
+# activation = retrieve(vanilla_conf, "Architecture", "activation")
+# b_size = retrieve(vanilla_conf, "DataLoader", "batch_size")
+# learning_rate = retrieve(vanilla_conf, "Optimizer", "learning_rate")
+# gamma = retrieve(vanilla_conf, "Optimizer", "gamma")
+# step_rate = retrieve(vanilla_conf, "Optimizer", "step_rate")
 
 commit!(conf, "Architecture", "n_hidden", string(n_hidden))
 commit!(conf, "Architecture", "num_layers", string(n_layers))

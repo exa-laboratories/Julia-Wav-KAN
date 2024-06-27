@@ -18,8 +18,8 @@ MODEL_NAME = "KAN_Transformer"
 model_file = Dict(
     "RNO" => "Vanilla_RNO/logs/trained_models/model_1.bson",
     "KAN_RNO" => "wavKAN_RNO/logs/trained_models/model_1.bson",
-    "Transformer" => "Vanilla_Transformer/logs/trained_models/model_1.bson",
-    "KAN_Transformer" => "wavKAN_Transformer/logs/trained_models/model_1.bson"
+    "Transformer" => "Vanilla_Transformer/logs/trained_models/model_1.bson", 
+    "KAN_Transformer" => "wavKAN_Transformer/logs/trained_models/model_2.bson" # This is the best one
 )[MODEL_NAME]
     
 # Load the model

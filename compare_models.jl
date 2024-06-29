@@ -1,24 +1,46 @@
-using CSV, DataFrames, Statistics, Printf, PlotlyJS
+include("Vanilla_RNO/RNO.jl")
+include("Vanilla_Transformer/Transformer.jl")
+include("wavKAN_RNO/KAN_RNO.jl")
+include("wavKAN_Transformer/KAN_Transformer.jl")
+
+using CSV, DataFrames, Statistics, Printf, PlotlyJS, Flux, CUDA
 using PlotlyJS: box, plot
+using BSON: @load
 
 log_locations = [
     "Vanilla_RNO/logs",
-    # "wavKAN_RNO/logs",
+    "wavKAN_RNO/logs",
     "Vanilla_Transformer/logs",
     "wavKAN_Transformer/logs",
 ]
 
 plot_names = [
     "MLP RNO",
-    #"wavKAN RNO",
+    "wavKAN RNO",
     "MLP Transformer",
     "wavKAN Transformer",
 ]
 
+model_file = [
+    "Vanilla_RNO/logs/trained_models/model_1.bson",
+    "wavKAN_RNO/logs/trained_models/model_2.bson", # This is the best one
+    "Vanilla_Transformer/logs/trained_models/model_1.bson", 
+    "wavKAN_Transformer/logs/trained_models/model_2.bson" # This is the best one
+]
+
+# Create array of param counts
+param_counts = []
+for file_loc in model_file
+    @load file_loc model
+    model = model |> gpu
+    push!(param_counts, sum(length, Flux.params(model)))
+    model = nothing
+end
+
 num_repetitions = 5 
 
 # Create an empty DataFrame to hold all results
-results = DataFrame(Model = String[], train_loss = String[], test_loss = String[], BIC = String[], time = String[])
+results = DataFrame(Model = String[], train_loss = String[], test_loss = String[], BIC = String[], time = String[], param_count = Int64[])
 
 box_plot_train = DataFrame(model = String[], value = Float64)
 box_plot_test = DataFrame(model = String[], value = Float64)
@@ -54,7 +76,8 @@ for (idx, log_location) in enumerate(log_locations)
         train_loss = @sprintf("%.2g ± %.2g", train_loss_mean, train_loss_std),
         test_loss = @sprintf("%.2g ± %.2g", test_loss_mean, test_loss_std),
         BIC = @sprintf("%.2g ± %.2g", BIC_mean, BIC_std),
-        time = @sprintf("%.2g ± %.2g", time_mean, time_std)
+        time = @sprintf("%.2g ± %.2g", time_mean, time_std),
+        param_count = param_counts[idx]
     ))
 end
 
@@ -64,14 +87,14 @@ rowOddColor = "white"
 
 table_plot = plot(
     table(
-        header = attr(values = ["Model", "Train Loss", "Test Loss", "BIC", "Time (mins)"],
+        header = attr(values = ["Model", "Train Loss", "Test Loss", "BIC", "Time (mins)", "Param Count"],
         align="center",
         line_color="darkslategray",
         fill_color=headerColor,
         font=attr(family="Computer Modern", color="white", size=13)),
-        cells = attr(values = [plot_names, results.train_loss, results.test_loss, results.BIC, results.time],
+        cells = attr(values = [plot_names, results.train_loss, results.test_loss, results.BIC, results.time, results.param_count],
         line_color="darkslategray",
-        fill_color=[ [rowOddColor,rowEvenColor,rowOddColor,rowEvenColor]],#,rowOddColor] ],
+        fill_color=[ [rowOddColor,rowEvenColor,rowOddColor,rowEvenColor, rowOddColor]],
         align = "center",
         font = attr(family="Computer Modern", size=12, color="black")),
     ),

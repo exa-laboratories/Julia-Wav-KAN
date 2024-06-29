@@ -98,7 +98,7 @@ space = Scenario(
     gamma = (0.5..0.9),
     step_rate = 10:40,
     verbose = true,
-    max_trials = 50,
+    max_trials = 100,
     pruner = MedianPruner(),
 )
 

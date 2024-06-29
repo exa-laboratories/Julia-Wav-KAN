@@ -60,6 +60,8 @@ julia predict_stress.jl
 
 ## Results
 
+Wavelet KAN models perform poorly compared to their MLP counterparts. Their performances were heavily dependent on initialisation, likely attributed to exploding gradients. The wavKAN Transformer had to be limited in complexity to load on the GPU, which may have contributed to its poor performance. The wavKAN RNO performed fairly poorly too. 
+
 ### Predictive Power and Consistency
 
 <p align="center">
@@ -67,6 +69,8 @@ julia predict_stress.jl
 </p>
 
 ### Visualised Predicted Stress Fields
+
+Below are the resulting best predictions of the models. The MLPs consistently outperformed the wavKANs, with the RNOs performing better than the Transformers.
 
 <p align="center">
 <img src="figures/Transformer_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%" style="padding-right: 20px;">

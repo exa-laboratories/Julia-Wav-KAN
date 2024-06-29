@@ -32,7 +32,7 @@ model_file = [
 param_counts = []
 for file_loc in model_file
     @load file_loc model
-    model = model |> gpu
+    model = model
     push!(param_counts, sum(length, Flux.params(model)))
     model = nothing
 end

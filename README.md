@@ -60,7 +60,7 @@ julia predict_stress.jl
 
 ## Results
 
-Wavelet KAN models perform poorly compared to their MLP counterparts. Their performances were heavily dependent on initialisation, likely attributed to exploding gradients. The wavKAN Transformer had to be limited in complexity to load on the GPU, which may have contributed to its poor performance. The wavKAN RNO performed fairly poorly too. 
+Wavelet KAN models seem to perform poorly compared to their MLP counterparts. Their performances were heavily dependent on initialisation, perhaps attributed to exploding gradients..? Additionally, the wavKAN Transformer had to be limited in complexity to load on the GPU, which may have contributed to its poor performance. However, the RNO was not limited, yet still failed to converge to a suitable solution 4 out of 5 times.
 
 ### Predictive Power and Consistency
 

@@ -71,7 +71,7 @@ function (m::KAN_RNO)(x, y_true)
         out, hidden = fwd_pass(m, x[t, :], x[t-1, :], hidden)
         y = vcat(y, out)
     end
-    return y
+    return y#(NNlib.hardtanh(y) .* 0.5) .+ 0.5
 end
 
 Flux.@functor KAN_RNO

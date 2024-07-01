@@ -24,7 +24,7 @@ exp_norm = [-1 / 2] |> gpu
 normalisation = [1 / (sqrt(2 * π))] |> gpu
 
 struct dogWavelet
-    weights
+    weights::AbstractArray
 end
 
 function DoGWavelet(weights)
@@ -38,6 +38,6 @@ function (w::dogWavelet)(x)
     return node(y, w.weights)
 end
 
-Flux.@layer dogWavelet
+Flux.@functor dogWavelet
 
 end

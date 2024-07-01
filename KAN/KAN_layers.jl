@@ -41,8 +41,8 @@ struct KANdense_layer
     transform
     output_layer
     batch_norm
-    scale
-    translation
+    scale::AbstractArray
+    translation::AbstractArray
     reshape_fcn
     norm_permute
 end
@@ -53,10 +53,10 @@ function KANdense(input_size, output_size, wavelet_name, base_activation, batch_
     activation = act_mapping[base_activation]
     # output_layer = Flux.Dense(input_size, output_size, activation)
     output_layer = nothing
-    batch_norm_layer = batch_norm ? Flux.BatchNorm(output_size, NNlib.relu) : identity
+    batch_norm_layer = batch_norm ? Flux.BatchNorm(output_size) : identity
 
-    translation = zeros(input_size, output_size)
-    scale = ones(input_size, output_size)
+    translation = Flux.zeros32(input_size, output_size)
+    scale = Flux.ones32(input_size, output_size)
 
     # RNO takes 1D input, else transformer uses 2D input
     reshape_fcn = bool_2D ? x -> repeat(reshape(x, size(x, 1), 1, size(x, 2), size(x, 3)), 1, size(translation, 2), 1, 1) : x -> repeat(reshape(x, size(x, 1), 1, size(x, 2)), 1, size(translation, 2), 1)
@@ -68,6 +68,7 @@ end
 function (l::KANdense_layer)(x) 
 
     x_expanded = l.reshape_fcn(x)
+
     translation_expanded = repeat(l.translation, 1, 1, size(x_expanded)[3:end]...)
     scale_expanded = repeat(l.scale, 1, 1, size(x_expanded)[3:end]...)
 
@@ -80,6 +81,6 @@ function (l::KANdense_layer)(x)
     return l.norm_permute(out)
 end
 
-Flux.@layer KANdense_layer
+Flux.@functor KANdense_layer
 
 end

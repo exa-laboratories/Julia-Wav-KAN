@@ -23,8 +23,8 @@ batch_mul = bool_2D ? batch_mul_2D : batch_mul_1D
 half = [0.5] |> gpu
 
 struct MW
-    γ
-    weights
+    γ::AbstractArray
+    weights::AbstractArray
 end
 
 function MorletWavelet(weights)
@@ -38,6 +38,6 @@ function (w::MW)(x)
     return node(y, w.weights)
 end
 
-Flux.@layer MW
+Flux.@functor MW
 
 end

@@ -28,6 +28,7 @@ hparams = set_hyperparams(model_name)
 batch_size = parse(Int, get(ENV, "batch_size", "32"))
 learning_rate = parse(Float32, get(ENV, "LR", "1e-3"))
 num_epochs = parse(Int, get(ENV, "num_epochs", "50"))
+optimizer_name = get(ENV, "optimizer", "Adam")
 
 train_loader, test_loader = get_visco_loader(batch_size)
 
@@ -40,7 +41,7 @@ function Transformer()
 end
 
 function KAN_RNO()
-    return create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), hparams, true) |> gpu
+    return create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), hparams, false) |> gpu
 end
 
 function KAN_Transformer()
@@ -61,6 +62,11 @@ log_file_base = Dict(
     "KAN_RNO" => "wavKAN_RNO/logs/",
     "KAN_Transformer" => "wavKAN_Transformer/logs/",
 )[model_name]
+
+optimizer = Dict(
+    "Adam" => Optimisers.Adam(learning_rate),
+    "SGD" => Optimisers.Descent(learning_rate)
+)[optimizer_name]
 
 for num in 1:NUM_REPETITIONS
     file_name = log_file_base * "repetition_" * string(num) * ".csv"
@@ -88,4 +94,6 @@ for num in 1:NUM_REPETITIONS
     
     model = model |> cpu
     @save save_file_name model
+
+    model = nothing
 end

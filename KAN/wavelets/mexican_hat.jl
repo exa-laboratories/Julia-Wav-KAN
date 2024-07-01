@@ -25,7 +25,7 @@ exp_norm = [-1 / 2] |> gpu
 normalisation = [2 / sqrt(3 * sqrt(π))] |> gpu
 
 struct MHWavelet
-    weights
+    weights::AbstractArray
 end
 
 function MexicanHatWavelet(weights)
@@ -40,6 +40,6 @@ function (w::MHWavelet)(x)
     return node(y, w.weights)
 end
 
-Flux.@layer MHWavelet
+Flux.@functor MHWavelet
 
 end 

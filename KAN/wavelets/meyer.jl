@@ -25,7 +25,7 @@ batch_mul = bool_2D ? batch_mul_2D : batch_mul_1D
 pie = [π] |> gpu
 
 struct MWavelet
-    weights
+    weights::AbstractArray
     aux
 end
 
@@ -42,6 +42,6 @@ function (w::MWavelet)(x)
     return node(y, w.weights)
 end
 
-Flux.@layer MWavelet
+Flux.@functor MWavelet
 
 end

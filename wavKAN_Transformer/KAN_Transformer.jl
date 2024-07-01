@@ -73,8 +73,7 @@ function (m::KAN_Transformer)(src, tgt)
     prediction = m.output_layer(tgt)
     prediction = reshape(prediction, size(prediction, 2), size(prediction, 3))
 
-    return (hardtanh(prediction) .* 0.5) .+ 0.5
-
+    return prediction
 end
 
 Flux.@functor KAN_Transformer

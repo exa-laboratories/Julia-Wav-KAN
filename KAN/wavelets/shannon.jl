@@ -25,7 +25,7 @@ cos_norm = [π / 3.0] |> gpu
 base_norm = [2.0] |> gpu
 
 struct SW
-    weights
+    weights::AbstractArray
 end
 
 function ShannonWavelet(weights)
@@ -43,6 +43,6 @@ function (w::SW)(x)
     return node(y, w.weights)
 end
 
-Flux.@layer SW
+Flux.@functor SW
 
 end

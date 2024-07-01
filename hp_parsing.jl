@@ -18,6 +18,7 @@ function set_RNO_params()
     ENV["num_layers"] = retrieve(conf, "Architecture", "num_layers")
     ENV["batch_size"] = retrieve(conf, "Dataloader", "batch_size")
     ENV["num_epochs"] = retrieve(conf, "Pipeline", "num_epochs")
+    ENV["optimizer"] = retrieve(conf, "Optimizer", "type")
 
     return nothing
 end
@@ -37,6 +38,7 @@ function set_KAN_RNO_params()
     ENV["num_layers"] = num_layers
     ENV["batch_size"] = retrieve(conf, "Dataloader", "batch_size")
     ENV["num_epochs"] = retrieve(conf, "Pipeline", "num_epochs")
+    ENV["optimizer"] = retrieve(conf, "Optimizer", "type")
 
     wavelet_names = [
         retrieve(conf, "Architecture", "wav_one"),
@@ -69,6 +71,7 @@ function set_Transformer_params()
     ENV["max_len"] = retrieve(conf, "Architecture", "max_len")
     ENV["batch_size"] = retrieve(conf, "Dataloader", "batch_size")
     ENV["num_epochs"] = retrieve(conf, "Pipeline", "num_epochs")
+    ENV["optimizer"] = retrieve(conf, "Optimizer", "type")
 
     return nothing
 end
@@ -94,6 +97,7 @@ function set_KAN_Transformer_params()
     ENV["max_len"] = retrieve(conf, "Architecture", "max_len")
     ENV["batch_size"] = retrieve(conf, "Dataloader", "batch_size")
     ENV["num_epochs"] = retrieve(conf, "Pipeline", "num_epochs")
+    ENV["optimizer"] = retrieve(conf, "Optimizer", "type")
 
     encoder_wavelet_names = [
         retrieve(conf, "EncoderWavelets", "wav_one"),

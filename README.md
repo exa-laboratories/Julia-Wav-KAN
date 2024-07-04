@@ -60,7 +60,7 @@ julia predict_stress.jl
 
 ## Results
 
-Wavelet KAN models seem to perform poorly compared to their MLP counterparts. Additionally, the wavKAN Transformer had to be limited in complexity to load on the GPU, which may have contributed to its poor performance. However, the RNO was not limited, and performed decently, although it's test loss was NaN for many iterations of the training loop.
+Wavelet KAN models seem to perform poorly compared to their MLP counterparts. Additionally, the wavKAN Transformer had to be limited in complexity to load on the GPU, which may have contributed to its poor performance. However, the RNO was not limited, and performed decently, although it's test loss was NaN for many iterations of the training loop (likely attributed to batch norm).
 
 ### Predictive Power and Consistency
 

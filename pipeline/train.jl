@@ -19,7 +19,6 @@ function train_step(m, opt_state, train_loader, test_loader, loss, epoch)
         loss_val, grad = Flux.withgradient(model -> loss(model, x, y), m)
         opt_state, m = Optimisers.update(opt_state, m, grad[1])
         train_loss += loss_val
-        println(Flux.params(m))
     end
 
     # Testing

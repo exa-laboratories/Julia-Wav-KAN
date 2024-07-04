@@ -22,9 +22,9 @@ plot_names = [
 ]
 
 model_file = [
-    "Vanilla_RNO/logs/trained_models/model_1.bson",
-    "wavKAN_RNO/logs/trained_models/model_2.bson", # This is the best one
-    "Vanilla_Transformer/logs/trained_models/model_1.bson", 
+    "Vanilla_RNO/logs/trained_models/model_5.bson",
+    "wavKAN_RNO/logs/trained_models/model_1.bson", # This is the best one
+    "Vanilla_Transformer/logs/trained_models/model_3.bson", 
     "wavKAN_Transformer/logs/trained_models/model_2.bson" # This is the best one
 ]
 
@@ -32,7 +32,6 @@ model_file = [
 param_counts = []
 for file_loc in model_file
     @load file_loc model
-    model = model
     push!(param_counts, sum(length, Flux.params(model)))
     model = nothing
 end

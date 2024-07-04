@@ -1,64 +1,91 @@
-┌ Warning: CUDA runtime library `libcublasLt.so.12` was loaded from a system path, `/usr/local/cuda-12.4/lib64/libcublasLt.so.12`.
-│ 
-│ This may cause errors. Ensure that you have not set the LD_LIBRARY_PATH
-│ environment variable, or that it does not contain paths to CUDA libraries.
-│ 
-│ In any other case, please file an issue.
-└ @ CUDA ~/.julia/packages/CUDA/75aiI/src/initialization.jl:219
-┌ Warning: CUDA runtime library `libnvJitLink.so.12` was loaded from a system path, `/usr/local/cuda-12.4/lib64/libnvJitLink.so.12`.
-│ 
-│ This may cause errors. Ensure that you have not set the LD_LIBRARY_PATH
-│ environment variable, or that it does not contain paths to CUDA libraries.
-│ 
-│ In any other case, please file an issue.
-└ @ CUDA ~/.julia/packages/CUDA/75aiI/src/initialization.jl:219
-┌ Warning: CUDA runtime library `libcusparse.so.12` was loaded from a system path, `/usr/local/cuda-12.4/lib64/libcusparse.so.12`.
-│ 
-│ This may cause errors. Ensure that you have not set the LD_LIBRARY_PATH
-│ environment variable, or that it does not contain paths to CUDA libraries.
-│ 
-│ In any other case, please file an issue.
-└ @ CUDA ~/.julia/packages/CUDA/75aiI/src/initialization.jl:219
-[*] Trial 1: Pair{Symbol, Any}[:activation => "relu", :b_size => 10, :gamma => 0.5742362944389552, :learning_rate => 0.0771438413684239, :n_hidden => 17, :n_layers => 4, :step_rate => 38, :wav_five => "Morlet", :wav_four => "Shannon", :wav_one => "Meyer", :wav_six => "Morlet", :wav_three => "Shannon", :wav_two => "MexicanHat"] evaluated 17.817333221435547 at instance 1
-[+] Trial 2: Pair{Symbol, Any}[:activation => "selu", :b_size => 4, :gamma => 0.6841608220413147, :learning_rate => 0.06935710306164113, :n_hidden => 3, :n_layers => 3, :step_rate => 20, :wav_five => "Shannon", :wav_four => "DerivativeOfGaussian", :wav_one => "Shannon", :wav_six => "DerivativeOfGaussian", :wav_three => "Morlet", :wav_two => "DerivativeOfGaussian"] evaluated 3251.653694152832 at instance 1
-[+] Trial 3: Pair{Symbol, Any}[:activation => "selu", :b_size => 12, :gamma => 0.7410638705326235, :learning_rate => 0.046140134144324524, :n_hidden => 16, :n_layers => 6, :step_rate => 32, :wav_five => "MexicanHat", :wav_four => "DerivativeOfGaussian", :wav_one => "Shannon", :wav_six => "Morlet", :wav_three => "Meyer", :wav_two => "Shannon"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 4: Pair{Symbol, Any}[:activation => "swish", :b_size => 12, :gamma => 0.5370173259890626, :learning_rate => 0.057839954928838325, :n_hidden => 23, :n_layers => 2, :step_rate => 17, :wav_five => "Morlet", :wav_four => "Shannon", :wav_one => "Morlet", :wav_six => "MexicanHat", :wav_three => "Morlet", :wav_two => "DerivativeOfGaussian"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 5: Pair{Symbol, Any}[:activation => "gelu", :b_size => 10, :gamma => 0.8676935543259842, :learning_rate => 0.031238609228080014, :n_hidden => 37, :n_layers => 3, :step_rate => 25, :wav_five => "MexicanHat", :wav_four => "DerivativeOfGaussian", :wav_one => "Shannon", :wav_six => "Meyer", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated 3251.653778076172 at instance 1
-[+] Trial 6: Pair{Symbol, Any}[:activation => "selu", :b_size => 12, :gamma => 0.5494269194920398, :learning_rate => 0.029842985336032513, :n_hidden => 34, :n_layers => 4, :step_rate => 20, :wav_five => "Meyer", :wav_four => "MexicanHat", :wav_one => "Meyer", :wav_six => "Morlet", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 7: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 2, :gamma => 0.8683060726353646, :learning_rate => 0.0030130822123474693, :n_hidden => 33, :n_layers => 3, :step_rate => 17, :wav_five => "Morlet", :wav_four => "Meyer", :wav_one => "MexicanHat", :wav_six => "Shannon", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated 2745.631633758545 at instance 1
-[+] Trial 8: Pair{Symbol, Any}[:activation => "swish", :b_size => 11, :gamma => 0.8892017317051188, :learning_rate => 0.018214959422136034, :n_hidden => 36, :n_layers => 2, :step_rate => 30, :wav_five => "Morlet", :wav_four => "Shannon", :wav_one => "MexicanHat", :wav_six => "Morlet", :wav_three => "MexicanHat", :wav_two => "DerivativeOfGaussian"] evaluated 3251.6536865234375 at instance 1
-[+] Trial 9: Pair{Symbol, Any}[:activation => "selu", :b_size => 5, :gamma => 0.8555865008816608, :learning_rate => 0.049631661714525765, :n_hidden => 11, :n_layers => 4, :step_rate => 10, :wav_five => "Shannon", :wav_four => "Meyer", :wav_one => "DerivativeOfGaussian", :wav_six => "Meyer", :wav_three => "Morlet", :wav_two => "DerivativeOfGaussian"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 10: Pair{Symbol, Any}[:activation => "swish", :b_size => 4, :gamma => 0.6834644886457513, :learning_rate => 0.0041501031462083575, :n_hidden => 3, :n_layers => 2, :step_rate => 37, :wav_five => "Meyer", :wav_four => "Meyer", :wav_one => "Meyer", :wav_six => "DerivativeOfGaussian", :wav_three => "Meyer", :wav_two => "MexicanHat"] evaluated 3251.653694152832 at instance 1
-[+] Trial 11: Pair{Symbol, Any}[:activation => "gelu", :b_size => 5, :gamma => 0.7068050178982556, :learning_rate => 0.08436551035809, :n_hidden => 47, :n_layers => 3, :step_rate => 34, :wav_five => "MexicanHat", :wav_four => "Meyer", :wav_one => "MexicanHat", :wav_six => "Morlet", :wav_three => "Shannon", :wav_two => "Meyer"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 12: Pair{Symbol, Any}[:activation => "selu", :b_size => 11, :gamma => 0.7574131035499119, :learning_rate => 0.07854878464482697, :n_hidden => 13, :n_layers => 5, :step_rate => 38, :wav_five => "MexicanHat", :wav_four => "DerivativeOfGaussian", :wav_one => "DerivativeOfGaussian", :wav_six => "Shannon", :wav_three => "Morlet", :wav_two => "MexicanHat"] evaluated 3251.6536865234375 at instance 1
-[+] Trial 13: Pair{Symbol, Any}[:activation => "gelu", :b_size => 4, :gamma => 0.5794033635942746, :learning_rate => 0.09815511489957238, :n_hidden => 44, :n_layers => 4, :step_rate => 28, :wav_five => "MexicanHat", :wav_four => "DerivativeOfGaussian", :wav_one => "DerivativeOfGaussian", :wav_six => "Morlet", :wav_three => "DerivativeOfGaussian", :wav_two => "DerivativeOfGaussian"] evaluated 3251.653694152832 at instance 1
-[+] Trial 14: Pair{Symbol, Any}[:activation => "relu", :b_size => 11, :gamma => 0.7852094606452125, :learning_rate => 0.0001757271171202128, :n_hidden => 63, :n_layers => 6, :step_rate => 15, :wav_five => "MexicanHat", :wav_four => "DerivativeOfGaussian", :wav_one => "MexicanHat", :wav_six => "Meyer", :wav_three => "Morlet", :wav_two => "MexicanHat"] evaluated 2694.5844326019287 at instance 1
-[+] Trial 15: Pair{Symbol, Any}[:activation => "selu", :b_size => 9, :gamma => 0.7334483662282749, :learning_rate => 0.012634108991126722, :n_hidden => 63, :n_layers => 2, :step_rate => 22, :wav_five => "Morlet", :wav_four => "Morlet", :wav_one => "Meyer", :wav_six => "Shannon", :wav_three => "DerivativeOfGaussian", :wav_two => "DerivativeOfGaussian"] evaluated 3251.6536254882812 at instance 1
-[*] Trial 16: Pair{Symbol, Any}[:activation => "swish", :b_size => 9, :gamma => 0.6001919581164852, :learning_rate => 0.014605827715744346, :n_hidden => 10, :n_layers => 2, :step_rate => 36, :wav_five => "Meyer", :wav_four => "Meyer", :wav_one => "Morlet", :wav_six => "DerivativeOfGaussian", :wav_three => "Shannon", :wav_two => "DerivativeOfGaussian"] evaluated 80.80044749379158 at instance 1
-[+] Trial 17: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 6, :gamma => 0.8141526033739401, :learning_rate => 0.028448656660647078, :n_hidden => 25, :n_layers => 3, :step_rate => 11, :wav_five => "Meyer", :wav_four => "Morlet", :wav_one => "MexicanHat", :wav_six => "Shannon", :wav_three => "DerivativeOfGaussian", :wav_two => "DerivativeOfGaussian"] evaluated 3251.6536712646484 at instance 1
-[+] Trial 18: Pair{Symbol, Any}[:activation => "gelu", :b_size => 6, :gamma => 0.7380505239742594, :learning_rate => 0.0362005945494568, :n_hidden => 70, :n_layers => 3, :step_rate => 17, :wav_five => "MexicanHat", :wav_four => "DerivativeOfGaussian", :wav_one => "MexicanHat", :wav_six => "Shannon", :wav_three => "Shannon", :wav_two => "DerivativeOfGaussian"] evaluated 3251.6536712646484 at instance 1
-[+] Trial 19: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 1, :gamma => 0.6381992399596355, :learning_rate => 0.03741012529665234, :n_hidden => 60, :n_layers => 3, :step_rate => 35, :wav_five => "MexicanHat", :wav_four => "DerivativeOfGaussian", :wav_one => "DerivativeOfGaussian", :wav_six => "Morlet", :wav_three => "Meyer", :wav_two => "Shannon"] evaluated 3251.6536836624146 at instance 1
-[+] Trial 20: Pair{Symbol, Any}[:activation => "gelu", :b_size => 1, :gamma => 0.7980862190761098, :learning_rate => 0.04042403162140419, :n_hidden => 17, :n_layers => 2, :step_rate => 23, :wav_five => "Morlet", :wav_four => "Shannon", :wav_one => "Morlet", :wav_six => "Morlet", :wav_three => "Shannon", :wav_two => "Meyer"] evaluated 3251.6536836624146 at instance 1
-[+] Trial 21: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 6, :gamma => 0.5507459089304311, :learning_rate => 0.04028639007277434, :n_hidden => 18, :n_layers => 4, :step_rate => 40, :wav_five => "Morlet", :wav_four => "Shannon", :wav_one => "DerivativeOfGaussian", :wav_six => "Shannon", :wav_three => "Meyer", :wav_two => "DerivativeOfGaussian"] evaluated 3251.6536712646484 at instance 1
-[+] Trial 22: Pair{Symbol, Any}[:activation => "gelu", :b_size => 6, :gamma => 0.8321429569269463, :learning_rate => 0.07288115713170776, :n_hidden => 36, :n_layers => 5, :step_rate => 21, :wav_five => "MexicanHat", :wav_four => "MexicanHat", :wav_one => "Meyer", :wav_six => "Morlet", :wav_three => "DerivativeOfGaussian", :wav_two => "Shannon"] evaluated 3251.6536712646484 at instance 1
-[+] Trial 23: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 9, :gamma => 0.5177774473586925, :learning_rate => 0.0038485464679156806, :n_hidden => 55, :n_layers => 4, :step_rate => 32, :wav_five => "Meyer", :wav_four => "DerivativeOfGaussian", :wav_one => "MexicanHat", :wav_six => "Morlet", :wav_three => "DerivativeOfGaussian", :wav_two => "DerivativeOfGaussian"] evaluated 3250.846710205078 at instance 1
-[+] Trial 24: Pair{Symbol, Any}[:activation => "swish", :b_size => 8, :gamma => 0.5924443824282581, :learning_rate => 0.08276701429959595, :n_hidden => 41, :n_layers => 6, :step_rate => 40, :wav_five => "Meyer", :wav_four => "DerivativeOfGaussian", :wav_one => "Meyer", :wav_six => "MexicanHat", :wav_three => "Morlet", :wav_two => "MexicanHat"] evaluated 3251.653762817383 at instance 1
-[+] Trial 25: Pair{Symbol, Any}[:activation => "swish", :b_size => 11, :gamma => 0.7354400550082707, :learning_rate => 0.03381904476591619, :n_hidden => 51, :n_layers => 6, :step_rate => 28, :wav_five => "MexicanHat", :wav_four => "Shannon", :wav_one => "MexicanHat", :wav_six => "Morlet", :wav_three => "DerivativeOfGaussian", :wav_two => "MexicanHat"] evaluated 232.52706384658813 at instance 1
-[+] Trial 26: Pair{Symbol, Any}[:activation => "gelu", :b_size => 3, :gamma => 0.7145612316756329, :learning_rate => 0.004683684315084766, :n_hidden => 38, :n_layers => 3, :step_rate => 22, :wav_five => "Morlet", :wav_four => "DerivativeOfGaussian", :wav_one => "MexicanHat", :wav_six => "DerivativeOfGaussian", :wav_three => "Meyer", :wav_two => "Shannon"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 27: Pair{Symbol, Any}[:activation => "selu", :b_size => 3, :gamma => 0.5317295154609379, :learning_rate => 0.07639744023332552, :n_hidden => 67, :n_layers => 5, :step_rate => 21, :wav_five => "DerivativeOfGaussian", :wav_four => "Meyer", :wav_one => "Shannon", :wav_six => "DerivativeOfGaussian", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 28: Pair{Symbol, Any}[:activation => "swish", :b_size => 2, :gamma => 0.8716974890890561, :learning_rate => 0.012539106662199886, :n_hidden => 9, :n_layers => 2, :step_rate => 15, :wav_five => "Morlet", :wav_four => "MexicanHat", :wav_one => "Morlet", :wav_six => "DerivativeOfGaussian", :wav_three => "MexicanHat", :wav_two => "DerivativeOfGaussian"] evaluated 2022.3146018981934 at instance 1
-[+] Trial 29: Pair{Symbol, Any}[:activation => "gelu", :b_size => 10, :gamma => 0.7088885573494972, :learning_rate => 0.09116256741464672, :n_hidden => 54, :n_layers => 4, :step_rate => 39, :wav_five => "MexicanHat", :wav_four => "Meyer", :wav_one => "MexicanHat", :wav_six => "Meyer", :wav_three => "DerivativeOfGaussian", :wav_two => "Shannon"] evaluated 3251.653778076172 at instance 1
-[+] Trial 30: Pair{Symbol, Any}[:activation => "relu", :b_size => 12, :gamma => 0.7609401850321951, :learning_rate => 0.0419863788638617, :n_hidden => 14, :n_layers => 2, :step_rate => 19, :wav_five => "Meyer", :wav_four => "Shannon", :wav_one => "Shannon", :wav_six => "Shannon", :wav_three => "Morlet", :wav_two => "MexicanHat"] evaluated 3251.6537170410156 at instance 1
-[+] Trial 31: Pair{Symbol, Any}[:activation => "swish", :b_size => 6, :gamma => 0.621779373180335, :learning_rate => 0.03939351494789381, :n_hidden => 46, :n_layers => 6, :step_rate => 38, :wav_five => "Shannon", :wav_four => "Meyer", :wav_one => "Meyer", :wav_six => "DerivativeOfGaussian", :wav_three => "Meyer", :wav_two => "Shannon"] evaluated 3251.6536712646484 at instance 1
-[+] Trial 32: Pair{Symbol, Any}[:activation => "swish", :b_size => 2, :gamma => 0.6353981352861651, :learning_rate => 0.06195476554530989, :n_hidden => 27, :n_layers => 5, :step_rate => 35, :wav_five => "Morlet", :wav_four => "Morlet", :wav_one => "MexicanHat", :wav_six => "DerivativeOfGaussian", :wav_three => "DerivativeOfGaussian", :wav_two => "Shannon"] evaluated 57670.79357910156 at instance 1
-PARAMETERS:
-┌────┬────────────┬────────┬──────────┬───────────────┬──────────┬──────────┬───────────┬────────────┬──────────────────────┬──────────────────────┬──────────────────────┬──────────────────────┬──────────────────────┬─────────┬───────────┬─────────┬────────┐
-│ ID │ activation │ b_size │    gamma │ learning_rate │ n_hidden │ n_layers │ step_rate │   wav_five │             wav_four │              wav_one │              wav_six │            wav_three │              wav_two │ Success │ Objective │    Time │ Pruned │
-├────┼────────────┼────────┼──────────┼───────────────┼──────────┼──────────┼───────────┼────────────┼──────────────────────┼──────────────────────┼──────────────────────┼──────────────────────┼──────────────────────┼─────────┼───────────┼─────────┼────────┤
-│  1 │       relu │     10 │ 0.574236 │     0.0771438 │       17 │        4 │        38 │     Morlet │              Shannon │                Meyer │               Morlet │              Shannon │           MexicanHat │       1 │   17.8173 │ 1166.24 │  false │
-│ 16 │      swish │      9 │ 0.600192 │     0.0146058 │       10 │        2 │        36 │      Meyer │                Meyer │               Morlet │ DerivativeOfGaussian │              Shannon │ DerivativeOfGaussian │       1 │   80.8004 │ 620.741 │  false │
-│ 25 │      swish │     11 │  0.73544 │      0.033819 │       51 │        6 │        28 │ MexicanHat │              Shannon │           MexicanHat │               Morlet │ DerivativeOfGaussian │           MexicanHat │       0 │   232.527 │ 585.789 │  false │
-│ 12 │       selu │     11 │ 0.757413 │     0.0785488 │       13 │        5 │        38 │ MexicanHat │ DerivativeOfGaussian │ DerivativeOfGaussian │              Shannon │               Morlet │           MexicanHat │       0 │   3251.65 │ 511.346 │  false │
-│  4 │      swish │     12 │ 0.537017 │       0.05784 │       23 │        2 │        17 │     Morlet │              Shannon │               Morlet │           MexicanHat │               Morlet │ DerivativeOfGaussian │       0 │   3251.65 │ 454.316 │  false │
-└────┴────────────┴────────┴──────────┴───────────────┴──────────┴──────────┴───────────┴────────────┴──────────────────────┴──────────────────────┴──────────────────────┴──────────────────────┴──────────────────────┴─────────┴───────────┴─────────┴────────┘
+ERROR: LoadError: Out of GPU memory trying to allocate 2.924 MiB
+Effective GPU memory usage: 99.87% (21.960 GiB/21.988 GiB)
+Memory pool usage: 19.867 GiB (21.688 GiB reserved)
 
+Stacktrace:
+  [1] _pool_alloc
+    @ ~/.julia/packages/CUDA/75aiI/src/memory.jl:660 [inlined]
+  [2] macro expansion
+    @ ~/.julia/packages/CUDA/75aiI/src/memory.jl:617 [inlined]
+  [3] macro expansion
+    @ ./timing.jl:395 [inlined]
+  [4] pool_alloc
+    @ ~/.julia/packages/CUDA/75aiI/src/memory.jl:616 [inlined]
+  [5] CuArray{Float32, 3, CUDA.DeviceMemory}(::UndefInitializer, dims::Tuple{Int64, Int64, Int64})
+    @ CUDA ~/.julia/packages/CUDA/75aiI/src/array.jl:74
+  [6] similar
+    @ ./abstractarray.jl:877 [inlined]
+  [7] similar
+    @ ./abstractarray.jl:876 [inlined]
+  [8] similar
+    @ ~/.julia/packages/CUDA/75aiI/src/broadcast.jl:25 [inlined]
+  [9] similar
+    @ ./broadcast.jl:223 [inlined]
+ [10] copy
+    @ ~/.julia/packages/GPUArrays/8Y80U/src/host/broadcast.jl:29 [inlined]
+ [11] materialize
+    @ ./broadcast.jl:903 [inlined]
+ [12] broadcast_preserving_zero_d
+    @ ./broadcast.jl:892 [inlined]
+ [13] -(A::CuArray{Float32, 3, CUDA.DeviceMemory}, B::CuArray{Float32, 3, CUDA.DeviceMemory})
+    @ Base ./arraymath.jl:8
+ [14] adjoint
+    @ ~/.julia/packages/Zygote/nsBv0/src/lib/array.jl:652 [inlined]
+ [15] _pullback(__context__::Zygote.Context{false}, 571::typeof(-), A::CuArray{Float32, 3, CUDA.DeviceMemory}, B::CuArray{Float32, 3, CUDA.DeviceMemory})
+    @ Zygote ~/.julia/packages/ZygoteRules/M4xmc/src/adjoint.jl:67
+ [16] KANdense_layer
+    @ ~/Julia-Wav-KAN/KAN/KAN_layers.jl:75 [inlined]
+ [17] _pullback(ctx::Zygote.Context{false}, f::Main.KAN_RecurrentNO.layers.KANdense_layer, args::CuArray{Float32, 2, CUDA.DeviceMemory})
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+ [18] fwd_pass
+    @ ~/Julia-Wav-KAN/wavKAN_RNO/KAN_RNO.jl:58 [inlined]
+ [19] _pullback(::Zygote.Context{false}, ::typeof(Main.KAN_RecurrentNO.fwd_pass), ::Main.KAN_RecurrentNO.KAN_RNO, ::CuArray{Float32, 1, CUDA.DeviceMemory}, ::CuArray{Float32, 1, CUDA.DeviceMemory}, ::CuArray{Float32, 2, CUDA.DeviceMemory})
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+ [20] KAN_RNO
+    @ ~/Julia-Wav-KAN/wavKAN_RNO/KAN_RNO.jl:71 [inlined]
+ [21] _pullback(::Zygote.Context{false}, ::Main.KAN_RecurrentNO.KAN_RNO, ::CuArray{Float32, 2, CUDA.DeviceMemory}, ::CuArray{Float32, 2, CUDA.DeviceMemory})
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+ [22] loss_fcn
+    @ ~/Julia-Wav-KAN/utils.jl:12 [inlined]
+ [23] _pullback(::Zygote.Context{false}, ::typeof(loss_fcn), ::Main.KAN_RecurrentNO.KAN_RNO, ::CuArray{Float32, 2, CUDA.DeviceMemory}, ::CuArray{Float32, 2, CUDA.DeviceMemory})
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+ [24] #1
+    @ ~/Julia-Wav-KAN/pipeline/train.jl:19 [inlined]
+ [25] _pullback(ctx::Zygote.Context{false}, f::Main.training.var"#1#2"{typeof(loss_fcn), CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}}, args::Main.KAN_RecurrentNO.KAN_RNO)
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface2.jl:0
+ [26] pullback(f::Function, cx::Zygote.Context{false}, args::Main.KAN_RecurrentNO.KAN_RNO)
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:90
+ [27] pullback
+    @ ~/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:88 [inlined]
+ [28] withgradient(f::Function, args::Main.KAN_RecurrentNO.KAN_RNO)
+    @ Zygote ~/.julia/packages/Zygote/nsBv0/src/compiler/interface.jl:205
+ [29] train_step(m::Main.KAN_RecurrentNO.KAN_RNO, opt_state::@NamedTuple{output_layers::Vector{@NamedTuple{transform::@NamedTuple{weights::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}}, output_layer::Tuple{}, batch_norm::@NamedTuple{λ::Tuple{}, β::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, γ::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, μ::Tuple{}, σ²::Tuple{}, ϵ::Tuple{}, momentum::Tuple{}, affine::Tuple{}, track_stats::Tuple{}, active::Tuple{}, chs::Tuple{}}, scale::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, translation::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, reshape_fcn::Tuple{}, norm_permute::Tuple{}}}, hidden_layers::Vector{@NamedTuple{transform::@NamedTuple{weights::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}}, output_layer::Tuple{}, batch_norm::@NamedTuple{λ::Tuple{}, β::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, γ::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, μ::Tuple{}, σ²::Tuple{}, ϵ::Tuple{}, momentum::Tuple{}, affine::Tuple{}, track_stats::Tuple{}, active::Tuple{}, chs::Tuple{}}, scale::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, translation::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, reshape_fcn::Tuple{}, norm_permute::Tuple{}}}, dt::Optimisers.Leaf{Optimisers.Adam, Tuple{CuArray{Float32, 1, CUDA.DeviceMemory}, CuArray{Float32, 1, CUDA.DeviceMemory}, Tuple{Float32, Float32}}}, T::Tuple{}, n_hidden::Tuple{}}, train_loader::MLUtils.DataLoader{Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}}, Random._GLOBAL_RNG, Val{nothing}}, test_loader::MLUtils.DataLoader{Tuple{CuArray{Float32, 2, CUDA.DeviceMemory}, CuArray{Float32, 2, CUDA.DeviceMemory}}, Random._GLOBAL_RNG, Val{nothing}}, loss::typeof(loss_fcn), epoch::Int64)
+    @ Main.training ~/Julia-Wav-KAN/pipeline/train.jl:19
+ [30] objective(trial::HyperTuning.Trial{Int64})
+    @ Main ~/Julia-Wav-KAN/wavKAN_RNO/hyperparamter_tuning.jl:69
+ [31] evaluate_trial!(f::typeof(objective), trial::HyperTuning.Trial{Int64}, verbose::Bool)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:5
+ [32] evaluate_objective_sequential(f::Function, scenario::Scenario)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/evaluator/sequential.jl:27
+ [33] evaluate_objective
+    @ ~/.julia/packages/HyperTuning/7Qthr/src/evaluator/evaluate_objective.jl:12 [inlined]
+ [34] optimize!(f::Function, scenario::Scenario)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:29
+ [35] optimize(f::Function, scenario::Scenario)
+    @ HyperTuning ~/.julia/packages/HyperTuning/7Qthr/src/optimize.jl:47
+ [36] top-level scope
+    @ ~/Julia-Wav-KAN/wavKAN_RNO/hyperparamter_tuning.jl:105
+in expression starting at /home/ubuntu/Julia-Wav-KAN/wavKAN_RNO/hyperparamter_tuning.jl:105
+[+] Trial 1: Pair{Symbol, Any}[:activation => "relu", :b_size => 17, :gamma => 0.5742362944389552, :learning_rate => 0.0771438413684239, :n_hidden => 22, :n_layers => 4, :step_rate => 38, :wav_five => "Morlet", :wav_four => "Shannon", :wav_one => "Meyer", :wav_six => "Morlet", :wav_three => "Shannon", :wav_two => "MexicanHat"] evaluated NaN at instance 1
+[+] Trial 2: Pair{Symbol, Any}[:activation => "selu", :b_size => 7, :gamma => 0.6841608220413147, :learning_rate => 0.06935710306164113, :n_hidden => 3, :n_layers => 3, :step_rate => 20, :wav_five => "Shannon", :wav_four => "DerivativeOfGaussian", :wav_one => "Shannon", :wav_six => "DerivativeOfGaussian", :wav_three => "Morlet", :wav_two => "DerivativeOfGaussian"] evaluated NaN at instance 1
+[+] Trial 3: Pair{Symbol, Any}[:activation => "selu", :b_size => 19, :gamma => 0.7410638705326235, :learning_rate => 0.046140134144324524, :n_hidden => 20, :n_layers => 6, :step_rate => 32, :wav_five => "MexicanHat", :wav_four => "DerivativeOfGaussian", :wav_one => "Shannon", :wav_six => "Morlet", :wav_three => "Meyer", :wav_two => "Shannon"] evaluated NaN at instance 1
+[+] Trial 4: Pair{Symbol, Any}[:activation => "swish", :b_size => 20, :gamma => 0.5370173259890626, :learning_rate => 0.057839954928838325, :n_hidden => 29, :n_layers => 2, :step_rate => 17, :wav_five => "Morlet", :wav_four => "Shannon", :wav_one => "Morlet", :wav_six => "MexicanHat", :wav_three => "Morlet", :wav_two => "DerivativeOfGaussian"] evaluated NaN at instance 1
+[+] Trial 5: Pair{Symbol, Any}[:activation => "gelu", :b_size => 16, :gamma => 0.8676935543259842, :learning_rate => 0.031238609228080014, :n_hidden => 48, :n_layers => 3, :step_rate => 25, :wav_five => "MexicanHat", :wav_four => "DerivativeOfGaussian", :wav_one => "Shannon", :wav_six => "Meyer", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated NaN at instance 1
+[+] Trial 6: Pair{Symbol, Any}[:activation => "selu", :b_size => 19, :gamma => 0.5494269194920398, :learning_rate => 0.029842985336032513, :n_hidden => 43, :n_layers => 4, :step_rate => 20, :wav_five => "Meyer", :wav_four => "MexicanHat", :wav_one => "Meyer", :wav_six => "Morlet", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated NaN at instance 1
+[+] Trial 7: Pair{Symbol, Any}[:activation => "leakyrelu", :b_size => 4, :gamma => 0.8683060726353646, :learning_rate => 0.0030130822123474693, :n_hidden => 43, :n_layers => 3, :step_rate => 17, :wav_five => "Morlet", :wav_four => "Meyer", :wav_one => "MexicanHat", :wav_six => "Shannon", :wav_three => "MexicanHat", :wav_two => "Shannon"] evaluated 298.4272994995117 at instance 1
+[*] Trial 8: Pair{Symbol, Any}[:activation => "swish", :b_size => 19, :gamma => 0.8892017317051188, :learning_rate => 0.018214959422136034, :n_hidden => 46, :n_layers => 2, :step_rate => 30, :wav_five => "Morlet", :wav_four => "Shannon", :wav_one => "MexicanHat", :wav_six => "Morlet", :wav_three => "MexicanHat", :wav_two => "DerivativeOfGaussian"] evaluated 20.438833355903625 at instance 1
+[+] Trial 9: Pair{Symbol, Any}[:activation => "selu", :b_size => 8, :gamma => 0.8555865008816608, :learning_rate => 0.049631661714525765, :n_hidden => 13, :n_layers => 4, :step_rate => 10, :wav_five => "Shannon", :wav_four => "Meyer", :wav_one => "DerivativeOfGaussian", :wav_six => "Meyer", :wav_three => "Morlet", :wav_two => "DerivativeOfGaussian"] evaluated NaN at instance 1
+[+] Trial 10: Pair{Symbol, Any}[:activation => "swish", :b_size => 7, :gamma => 0.6834644886457513, :learning_rate => 0.0041501031462083575, :n_hidden => 4, :n_layers => 2, :step_rate => 37, :wav_five => "Meyer", :wav_four => "Meyer", :wav_one => "Meyer", :wav_six => "DerivativeOfGaussian", :wav_three => "Meyer", :wav_two => "MexicanHat"] evaluated NaN at instance 1
+[+] Trial 11: Pair{Symbol, Any}[:activation => "gelu", :b_size => 9, :gamma => 0.7068050178982556, :learning_rate => 0.08436551035809, :n_hidden => 60, :n_layers => 3, :step_rate => 34, :wav_five => "MexicanHat", :wav_four => "Meyer", :wav_one => "MexicanHat", :wav_six => "Morlet", :wav_three => "Shannon", :wav_two => "Meyer"] evaluated NaN at instance 1
+[+] Trial 12: Pair{Symbol, Any}[:activation => "selu", :b_size => 18, :gamma => 0.7574131035499119, :learning_rate => 0.07854878464482697, :n_hidden => 17, :n_layers => 5, :step_rate => 38, :wav_five => "MexicanHat", :wav_four => "DerivativeOfGaussian", :wav_one => "DerivativeOfGaussian", :wav_six => "Shannon", :wav_three => "Morlet", :wav_two => "MexicanHat"] evaluated NaN at instance 1
+[+] Trial 13: Pair{Symbol, Any}[:activation => "gelu", :b_size => 7, :gamma => 0.5794033635942746, :learning_rate => 0.09815511489957238, :n_hidden => 57, :n_layers => 4, :step_rate => 28, :wav_five => "MexicanHat", :wav_four => "DerivativeOfGaussian", :wav_one => "DerivativeOfGaussian", :wav_six => "Morlet", :wav_three => "DerivativeOfGaussian", :wav_two => "DerivativeOfGaussian"] evaluated NaN at instance 1

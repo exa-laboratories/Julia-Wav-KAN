@@ -84,7 +84,7 @@ wavelet_list = ["MexicanHat", "DerivativeOfGaussian", "Morlet", "Shannon", "Meye
 
 # Define the search space
 space = Scenario(
-    n_hidden = 2:150,
+    n_hidden = 2:90,
     n_layers = 2:6,
     wav_one = wavelet_list,
     wav_two = wavelet_list,
@@ -93,7 +93,7 @@ space = Scenario(
     wav_five = wavelet_list,
     wav_six = wavelet_list,
     activation = ["relu", "selu", "leakyrelu", "swish", "gelu"],
-    b_size = 1:50,
+    b_size = 1:20,
     learning_rate = (1e-5..1e-1),
     gamma = (0.5..0.9),
     step_rate = 10:40,

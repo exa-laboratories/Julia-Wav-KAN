@@ -23,7 +23,7 @@ using .hyperparams: set_hyperparams
 
 NUM_REPETITIONS = 5
 
-model_name = "KAN_Transformer"
+model_name = "KAN_RNO"
 hparams = set_hyperparams(model_name)
 batch_size = parse(Int, get(ENV, "batch_size", "32"))
 learning_rate = parse(Float32, get(ENV, "LR", "1e-3"))
@@ -41,7 +41,7 @@ function Transformer()
 end
 
 function KAN_RNO()
-    return create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), hparams, false) |> gpu
+    return create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), hparams, true) |> gpu
 end
 
 function KAN_Transformer()

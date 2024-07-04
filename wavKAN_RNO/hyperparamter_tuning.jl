@@ -84,7 +84,7 @@ wavelet_list = ["MexicanHat", "DerivativeOfGaussian", "Morlet", "Shannon", "Meye
 
 # Define the search space
 space = Scenario(
-    n_hidden = 2:200,
+    n_hidden = 2:150,
     n_layers = 2:6,
     wav_one = wavelet_list,
     wav_two = wavelet_list,

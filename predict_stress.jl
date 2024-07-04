@@ -16,9 +16,9 @@ train_loader, test_loader = get_visco_loader(1)
 MODEL_NAME = "KAN_RNO"
 
 model_file = Dict(
-    "RNO" => "Vanilla_RNO/logs/trained_models/model_1.bson",
+    "RNO" => "Vanilla_RNO/logs/trained_models/model_5.bson",
     "KAN_RNO" => "wavKAN_RNO/logs/trained_models/model_1.bson", # This is the best one
-    "Transformer" => "Vanilla_Transformer/logs/trained_models/model_1.bson", 
+    "Transformer" => "Vanilla_Transformer/logs/trained_models/model_3.bson", 
     "KAN_Transformer" => "wavKAN_Transformer/logs/trained_models/model_2.bson" # This is the best one
 )[MODEL_NAME]
     

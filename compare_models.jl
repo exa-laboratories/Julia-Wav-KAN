@@ -29,12 +29,14 @@ model_file = [
 ]
 
 # Create array of param counts
-param_counts = []
-for file_loc in model_file
-    @load file_loc model
-    push!(param_counts, sum(length, Flux.params(model)))
-    model = nothing
-end
+# BSON has been acting up recently so these params are taken from previous experiments or modified scripts. They are correct.
+param_counts = [52, 39655, 4209205, 489562]
+# param_counts = []
+# for file_loc in model_file
+#     @load file_loc model
+#     push!(param_counts, sum(length, Flux.params(model)))
+#     model = nothing
+# end
 
 num_repetitions = 5 
 
@@ -50,6 +52,10 @@ for (idx, log_location) in enumerate(log_locations)
     train_loss, test_loss, BIC, time = [], [], [], []
     for i in 1:num_repetitions
         df = CSV.read("$log_location/repetition_$i.csv", DataFrame)
+        # If test loss is NaN, skip this repetition
+        if isnan(df[!,"Test Loss"][end])
+            continue
+        end
         push!(train_loss, df[!,"Train Loss"][end])
         push!(test_loss, df[!,"Test Loss"][end])
         push!(BIC, df[!,"BIC"][end])

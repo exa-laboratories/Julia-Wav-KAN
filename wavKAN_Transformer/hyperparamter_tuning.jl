@@ -109,10 +109,10 @@ wavelet_list = ["MexicanHat", "DerivativeOfGaussian", "Morlet", "Shannon", "Meye
 # Define the search space
 space = Scenario(
     d_model = range(10, 60, step=2),
-    nhead = 1:40,
+    nhead = 1:12,
     dim_feedforward = 300:800,
     dropout = (0.1..0.9),
-    num_encoder_layers = 2:7,
+    num_encoder_layers = 2:6,
     encoder_wav_one = wavelet_list,
     encoder_wav_two = wavelet_list,
     encoder_wav_three = wavelet_list,
@@ -121,7 +121,7 @@ space = Scenario(
     encoder_wav_six = wavelet_list,
     encoder_wav_seven = wavelet_list,
     encoder_wav_eight = wavelet_list,
-    num_decoder_layers = 1:2,
+    num_decoder_layers = [1,1],
     decoder_wav_one = wavelet_list,
     decoder_wav_two = wavelet_list,
     decoder_wav_three = wavelet_list,

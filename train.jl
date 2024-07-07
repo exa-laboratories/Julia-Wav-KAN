@@ -41,7 +41,7 @@ function Transformer()
 end
 
 function KAN_RNO()
-    return create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), hparams) |> gpu
+    return create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), hparams, true) |> gpu
 end
 
 function KAN_Transformer()

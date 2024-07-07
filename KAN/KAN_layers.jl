@@ -40,22 +40,25 @@ wavelet_mapping = Dict(
 struct KANdense_layer
     transform
     output_layer
-    batch_norm
+    norm
     scale::AbstractArray
     translation::AbstractArray
     reshape_fcn
     norm_permute
 end
 
-function KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm=false)
+function KANdense(input_size, output_size, wavelet_name, base_activation, norm=false)
     wavelet_weights = Flux.kaiming_uniform(input_size, output_size)
     wavelet = wavelet_mapping[wavelet_name](wavelet_weights)
     activation = act_mapping[base_activation]
     # output_layer = Flux.Dense(input_size, output_size, activation)
     output_layer = nothing
 
-    batch_norm = bool_Transformer ? batch_norm : false # Never use batch norm in RNO
-    batch_norm_layer = batch_norm ? Flux.BatchNorm(output_size) : identity
+    if norm
+        norm_layer = bool_Transformer ? Flux.BatchNorm(output_size) : Flux.LayerNorm(output_size)
+    else
+        norm_layer = identity
+    end
 
     translation = Flux.zeros32(input_size, output_size)
     scale = Flux.ones32(input_size, output_size)
@@ -64,7 +67,7 @@ function KANdense(input_size, output_size, wavelet_name, base_activation, batch_
     reshape_fcn = bool_Transformer ? x -> repeat(reshape(x, size(x, 1), 1, size(x, 2), size(x, 3)), 1, size(translation, 2), 1, 1) : x -> repeat(reshape(x, size(x, 1), 1, size(x, 2)), 1, size(translation, 2), 1)
     norm_permute = bool_Transformer ? x -> reshape(x, size(x, 2), size(x, 1), size(x, 3)) : x -> x
 
-    return KANdense_layer(wavelet, output_layer, batch_norm_layer, scale, translation, reshape_fcn, norm_permute)
+    return KANdense_layer(wavelet, output_layer, norm_layer, scale, translation, reshape_fcn, norm_permute)
 end
 
 function (l::KANdense_layer)(x) 
@@ -79,7 +82,7 @@ function (l::KANdense_layer)(x)
     y = l.transform(x_expanded)
     #z = l.output_layer(x)
     out = y #+ z
-    out = l.batch_norm(l.norm_permute(out))
+    out = l.norm(l.norm_permute(out))
     return l.norm_permute(out)
 end
 

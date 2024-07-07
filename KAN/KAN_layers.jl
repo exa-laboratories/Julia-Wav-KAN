@@ -17,7 +17,7 @@ using .DoG: DoGWavelet
 using .Shannon: ShannonWavelet
 using .Meyer: MeyerWavelet
 
-bool_2D = parse(Bool, get(ENV, "2D", "false"))
+bool_Transformer = parse(Bool, get(ENV, "2D", "false"))
 
 act_mapping = Dict(
     "relu" => NNlib.relu,
@@ -47,20 +47,22 @@ struct KANdense_layer
     norm_permute
 end
 
-function KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm)
+function KANdense(input_size, output_size, wavelet_name, base_activation, batch_norm=false)
     wavelet_weights = Flux.kaiming_uniform(input_size, output_size)
     wavelet = wavelet_mapping[wavelet_name](wavelet_weights)
     activation = act_mapping[base_activation]
     # output_layer = Flux.Dense(input_size, output_size, activation)
     output_layer = nothing
+
+    batch_norm = bool_Transformer ? batch_norm : false # Never use batch norm in RNO
     batch_norm_layer = batch_norm ? Flux.BatchNorm(output_size) : identity
 
     translation = Flux.zeros32(input_size, output_size)
     scale = Flux.ones32(input_size, output_size)
 
     # RNO takes 1D input, else transformer uses 2D input
-    reshape_fcn = bool_2D ? x -> repeat(reshape(x, size(x, 1), 1, size(x, 2), size(x, 3)), 1, size(translation, 2), 1, 1) : x -> repeat(reshape(x, size(x, 1), 1, size(x, 2)), 1, size(translation, 2), 1)
-    norm_permute = bool_2D ? x -> reshape(x, size(x, 2), size(x, 1), size(x, 3)) : x -> x
+    reshape_fcn = bool_Transformer ? x -> repeat(reshape(x, size(x, 1), 1, size(x, 2), size(x, 3)), 1, size(translation, 2), 1, 1) : x -> repeat(reshape(x, size(x, 1), 1, size(x, 2)), 1, size(translation, 2), 1)
+    norm_permute = bool_Transformer ? x -> reshape(x, size(x, 2), size(x, 1), size(x, 3)) : x -> x
 
     return KANdense_layer(wavelet, output_layer, batch_norm_layer, scale, translation, reshape_fcn, norm_permute)
 end

@@ -19,7 +19,7 @@ struct KAN_RNO
     n_hidden::Int64
 end
 
-function create_KAN_RNO(input_dim::Int64, output_dim::Int64, input_size::Int64, wavelet_names, batch_norm)
+function create_KAN_RNO(input_dim::Int64, output_dim::Int64, input_size::Int64, wavelet_names)
     n_hidden = parse(Int, get(ENV, "n_hidden", "10"))
     num_layers = parse(Int, get(ENV, "num_layers", "2"))
     base_activation = get(ENV, "activation", "relu")
@@ -28,8 +28,8 @@ function create_KAN_RNO(input_dim::Int64, output_dim::Int64, input_size::Int64, 
     layer_output = [input_dim + output_dim + n_hidden, hidden_units..., output_dim]
     layer_hidden = [n_hidden + output_dim, hidden_units..., n_hidden]
 
-    out_layers_list = [KANdense(layer_output[i], layer_output[i+1], wavelet_names[i], base_activation, batch_norm) for i in 1:length(layer_output)-1]
-    hid_layers_list = [KANdense(layer_hidden[i], layer_hidden[i+1], wavelet_names[i], base_activation, batch_norm) for i in 1:length(layer_hidden)-1]
+    out_layers_list = [KANdense(layer_output[i], layer_output[i+1], wavelet_names[i], base_activation) for i in 1:length(layer_output)-1]
+    hid_layers_list = [KANdense(layer_hidden[i], layer_hidden[i+1], wavelet_names[i], base_activation) for i in 1:length(layer_hidden)-1]
 
     dt = [1/(input_size-1)]
 

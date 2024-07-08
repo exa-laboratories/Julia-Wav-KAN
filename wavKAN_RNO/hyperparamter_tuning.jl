@@ -33,6 +33,7 @@ function objective(trial)
     @suggest wav_four in trial
     @suggest wav_five in trial
     @suggest wav_six in trial
+    @suggest layer_norm in trial
 
     wavelet_names = [wav_one, wav_two, wav_three, wav_four, wav_five, wav_six][1:n_layers]
 
@@ -58,7 +59,7 @@ function objective(trial)
 
     train_loader, test_loader = get_visco_loader(b_size)
 
-    model = create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), wavelet_names, true) |> gpu
+    model = create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), wavelet_names, layer_norm) |> gpu
 
     opt_state = Optimisers.setup(Optimisers.Adam(learning_rate), model)
 
@@ -74,6 +75,8 @@ function objective(trial)
     model = nothing
     train_loader = nothing
     test_loader = nothing
+    GC.gc(true) 
+    CUDA.reclaim()
 
     test_loss < 100 && report_success!(trial)
     return test_loss
@@ -97,6 +100,7 @@ space = Scenario(
     learning_rate = (1e-5..1e-1),
     gamma = (0.5..0.9),
     step_rate = 10:40,
+    layer_norm = [true, false],
     verbose = true,
     max_trials = 100,
     pruner = MedianPruner(),
@@ -107,7 +111,7 @@ HyperTuning.optimize(objective, space)
 display(top_parameters(space))
 
 # Save the best configuration
-@unpack n_hidden, n_layers, activation, b_size, learning_rate, gamma, step_rate, wav_one, wav_two, wav_three, wav_four, wav_five, wav_six = space
+@unpack n_hidden, n_layers, activation, b_size, learning_rate, gamma, step_rate, wav_one, wav_two, wav_three, wav_four, wav_five, wav_six, layer_norm = space
 
 conf = ConfParse("wavKAN_RNO/KAN_RNO_config.ini")
 parse_conf!(conf)
@@ -136,6 +140,7 @@ commit!(conf, "DataLoader", "batch_size", string(b_size))
 commit!(conf, "Optimizer", "learning_rate", string(learning_rate))
 commit!(conf, "Optimizer", "gamma", string(gamma))
 commit!(conf, "Optimizer", "step_rate", string(step_rate))
+commit!(conf, "Architecture", "norm", string(layer_norm))
 
 save!(conf, "wavKAN_RNO/KAN_RNO_config.ini")
 

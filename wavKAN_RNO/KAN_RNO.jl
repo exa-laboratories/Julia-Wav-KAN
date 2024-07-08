@@ -19,7 +19,7 @@ struct KAN_RNO
     n_hidden::Int64
 end
 
-function create_KAN_RNO(input_dim::Int64, output_dim::Int64, input_size::Int64, wavelet_names, layer_norm)
+function create_KAN_RNO(input_dim::Int64, output_dim::Int64, input_size::Int64, wavelet_names, layer_norm=false)
     n_hidden = parse(Int, get(ENV, "n_hidden", "10"))
     num_layers = parse(Int, get(ENV, "num_layers", "2"))
     base_activation = get(ENV, "activation", "relu")

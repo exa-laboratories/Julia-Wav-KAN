@@ -29,6 +29,7 @@ batch_size = parse(Int, get(ENV, "batch_size", "32"))
 learning_rate = parse(Float32, get(ENV, "LR", "1e-3"))
 num_epochs = parse(Int, get(ENV, "num_epochs", "50"))
 optimizer_name = get(ENV, "optimizer", "Adam")
+norm = parse(Bool, get(ENV, "norm", "false"))
 
 train_loader, test_loader = get_visco_loader(batch_size)
 
@@ -41,12 +42,12 @@ function Transformer()
 end
 
 function KAN_RNO()
-    return create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), hparams, true) |> gpu
+    return create_KAN_RNO(1, 1, size(first(train_loader)[2], 1), hparams, norm) |> gpu
 end
 
 function KAN_Transformer()
     encoder_wavelet_names, decoder_wavelet_names, output_wavelet = hparams
-    return create_KAN_Transformer(encoder_wavelet_names, decoder_wavelet_names, true, true, output_wavelet, true) |> gpu
+    return create_KAN_Transformer(encoder_wavelet_names, decoder_wavelet_names, norm, norm, output_wavelet, norm) |> gpu
 end
 
 instantiate_model = Dict(

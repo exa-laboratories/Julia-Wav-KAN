@@ -30,7 +30,7 @@ model_file = [
 
 # Create array of param counts
 # BSON has been acting up recently so these params are taken from previous experiments or modified scripts. They are correct.
-param_counts = [52, 39655, 4209205, 489562]
+# param_counts = [52, 39655, 4209205, 489562]
 # param_counts = []
 # for file_loc in model_file
 #     @load file_loc model

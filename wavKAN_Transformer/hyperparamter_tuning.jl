@@ -45,6 +45,7 @@ function objective(trial)
     @suggest decoder_wav_two in trial
     @suggest decoder_wav_three in trial
     @suggest output_wavelet in trial
+    @suggest norm in trial
 
     # Parse config
     conf = ConfParse("wavKAN_Transformer/KAN_Transformer_config.ini")
@@ -79,7 +80,7 @@ function objective(trial)
 
     train_loader, test_loader = get_visco_loader(b_size)
 
-    model = create_KAN_Transformer(encoder_wavelet_names, decoder_wavelet_names, true, true, output_wavelet, true) |> gpu
+    model = create_KAN_Transformer(encoder_wavelet_names, decoder_wavelet_names, norm, norm, output_wavelet, norm) |> gpu
 
     opt_state = Optimisers.setup(Optimisers.Adam(learning_rate), model)
 
@@ -132,6 +133,7 @@ space = Scenario(
     learning_rate = (1e-6..1e-1),
     gamma = (0.5..0.9),
     step_rate = 10:40,
+    norm = [false, false],
     verbose = true,
     max_trials = 100,
     pruner = MedianPruner(),
@@ -142,7 +144,7 @@ HyperTuning.optimize(objective, space)
 display(top_parameters(space))
 
 # Save the best configuration
-@unpack d_model, nhead, dim_feedforward, dropout, num_encoder_layers, num_decoder_layers, max_len, activation, b_size, learning_rate, gamma, step_rate, encoder_wav_one, encoder_wav_two, encoder_wav_three, encoder_wav_four, encoder_wav_five, encoder_wav_six, encoder_wav_seven, encoder_wav_eight, decoder_wav_one, decoder_wav_two, decoder_wav_three, output_wavelet = space
+@unpack d_model, nhead, dim_feedforward, dropout, num_encoder_layers, num_decoder_layers, max_len, activation, b_size, learning_rate, gamma, step_rate, encoder_wav_one, encoder_wav_two, encoder_wav_three, encoder_wav_four, encoder_wav_five, encoder_wav_six, encoder_wav_seven, encoder_wav_eight, decoder_wav_one, decoder_wav_two, decoder_wav_three, output_wavelet, norm = space
 
 conf = ConfParse("wavKAN_Transformer/KAN_Transformer_config.ini")
 parse_conf!(conf)
@@ -186,6 +188,7 @@ commit!(conf, "DataLoader", "batch_size", string(b_size))
 commit!(conf, "Optimizer", "learning_rate", string(learning_rate))
 commit!(conf, "Optimizer", "gamma", string(gamma))
 commit!(conf, "Optimizer", "step_rate", string(step_rate))
+commit!(conf, "Architecture", "norm", string(norm))
 
 save!(conf, "wavKAN_Transformer/KAN_Transformer_config.ini")
 

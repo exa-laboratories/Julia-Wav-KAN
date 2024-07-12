@@ -13,7 +13,7 @@ using ConfParser
 
 train_loader, test_loader = get_visco_loader(1)
 
-MODEL_NAME = "KAN_RNO"
+MODEL_NAME = "KAN_Transformer"
 
 model_file = Dict(
     "RNO" => "Vanilla_RNO/logs/trained_models/model_5.bson",

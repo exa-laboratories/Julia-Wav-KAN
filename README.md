@@ -3,7 +3,7 @@ A Julia implementation of Wavelet Kolmogorov-Arnold Networks (wavKAN).
 
 Mutli-layer Perceptron (MLP) and wavKAN implementations of the Transformer and Recurrent Neural Operator (RNO) are applied to the 1D unit cell problem with a viscoelastic constitutive relation. This dataset is particularly difficult for the Transformer to learn, but easy for the RNO. The wavKAN is investigated here to see if it can improve the Transformer's performance, and perhaps even surpass the RNO.
 
-The MLP models were developed in a [previous side project](https://github.com/PritRaj1/Neural-Operator-Learning). If required, the commit history for attributed to their development can be found there.
+The MLP models were developed in a [previous side project](https://github.com/PritRaj1/Neural-Operator-Learning). If required, the commit history attributed to their development can be found there.
 
 ## To Run
 

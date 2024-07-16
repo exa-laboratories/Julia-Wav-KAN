@@ -46,7 +46,7 @@ julia train.jl
 5. Compare the training loops:
   
 ```bash
-julia compare_models.jl
+python results.py
 ```
 
 6. Visualize the results, (first need to remove PlotlyJS from environment):

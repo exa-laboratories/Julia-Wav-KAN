@@ -16,26 +16,26 @@ julia requirements.jl
 2. Tune hyperparameters:
 
 ```bash
-julia Vanilla_RNO/hyperparameter_tuning.jl
+julia src/models/Vanilla_RNO/hyperparameter_tuning.jl
 ```
 
 ```bash
-julia wavKAN_RNO/hyperparameter_tuning.jl
+julia src/models/wavKAN_RNO/hyperparameter_tuning.jl
 ```
     
 ```bash
-julia Vanilla_Transformer/hyperparameter_tuning.jl
+julia src/models/Vanilla_Transformer/hyperparameter_tuning.jl
 ```
     
 ```bash
-julia wavKAN_Transformer/hyperparameter_tuning.jl
+julia src/models/wavKAN_Transformer/hyperparameter_tuning.jl
 ```
 
 3. (Alternatively to 2) Manually configure hyperparameters in the respective `config.ini` files.
-    - [Vanilla RNO](https://github.com/PritRaj1/Julia-Wav-KAN/blob/main/Vanilla_RNO/RNO_config.ini)
-    - [wavKAN RNO](https://github.com/PritRaj1/Julia-Wav-KAN/blob/main/wavKAN_RNO/KAN_RNO_config.ini)
-    - [Vanilla Transformer](https://github.com/PritRaj1/Julia-Wav-KAN/blob/main/Vanilla_Transformer/Transformer_config.ini)
-    - [wavKAN Transformer](https://github.com/PritRaj1/Julia-Wav-KAN/blob/main/wavKAN_Transformer/KAN_Transformer_config.ini)
+    - [Vanilla RNO](https://github.com/PritRaj1/Julia-Wav-KAN/blob/main/src/models/Vanilla_RNO/RNO_config.ini)
+    - [wavKAN RNO](https://github.com/PritRaj1/Julia-Wav-KAN/blob/main/src/models/wavKAN_RNO/KAN_RNO_config.ini)
+    - [Vanilla Transformer](https://github.com/PritRaj1/Julia-Wav-KAN/blob/main/src/models/Vanilla_Transformer/Transformer_config.ini)
+    - [wavKAN Transformer](https://github.com/PritRaj1/Julia-Wav-KAN/blob/main/src/models/wavKAN_Transformer/KAN_Transformer_config.ini)
 
 4. Train the models, (model_name variable is set on line 26), and log the results:
 
@@ -92,11 +92,11 @@ Training time was recorded for each of the models, but this is not considered a 
 ## Wavelets
 
 <p align="center">
-  <img src="KAN/wavelets/animations/DerivativeOfGaussian.gif" width="30%" />
-    <img src="KAN/wavelets/animations/MexicanHat.gif" width="30%" />
-    <img src="KAN/wavelets/animations/Meyer.gif" width="30%" />
-    <img src="KAN/wavelets/animations/Morlet.gif" width="30%" />
-    <img src="KAN/wavelets/animations/Shannon.gif" width="30%" />
+  <img src="src/KAN/wavelets/animations/DerivativeOfGaussian.gif" width="30%" />
+    <img src="src/KAN/wavelets/animations/MexicanHat.gif" width="30%" />
+    <img src="src/KAN/wavelets/animations/Meyer.gif" width="30%" />
+    <img src="src/KAN/wavelets/animations/Morlet.gif" width="30%" />
+    <img src="src/KAN/wavelets/animations/Shannon.gif" width="30%" />
 </p>
 
 ## Problem and Data - Unit Cell Problem with Viscoelastic Constitutive Relation

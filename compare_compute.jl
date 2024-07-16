@@ -1,8 +1,8 @@
-include("pipeline/data_processing/data_loader.jl")
-include("Vanilla_RNO/RNO.jl")
-include("Vanilla_Transformer/Transformer.jl")
-include("wavKAN_RNO/KAN_RNO.jl")
-include("wavKAN_Transformer/KAN_Transformer.jl")
+include("src/pipeline/data_processing/data_loader.jl")
+include("src/models/Vanilla_RNO/RNO.jl")
+include("src/models/Vanilla_Transformer/Transformer.jl")
+include("src/models/wavKAN_RNO/KAN_RNO.jl")
+include("src/models/wavKAN_Transformer/KAN_Transformer.jl")
 
 using Flux
 using BSON: @load
@@ -16,10 +16,10 @@ train_loader, test_loader = get_visco_loader(1)
 MODEL_NAME = "Transformer"
 
 model_file = Dict(
-    "RNO" => "Vanilla_RNO/logs/trained_models/model_1.bson",
-    "KAN_RNO" => "wavKAN_RNO/logs/trained_models/model_1.bson",
-    "Transformer" => "Vanilla_Transformer/logs/trained_models/model_1.bson",
-    "KAN_Transformer" => "wavKAN_Transformer/logs/trained_models/model_1.bson"
+    "RNO" => "src/models/Vanilla_RNO/logs/trained_models/model_1.bson",
+    "KAN_RNO" => "src/models/wavKAN_RNO/logs/trained_models/model_1.bson",
+    "Transformer" => "src/models/Vanilla_Transformer/logs/trained_models/model_1.bson",
+    "KAN_Transformer" => "src/models/wavKAN_Transformer/logs/trained_models/model_1.bson"
 )[MODEL_NAME]
     
 # Load the model

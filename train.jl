@@ -1,11 +1,11 @@
-include("hp_parsing.jl")
-include("pipeline/data_processing/data_loader.jl")
-include("utils.jl")
-include("pipeline/train.jl")
-include("Vanilla_RNO/RNO.jl")
-include("Vanilla_Transformer/Transformer.jl")
-include("wavKAN_RNO/KAN_RNO.jl")
-include("wavKAN_Transformer/KAN_Transformer.jl")
+include("src/hp_parsing.jl")
+include("src/pipeline/data_processing/data_loader.jl")
+include("src/utils.jl")
+include("src/pipeline/train.jl")
+include("src/models/Vanilla_RNO/RNO.jl")
+include("src/models/Vanilla_Transformer/Transformer.jl")
+include("src/models/wavKAN_RNO/KAN_RNO.jl")
+include("src/models/wavKAN_Transformer/KAN_Transformer.jl")
 
 using Random
 using Flux, CUDA, KernelAbstractions
@@ -58,10 +58,10 @@ instantiate_model = Dict(
 )[model_name]
 
 log_file_base = Dict(
-    "RNO" => "Vanilla_RNO/logs/",
-    "Transformer" => "Vanilla_Transformer/logs/",
-    "KAN_RNO" => "wavKAN_RNO/logs/",
-    "KAN_Transformer" => "wavKAN_Transformer/logs/",
+    "RNO" => "src/models/Vanilla_RNO/logs/",
+    "Transformer" => "src/models/Vanilla_Transformer/logs/",
+    "KAN_RNO" => "src/models/wavKAN_RNO/logs/",
+    "KAN_Transformer" => "src/models/wavKAN_Transformer/logs/",
 )[model_name]
 
 optimizer = Dict(

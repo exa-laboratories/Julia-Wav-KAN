@@ -1,17 +1,17 @@
-include("Vanilla_RNO/RNO.jl")
-include("Vanilla_Transformer/Transformer.jl")
-include("wavKAN_RNO/KAN_RNO.jl")
-include("wavKAN_Transformer/KAN_Transformer.jl")
+include("src/models/Vanilla_RNO/RNO.jl")
+include("src/models/Vanilla_Transformer/Transformer.jl")
+include("src/models/wavKAN_RNO/KAN_RNO.jl")
+include("src/models/wavKAN_Transformer/KAN_Transformer.jl")
 
 using CSV, DataFrames, Statistics, Printf, PlotlyJS, Flux, CUDA
 using PlotlyJS: box, plot
 using BSON: @load
 
 log_locations = [
-    "Vanilla_RNO/logs",
-    "wavKAN_RNO/logs",
-    "Vanilla_Transformer/logs",
-    "wavKAN_Transformer/logs",
+    "src/models/Vanilla_RNO/logs",
+    "src/models/wavKAN_RNO/logs",
+    "src/models/Vanilla_Transformer/logs",
+    "src/models/wavKAN_Transformer/logs",
 ]
 
 plot_names = [
@@ -22,10 +22,10 @@ plot_names = [
 ]
 
 model_file = [
-    "Vanilla_RNO/logs/trained_models/model_5.bson",
-    "wavKAN_RNO/logs/trained_models/model_1.bson", # This is the best one
-    "Vanilla_Transformer/logs/trained_models/model_3.bson", 
-    "wavKAN_Transformer/logs/trained_models/model_2.bson" # This is the best one
+    "src/models/Vanilla_RNO/logs/trained_models/model_5.bson",
+    "src/models/wavKAN_RNO/logs/trained_models/model_1.bson", # This is the best one
+    "src/models/Vanilla_Transformer/logs/trained_models/model_3.bson", 
+    "src/models/wavKAN_Transformer/logs/trained_models/model_2.bson" # This is the best one
 ]
 
 # Create array of param counts

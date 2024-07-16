@@ -62,7 +62,7 @@ julia predict_stress.jl
 
 ## Results
 
-Wavelet KAN models seem to perform poorly compared to their MLP counterparts. Additionally, the wavKAN Transformer had to be limited in complexity to load on the GPU, which may have contributed to its poor performance. However, the RNO was not limited, and performed decently. The MLP RNO was the best performing model, with the lowest test loss and BIC, and the highest predictive power and consistency.
+Wavelet KAN models seem to perform poorly compared to their MLP counterparts. Additionally, **the wavKAN Transformer had to be limited in complexity to load on the GPU**, which may have contributed to its poor performance. However, the RNO was not limited, and performed decently. The MLP RNO was the best performing model, with the lowest test loss and BIC, and the highest predictive power and consistency.
 
 ### Predictive Power and Consistency
 

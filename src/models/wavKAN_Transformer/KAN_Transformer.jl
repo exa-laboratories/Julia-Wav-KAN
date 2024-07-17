@@ -5,7 +5,7 @@ export create_KAN_Transformer
 ENV["2D"] = true # Set to true for 2D matrix muls
 
 include("./Klayers.jl")
-include("../../KAN/KAN_layers.jl")
+include("../../waveletKAN/KAN_layers.jl")
 
 using Flux
 using Flux: Chain, Dense

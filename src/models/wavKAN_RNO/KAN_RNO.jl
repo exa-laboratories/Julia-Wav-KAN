@@ -2,7 +2,7 @@ module KAN_RecurrentNO
 
 export create_KAN_RNO
 
-include("../../KAN/KAN_layers.jl")
+include("../../waveletKAN/KAN_layers.jl")
 
 using Flux
 using Flux: Chain, Dense

@@ -2,7 +2,7 @@ module KAN_Transform_Layers
 
 export encoder_layers, decoder_layers
 
-include("../../KAN/KAN_layers.jl")
+include("../../waveletKAN/KAN_layers.jl")
 
 using NNlib: softmax, batched_mul
 using Flux

@@ -91,13 +91,7 @@ Training time was recorded for each of the models, but this is not considered a 
 
 ## Wavelets
 
-<p align="center">
-  <img src="src/KAN/wavelets/animations/DerivativeOfGaussian.gif" width="30%" />
-    <img src="src/KAN/wavelets/animations/MexicanHat.gif" width="30%" />
-    <img src="src/KAN/wavelets/animations/Meyer.gif" width="30%" />
-    <img src="src/KAN/wavelets/animations/Morlet.gif" width="30%" />
-    <img src="src/KAN/wavelets/animations/Shannon.gif" width="30%" />
-</p>
+
 
 ## Problem and Data - Unit Cell Problem with Viscoelastic Constitutive Relation
 

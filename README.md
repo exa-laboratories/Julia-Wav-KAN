@@ -49,12 +49,7 @@ julia train.jl
 python results.py
 ```
 
-6. Visualize the results, (first need to remove PlotlyJS from environment):
-
-```bash
-julia
-import Pkg; Pkg.rm("PlotlyJS")
-```
+6. Visualize the results:
 
 ```bash
 julia predict_stress.jl

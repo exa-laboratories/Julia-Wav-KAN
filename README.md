@@ -57,17 +57,7 @@ julia predict_stress.jl
 
 ## Results
 
-Wavelet KAN models seem to perform poorly compared to their MLP counterparts. Additionally, **the wavKAN Transformer had to be limited in complexity to load on the GPU**, which may have contributed to its poor performance. However, the RNO was not limited, and performed decently. The MLP RNO was the best performing model, with the lowest test loss and BIC, and the highest predictive power and consistency.
-
-### Predictive Power and Consistency
-
-| Model              | Train Loss        | Test Loss    | BIC               | Time (mins)   | Param Count  |
-|--------------------|-------------------|--------------|-------------------|---------------|--------------|
-| MLP RNO            | 1.3 ± 0.2         | 0.41 ± 0.067 | 0.82 ± 0.13       | 63 ± 19       | 52           |
-| wavKAN RNO         | 2.6 ± 0.72        | 0.97 ± 0.39  | 1e+04 ± 0.77      | 44 ± 0.53     | 4413         |
-| MLP Transformer    | 9.4 ± 2.3         | 35 ± 62      | 9.7e+06 ± 1.2e+02 | 5 ± 0.72      | 4209205      |
-| wavKAN Transformer | 5.8e+02 ± 1.5e+02 | 1.9e+02 ± 45 | 7.9e+05 ± 89      | 23 ± 0.22     | 489562       |
-
+Wavelet KAN models seem to perform poorly compared to their MLP counterparts. Additionally, **the wavKAN Transformer had to be limited in complexity to load on the GPU**, which may have contributed to its poor performance. However, the KAN RNO performed decently, but optimised towards a greater complexity than its MLP counterpart. The MLP RNO was the best performing model, with the lowest test loss and BIC, and the highest predictive power and consistency.
 
 ### Visualised Predicted Stress Fields
 
@@ -79,6 +69,15 @@ Below are the resulting best predictions of the models. The MLPs consistently ou
 <img src="figures/RNO_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%" style="padding-right: 20px;">
 <img src="figures/KAN_RNO_visco_prediction.gif" alt="RNO Predicted Stress Field" width="48%">
 </p>
+
+### Predictive Power and Consistency
+
+| Model              | Train Loss        | Test Loss    | BIC               | Time (mins)   | Param Count  |
+|--------------------|-------------------|--------------|-------------------|---------------|--------------|
+| MLP RNO            | 1.3 ± 0.2         | 0.41 ± 0.067 | 0.82 ± 0.13       | 63 ± 19       | 52           |
+| wavKAN RNO         | 2.6 ± 0.72        | 0.97 ± 0.39  | 1e+04 ± 0.77      | 44 ± 0.53     | 4413         |
+| MLP Transformer    | 9.4 ± 2.3         | 35 ± 62      | 9.7e+06 ± 1.2e+02 | 5 ± 0.72      | 4209205      |
+| wavKAN Transformer | 5.8e+02 ± 1.5e+02 | 1.9e+02 ± 45 | 7.9e+05 ± 89      | 23 ± 0.22     | 489562       |
 
 ### TODO - Plot FLOPs comparison
 

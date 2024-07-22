@@ -72,12 +72,12 @@ Below are the resulting best predictions of the models. The MLPs consistently ou
 
 ### Predictive Power and Consistency
 
-| Model              | Train Loss        | Test Loss    | BIC               | Time (mins)   | Param Count  |
-|--------------------|-------------------|--------------|-------------------|---------------|--------------|
-| MLP RNO            | 1.3 ± 0.2         | 0.41 ± 0.067 | 0.82 ± 0.13       | 63 ± 19       | 52           |
-| wavKAN RNO         | 2.6 ± 0.72        | 0.97 ± 0.39  | 1e+04 ± 0.77      | 44 ± 0.53     | 4413         |
-| MLP Transformer    | 9.4 ± 2.3         | 35 ± 62      | 9.7e+06 ± 1.2e+02 | 5 ± 0.72      | 4209205      |
-| wavKAN Transformer | 5.8e+02 ± 1.5e+02 | 1.9e+02 ± 45 | 7.9e+05 ± 89      | 23 ± 0.22     | 489562       |
+| Model              | Train Loss      | Test Loss      | BIC                 | Time (mins)   | Param Count   |
+|--------------------|-----------------|----------------|---------------------|---------------|---------------|
+| MLP RNO            | 1.35 ± 0.20     | 0.41 ± 0.07    | 0.82 ± 0.13         | 62.61 ± 19.06 | 52            |
+| wavKAN RNO         | 2.62 ± 0.72     | 0.97 ± 0.39    | 10163.26 ± 0.77     | 43.53 ± 0.53  | 4,413         |
+| MLP Transformer    | 9.43 ± 2.28     | 34.52 ± 61.56  | 9692121.72 ± 123.13 | 5.01 ± 0.72   | 4,209,205     |
+| wavKAN Transformer | 584.57 ± 153.44 | 187.15 ± 44.61 | 788293.94 ± 89.23   | 23.31 ± 0.22  | 489,562       |
 
 ### TODO - Plot FLOPs comparison
 

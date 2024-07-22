@@ -56,10 +56,10 @@ for idx, log_location in enumerate(log_locations):
 
     results = pd.concat([results, pd.DataFrame({
         "Model": [plot_names[idx]],
-        "train_loss": [f"{np.mean(train_loss):.2g} ± {np.std(train_loss):.2g}"],
-        "test_loss": [f"{np.mean(test_loss):.2g} ± {np.std(test_loss):.2g}"],
-        "BIC": [f"{np.mean(BIC):.2g} ± {np.std(BIC):.2g}"],
-        "time": [f"{np.mean(time):.2g} ± {np.std(time):.2g}"],
+        "train_loss": [f"{np.mean(train_loss):.2f} ± {np.std(train_loss):.2f}"],
+        "test_loss": [f"{np.mean(test_loss):.2f} ± {np.std(test_loss):.2f}"],
+        "BIC": [f"{np.mean(BIC):.2f} ± {np.std(BIC):.2f}"],
+        "time": [f"{np.mean(time):.2f} ± {np.std(time):.2f}"],
         "param_count": [param_counts[idx]]
     })])
 

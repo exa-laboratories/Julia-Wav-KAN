@@ -5,6 +5,7 @@ Mutli-layer Perceptron (MLP) and wavKAN implementations of the Transformer and R
 
 The MLP models were developed in a [previous side project](https://github.com/PritRaj1/Neural-Operator-Learning). The commit history attributed to their development can be found there.
 
+
 ## To Run
 
 1. Get dependencies:
@@ -92,6 +93,23 @@ Training time was recorded for each of the models, but this is not considered a 
     <img src="src/waveletKAN/wavelets/animations/Morlet.gif" width="30%" />
     <img src="src/waveletKAN/wavelets/animations/Shannon.gif" width="30%" />
 </p>
+
+## Message from author:
+
+There were two intentions behind the development of this repo:
+
+- For me to learn about and verify wavelet transforms for function approximation in the context of KANs.
+- To show off some scientific machine learning and demonstrate that the same techniques used for NLP could instead be applied to something else, (AI is not just chatbots, productivity boosters, and targeted ads).
+- Showcase empirically why you can't just chuck Transformers at sequence modelling problems outside of NLP and expect them to be the most efficient or optimal architecture.
+
+I expected the discrete wavelet transform to work well here, since its good at representing both spatial and temporal dependencies, (which is what you need for viscoplastic material deformation). However, while the wavelet-KAN was able to learn the solution operator when realised as a Recurrent Neural Operator, it struggled wildly during tuning, was outperformed by its MLP counterpart, and completely failed when realised as a Transformer.
+
+That being said, [in a different project,](https://github.com/exa-laboratories/wavKAN-conv2D) a wavelet-KAN realisation of a Convolutional Neural Network completely outshone its MLP variant when predicting a 2D Darcy FLow in terms of generalisation. This suggests that the choice of univariate function matters a lot in your KAN architectures - the wavelets were more suitable for learning the Darcy Flow problem than this viscoplastic material modelling problem. 
+
+This makes sense - one of the massive strengths of the KAN is the ability to embed priors into its architecture through the choice of univariate function. This is really important for real-world problems, especially when data is limited, noisy, and expensive to obtain. Even AlphaFold v2 is not just a Transformer - it's an 'Evoformer' with embedded physical and biological priors to help it generalise.
+
+So, I think KANs are awesome and an incredible opportunity for scientific machine learning. If you want to solve the big problems, (e.g. the climate crisis, growth of cancer cells, neurocognitive disorders), you can't just disregard centuries of accumulated knowledge and throw black-box algorithms at them. Different architectures are better at different things, and the KAN's flexibility and its capacity for symbolic regression has the potential to be instrumental in expanding human knowledge.
+
 
 ## Problem and Data - Unit Cell Problem with Viscoelastic Constitutive Relation
 
